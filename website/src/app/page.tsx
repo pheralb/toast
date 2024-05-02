@@ -1,11 +1,24 @@
-import { Toast } from "react-bell";
+'use client';
+
+import { useToast } from 'react-bell';
 
 export default function Home() {
+  const toast = useToast();
   return (
     <>
-      <Toast>
-        <h1>Welcome to Vite!</h1>
-      </Toast>
+      <button
+        onClick={() =>
+          toast?.open({
+            text: 'Hello World!',
+            variant: 'error',
+            action: () => {
+              alert('Action Clicked');
+            },
+          })
+        }
+      >
+        Show Toast
+      </button>
     </>
   );
 }
