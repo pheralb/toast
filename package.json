@@ -11,7 +11,7 @@
     "clean": "npx rimraf library/node_modules library/dist && npx rimraf website/node_modules"
   },
   "devDependencies": {
-    "prettier": "^3.2.5",
+    "prettier": "3.2.5",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.9.0",
