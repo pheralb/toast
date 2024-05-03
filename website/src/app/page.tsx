@@ -9,15 +9,29 @@ export default function Home() {
       <button
         onClick={() =>
           toast?.open({
-            text: 'Hello World!',
-            variant: 'error',
+            text: 'This is a warning message. 😢',
+            variant: 'warning',
+            delayDuration: 5000,
             action: () => {
               alert('Action Clicked');
             },
           })
         }
       >
-        Show Toast
+        Show Warning
+      </button>
+      <button
+        onClick={() =>
+          toast?.open({
+            text: 'Hello World! This is a toast message.',
+            variant: 'info',
+            action: () => {
+              alert('Action Clicked');
+            },
+          })
+        }
+      >
+        Show Info
       </button>
     </>
   );
