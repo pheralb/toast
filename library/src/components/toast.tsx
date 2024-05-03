@@ -1,8 +1,9 @@
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import type { ToastProps, Variant } from '../types/toast.types';
-import '../styles.css';
+import '../styles/toast-component.css';
 
 import { Error, Info, Success, Warning } from '../icons';
+import { useTimeout } from '@/hooks/useTimeout';
 
 const fillColors: Record<Variant, string> = {
   success: '#2ecc71',
@@ -20,8 +21,29 @@ const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
 
 const Toast = (props: ToastProps) => {
   const IconComponent = icons[props.variant];
+  const [isExiting, setIsExiting] = useState<boolean>(false);
+
+  const animationDuration = 400;
+  const delayDuration = props.delayDuration || 4000;
+
+  const handleCloseToast = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      props.onClose && props.onClose();
+    }, 300);
+  };
+
+  useTimeout(() => {
+    handleCloseToast();
+  }, delayDuration);
+
   return (
-    <div className="t_global">
+    <div
+      className="t_global"
+      style={{
+        animation: `${isExiting ? 'slideRight' : 'slideDown'} ${animationDuration}ms ease-in-out`,
+      }}
+    >
       <div className="t_container">
         {props.icon ? (
           props.icon
@@ -39,7 +61,7 @@ const Toast = (props: ToastProps) => {
       </div>
       <div className="t_actions">
         <button onClick={props.action}>Action</button>
-        <button>Close</button>
+        <button onClick={props.onClose}>Close</button>
       </div>
     </div>
   );

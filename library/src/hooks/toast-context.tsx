@@ -7,6 +7,6 @@ type ToastContextValue = {
 };
 
 export const ToastContext = createContext<ToastContextValue>({
-  open: () => {},
-  close: () => {},
+  open: (data: ToastProps) => data,
+  close: (id: number) => id,
 });
