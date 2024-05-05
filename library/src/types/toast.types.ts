@@ -5,7 +5,8 @@ export type Position =
   | 'top-left'
   | 'top-right'
   | 'bottom-left'
-  | 'bottom-right';
+  | 'bottom-right'
+  | 'bottom-center';
 
 export type ToastProps = {
   id?: number;
@@ -16,7 +17,6 @@ export type ToastProps = {
   iconSize?: number;
   delayDuration?: number;
   action?: () => void | (() => Promise<void>);
-  onClose?: () => void | (() => Promise<void>);
 };
 
 export type ToastProviderProperties = {

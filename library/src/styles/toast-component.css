@@ -86,30 +86,98 @@
   background-color: #f5f5f5;
 }
 
-/* Global Toast Component Keyframes: */
+/* Toast Enter Animations: */
 /* --- */
 
-/* Create a smooth animation like medusa ui toast */
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
+.t_slide-top {
+  animation: slide-top 0.4s ease;
+}
+
+@keyframes slide-top {
+  0% {
     opacity: 0;
+    transform: translateY(100%);
   }
-  to {
+  100% {
+    opacity: 1;
     transform: translateY(0);
-    opacity: 1;
   }
 }
 
-@keyframes slideRight {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(40%);
+.t_slide-bottom {
+  animation: slide-bottom 0.4s ease-in-out;
+}
+
+@keyframes slide-top {
+  0% {
     opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Toast Exit Animations: */
 /* --- */
+
+.t_slide-left {
+  animation: slide-left 0.4s ease;
+}
+
+@keyframes slide-left {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-90%);
+  }
+}
+
+.t_slide-bottom {
+  animation: slide-bottom 0.4s ease;
+}
+
+@keyframes slide-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.t_slide-bottom-exit {
+  animation: slide-bottom-exit 0.4s ease;
+}
+
+@keyframes slide-bottom-exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+.t_slide-right {
+  animation: slide-right 0.4s ease;
+}
+
+@keyframes slide-right {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(90%);
+  }
+}

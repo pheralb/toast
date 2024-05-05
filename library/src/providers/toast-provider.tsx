@@ -11,20 +11,19 @@ const generateRandomId = () => Math.floor(Math.random() * 1000000);
 
 export const ToastProvider = ({
   children,
-  maxToasts,
-  position = 'top-right',
+  maxToasts = 4,
+  position = 'top-left',
 }: ToastProviderProperties) => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
   // Open a new toast:
   const openToast = (data: ToastProps) => {
-    const max = maxToasts || 4;
     const newToast = {
       ...data,
       id: generateRandomId(),
     };
     setToasts((prevToasts) => {
-      if (prevToasts.length >= max) {
+      if (prevToasts.length >= maxToasts) {
         return [newToast, ...prevToasts.slice(0, prevToasts.length - 1)];
       } else {
         return [newToast, ...prevToasts];
@@ -55,6 +54,7 @@ export const ToastProvider = ({
           position === 'top-right' ? 't_top-right' : '',
           position === 'bottom-left' ? 't_bottom-left' : '',
           position === 'bottom-right' ? 't_bottom-right' : '',
+          position === 'bottom-center' ? 't_bottom-center' : '',
         )}
       >
         {toasts &&
@@ -62,6 +62,7 @@ export const ToastProvider = ({
             return (
               <ToastComponent
                 key={toast.id}
+                toastPosition={position}
                 onClose={() => closeToast(toast.id!)}
                 {...toast}
               />
