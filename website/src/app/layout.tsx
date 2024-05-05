@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
-import { Inter as FontSans } from 'next/font/google';
+
+// Fonts:
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 // Styles:
-import './globals.css';
+import '@/styles/globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/utils';
 
 // Providers:
-import { ToastProvider } from 'react-bell';
-
-// Fonts:
-const fontSans = FontSans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-});
+import { ToastProvider } from '@pheralb/toast';
+import Header from '@/components/header';
+import SidebarContent from '@/components/sidebar';
 
 // Metadata:
 export const metadata: Metadata = {
@@ -27,8 +27,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn('font-sans antialiased', fontSans.variable)}>
-        <ToastProvider>{children}</ToastProvider>
+      <body
+        className={cn(
+          'bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100',
+          'font-sans antialiased',
+          GeistSans.variable,
+          GeistMono.variable,
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <ToastProvider position="bottom-center">
+            <main className="container mx-auto max-w-7xl">
+              <SidebarContent />
+              <article
+                className={cn(
+                  'container mx-auto ml-60 w-full max-w-3xl py-8',
+                  'prose prose-neutral dark:prose-invert',
+                  'prose-headings:font-medium prose-headings:tracking-tight',
+                  'prose-a:underline-offset-[4px] prose-a:decoration-solid dark:prose-a:decoration-neutral-500 prose-a:decoration-neutral-400',
+                  'prose-figure:my-0 prose-p:mb-1 prose-p:text-pretty',
+                )}
+              >
+                {children}
+              </article>
+            </main>
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

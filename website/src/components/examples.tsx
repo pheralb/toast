@@ -1,17 +1,19 @@
 'use client';
 
-import { useToast } from 'react-bell';
+import { useToast } from '@pheralb/toast';
 
-export default function Home() {
+const Examples = () => {
   const toast = useToast();
   return (
     <>
       <button
         onClick={() =>
-          toast?.open({
+          toast.open({
             text: 'This is a warning message. 😢',
+            description:
+              'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus ratione, iusto reprehenderit perspiciatis illum illo mollitia cumque fugit, at eligendi quod, ipsa fugiat nihil! Sunt soluta dolorum suscipit ex voluptas!',
             variant: 'warning',
-            delayDuration: 5000,
+            delayDuration: 12000,
             action: () => {
               alert('Action Clicked');
             },
@@ -22,7 +24,7 @@ export default function Home() {
       </button>
       <button
         onClick={() =>
-          toast?.open({
+          toast.open({
             text: 'Hello World! This is a toast message.',
             variant: 'info',
             action: () => {
@@ -35,4 +37,6 @@ export default function Home() {
       </button>
     </>
   );
-}
+};
+
+export default Examples;
