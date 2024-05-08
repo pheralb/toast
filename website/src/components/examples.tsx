@@ -14,9 +14,6 @@ const Examples = () => {
               'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus ratione, iusto reprehenderit perspiciatis illum illo mollitia cumque fugit, at eligendi quod, ipsa fugiat nihil! Sunt soluta dolorum suscipit ex voluptas!',
             variant: 'warning',
             delayDuration: 12000,
-            action: () => {
-              alert('Action Clicked');
-            },
           })
         }
       >

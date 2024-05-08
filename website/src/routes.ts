@@ -1,5 +1,3 @@
-import { BoxIso, Rocket } from 'iconoir-react';
-
 interface iDocsRoutes {
   category: string;
   routes: {
@@ -23,8 +21,12 @@ export const DocsRoutes: iDocsRoutes[] = [
     ],
   },
   {
-    category: 'Status',
+    category: 'Settings',
     routes: [
+      {
+        title: 'Positions',
+        path: '/positions',
+      },
       {
         title: 'Variants',
         path: '/variants',

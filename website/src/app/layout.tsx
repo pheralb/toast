@@ -6,11 +6,13 @@ import { GeistMono } from 'geist/font/mono';
 
 // Styles:
 import '@/styles/globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/utils';
 
 // Providers:
-import { ToastProvider } from '@pheralb/toast';
+import { ThemeProvider } from '@/providers/theme-provider';
+import { ToastProvider } from '@/providers/toast-provider';
+
+// Layouts:
 import Header from '@/components/header';
 import SidebarContent from '@/components/sidebar';
 
@@ -42,7 +44,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <ToastProvider position="bottom-center">
+          <ToastProvider position="top-right">
             <main className="container mx-auto max-w-7xl">
               <SidebarContent />
               <article

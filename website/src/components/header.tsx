@@ -29,7 +29,7 @@ const Header = () => {
       <div className="container flex max-w-7xl items-center justify-between">
         <Link
           href="/"
-          className="flex items-center space-x-2 font-medium tracking-tight"
+          className="flex items-center space-x-2 font-medium tracking-tight transition-opacity duration-75 hover:opacity-80"
         >
           <Logo width={22} />
           <span className="text-neutral-700 dark:text-neutral-300">
