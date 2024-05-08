@@ -1,3 +1,9 @@
+## 📦 Installation
+
+```bash
+npm install @pheralb/toast
+```
+
 ## 🌱 Features
 
 - [x] 🍂 Lightweight.
