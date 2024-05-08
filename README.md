@@ -1,1 +1,1 @@
-packages/library/README.md
+library/README.md
