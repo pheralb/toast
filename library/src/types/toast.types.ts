@@ -7,6 +7,7 @@ export type Position =
   | 'bottom-left'
   | 'bottom-right'
   | 'bottom-center';
+export type Theme = 'light' | 'dark' | 'system';
 
 export type ToastProps = {
   id?: number;
@@ -16,11 +17,13 @@ export type ToastProps = {
   icon?: ReactNode;
   iconSize?: number;
   delayDuration?: number;
+  theme?: Theme;
   action?: () => void | (() => Promise<void>);
 };
 
 export type ToastProviderProperties = {
   children: ReactNode;
+  theme?: Theme;
   maxToasts?: number;
   position?: Position;
 };

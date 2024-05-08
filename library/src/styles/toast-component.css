@@ -1,18 +1,43 @@
+/* System Light Theme: */
 /* --- */
-
 :where(.t_global) {
-  /* Global Variables: */
   --box-shadow: rgb(0 0 0 / 0.1);
   --background-color: #ffff;
+  --hover-bg-color: #f5f5f5;
   --border-color: #e5e5e5;
   --title-color: #171717;
   --description-color: #262626;
+}
 
-  /* Toast Variants: */
-  --success-color: #2c662d;
-  --error-color: #a94442;
-  --warning-color: #8a6d3b;
-  --info-color: #31708f;
+.t_light-theme {
+  --box-shadow: rgb(0 0 0 / 0.1);
+  --background-color: #ffff;
+  --hover-bg-color: #f5f5f5;
+  --border-color: #e5e5e5;
+  --title-color: #171717;
+  --description-color: #262626;
+}
+
+/* System Dark Theme: */
+/* --- */
+@media (prefers-color-scheme: dark) {
+  :where(.t_global) {
+    --box-shadow: rgb(0 0 0 / 0.1);
+    --background-color: #171717;
+    --hover-bg-color: #27272a;
+    --border-color: #262626;
+    --title-color: #fafafa;
+    --description-color: #262626;
+  }
+}
+
+.t_dark-theme {
+  --box-shadow: rgb(0 0 0 / 0.1);
+  --background-color: #171717;
+  --hover-bg-color: #27272a;
+  --border-color: #262626;
+  --title-color: #fafafa;
+  --description-color: #262626;
 }
 
 /* --- */
@@ -31,7 +56,6 @@
   border-radius: 0.375rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
-  margin: 0.5rem;
 }
 
 .t_container {
@@ -83,7 +107,7 @@
 }
 
 .t_actions > button:hover {
-  background-color: #f5f5f5;
+  background-color: var(--hover-bg-color);
 }
 
 /* Toast Enter Animations: */

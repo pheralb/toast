@@ -6,13 +6,6 @@ import { Error, Info, Success, Warning } from '../icons';
 import { useTimeout } from '../hooks/useTimeout';
 import { classNames } from '../utils';
 
-const fillColors: Record<Variant, string> = {
-  success: '#2ecc71',
-  error: '#e74c3c',
-  warning: '#f39c12',
-  info: '#121212',
-};
-
 const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
   success: Success,
   error: Error,
@@ -22,24 +15,35 @@ const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
 
 interface ToastComponentProps extends ToastProps {
   toastPosition: Position;
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 const Toast = (props: ToastComponentProps) => {
   const IconComponent = icons[props.variant];
   const [isExiting, setIsExiting] = useState<boolean>(false);
+
   const delayDuration = props.delayDuration || 4000;
+
+  const { startTimer, clearTimer } = useTimeout(() => {
+    handleCloseToast();
+  }, delayDuration);
 
   const handleCloseToast = () => {
     setIsExiting(true);
     setTimeout(() => {
-      props.onClose && props.onClose();
+      if (props.onClose) {
+        props.onClose();
+      }
     }, 300);
   };
 
-  useTimeout(() => {
-    handleCloseToast();
-  }, delayDuration);
+  const handleMouseLeave = () => {
+    startTimer();
+  };
+
+  const handleMouseEnter = () => {
+    clearTimer();
+  };
 
   const ANIMATION_ENTER_MAP: Record<Position, string> = {
     'top-left': 't_slide-top',
@@ -62,7 +66,18 @@ const Toast = (props: ToastComponentProps) => {
     : ANIMATION_ENTER_MAP[props.toastPosition];
 
   return (
-    <div className={classNames('t_global', animationClass)}>
+    <div
+      title={props.text}
+      aria-label="notification"
+      className={classNames(
+        't_global',
+        animationClass,
+        props.theme === 'dark' ? 't_dark-theme' : '',
+        props.theme === 'light' ? 't_light-theme' : '',
+      )}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="t_container">
         {props.icon ? (
           props.icon
@@ -70,7 +85,7 @@ const Toast = (props: ToastComponentProps) => {
           <IconComponent
             width={props.iconSize || 18}
             height={props.iconSize || 18}
-            fill={fillColors[props.variant]}
+            fill="currentColor"
           />
         )}
         <div className="t_content">
@@ -79,8 +94,14 @@ const Toast = (props: ToastComponentProps) => {
         </div>
       </div>
       <div className="t_actions">
-        <button onClick={props.action}>Action</button>
-        <button onClick={props.onClose}>Close</button>
+        {props.action && (
+          <button onClick={props.action} title="Action button">
+            Action
+          </button>
+        )}
+        <button onClick={props.onClose} title="Close toast">
+          Close
+        </button>
       </div>
     </div>
   );

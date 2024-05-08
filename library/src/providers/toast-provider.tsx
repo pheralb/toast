@@ -13,6 +13,7 @@ export const ToastProvider = ({
   children,
   maxToasts = 4,
   position = 'top-left',
+  theme = 'system',
 }: ToastProviderProperties) => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
@@ -62,6 +63,7 @@ export const ToastProvider = ({
             return (
               <ToastComponent
                 key={toast.id}
+                theme={theme}
                 toastPosition={position}
                 onClose={() => closeToast(toast.id!)}
                 {...toast}
