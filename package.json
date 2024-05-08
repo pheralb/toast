@@ -8,9 +8,13 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "clean": "npx rimraf library/node_modules library/dist && npx rimraf website/node_modules"
+    "clean": "npx rimraf library/node_modules library/dist && npx rimraf website/node_modules",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=website^... && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "2.27.1",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.14",
     "turbo": "latest"
