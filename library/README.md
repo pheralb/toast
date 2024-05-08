@@ -1,6 +1,7 @@
 ## 📦 Installation
 
 ```bash
+# Using npm
 npm install @pheralb/toast
 ```
 
