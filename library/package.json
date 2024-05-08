@@ -15,7 +15,7 @@
     "build": "tsc && tsup",
     "dev": "tsup --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "@types/node": "20.12.7",
