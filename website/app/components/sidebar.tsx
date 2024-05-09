@@ -2,7 +2,7 @@ import { Link, useLocation } from '@remix-run/react';
 
 import { DocsRoutes } from '@/docs.routes';
 import { cn } from '@/utils/index';
-import { ArrowUpRight } from 'iconoir-react';
+import { ArrowUpRight } from '@phosphor-icons/react';
 
 const SidebarContent = () => {
   const location = useLocation();

@@ -1,7 +1,6 @@
 import { Link } from '@remix-run/react';
-import { Github, X } from 'iconoir-react';
 
-import { Logo } from '@/components/icons';
+import X, { Github, Logo } from '@/components/icons';
 import { buttonVariants } from '@/ui/button';
 import { cn } from '@/utils/index';
 import { ModeToggle } from './theme-toggle';

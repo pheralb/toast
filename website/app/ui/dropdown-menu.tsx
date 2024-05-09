@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Check, ArrowRightCircleSolid, CheckCircleSolid } from 'iconoir-react';
+import { Check, ArrowRight, CheckCircle } from '@phosphor-icons/react';
 
 import { cn } from '@/utils';
 
@@ -30,7 +30,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ArrowRightCircleSolid className="ml-auto h-4 w-4" />
+    <ArrowRight className="ml-auto h-4 w-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =
@@ -130,7 +130,7 @@ const DropdownMenuRadioItem = React.forwardRef<
   >
     <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <CheckCircleSolid className="h-4 w-4 fill-current" />
+        <CheckCircle className="h-4 w-4 fill-current" />
       </DropdownMenuPrimitive.ItemIndicator>
     </span>
     {children}
