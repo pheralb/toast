@@ -16,7 +16,7 @@ export const DocsRoutes: iDocsRoutes[] = [
       },
       {
         title: 'Usage with Next.js',
-        path: '/nextjs',
+        path: '/docs/nextjs',
       },
     ],
   },
@@ -25,11 +25,11 @@ export const DocsRoutes: iDocsRoutes[] = [
     routes: [
       {
         title: 'Positions',
-        path: '/positions',
+        path: '/docs/positions',
       },
       {
         title: 'Variants',
-        path: '/variants',
+        path: '/docs/variants',
       },
     ],
   },
@@ -38,15 +38,15 @@ export const DocsRoutes: iDocsRoutes[] = [
     routes: [
       {
         title: 'Rich Colors',
-        path: '/colors',
+        path: '/docs/colors',
       },
       {
         title: 'Dark Mode',
-        path: '/dark-mode',
+        path: '/docs/dark-mode',
       },
       {
         title: 'Tailwind CSS',
-        path: '/tailwind-css',
+        path: '/docs/tailwind-css',
       },
     ],
   },

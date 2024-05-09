@@ -1,5 +1,3 @@
-'use client';
-
 import { useToast } from '@pheralb/toast';
 
 const Examples = () => {

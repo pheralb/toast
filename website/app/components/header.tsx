@@ -1,9 +1,10 @@
-import { Logo } from '@/icons';
-import { cn } from '@/utils';
-import Link from 'next/link';
-import { ModeToggle } from './theme-toggle';
+import { Link } from '@remix-run/react';
 import { Github, X } from 'iconoir-react';
+
+import { Logo } from '@/components/icons';
 import { buttonVariants } from '@/ui/button';
+import { cn } from '@/utils/index';
+import { ModeToggle } from './theme-toggle';
 
 const socialLinks = [
   {
@@ -28,7 +29,7 @@ const Header = () => {
     >
       <div className="container flex max-w-7xl items-center justify-between">
         <Link
-          href="/"
+          to="/"
           className="flex items-center space-x-2 font-medium tracking-tight transition-opacity duration-75 hover:opacity-80"
         >
           <Logo width={22} />

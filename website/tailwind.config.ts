@@ -23,8 +23,8 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist-sans)', ...fontFamily.sans],
-        mono: ['var(--font-geist-mono)', ...fontFamily.mono],
+        sans: ['Geist', ...fontFamily.sans],
+        mono: ['GeistMono', ...fontFamily.mono],
       },
       keyframes: {
         'accordion-down': {
