@@ -2,7 +2,7 @@ import type { MetaFunction } from '@vercel/remix';
 import { useToast } from '@pheralb/toast';
 import { SparkleCard } from '@/ui/sparkle-card';
 import { Button } from '@/ui/button';
-import { Sparkle } from '@phosphor-icons/react';
+import { Sparkles } from 'lucide-react';
 
 export const meta: MetaFunction = () => {
   return [
@@ -35,7 +35,7 @@ export default function Index() {
               })
             }
           >
-            <Sparkle height={14} width={14} />
+            <Sparkles height={14} width={14} />
             <span>Render a toast</span>
           </Button>
           <Button

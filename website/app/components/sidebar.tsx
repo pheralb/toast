@@ -2,7 +2,7 @@ import { Link, useLocation } from '@remix-run/react';
 
 import { DocsRoutes } from '@/docs.routes';
 import { cn } from '@/utils/index';
-import { ArrowUpRight } from '@phosphor-icons/react';
+import { ArrowUpRight } from 'lucide-react';
 
 const SidebarContent = () => {
   const location = useLocation();
@@ -51,7 +51,7 @@ const SidebarContent = () => {
           className="flex items-center py-1 text-neutral-600 transition-colors duration-100 hover:text-black dark:text-neutral-400 dark:decoration-neutral-700 dark:hover:text-white"
         >
           <span>Create an issue</span>
-          <ArrowUpRight height={10} />
+          <ArrowUpRight height={14} />
         </a>
       </div>
     </nav>

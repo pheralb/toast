@@ -1,4 +1,4 @@
-import { Moon, Sun } from '@phosphor-icons/react';
+import { Moon, Sun } from 'lucide-react';
 import { Theme, useTheme } from 'remix-themes';
 
 import {
@@ -16,7 +16,11 @@ export function ModeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
-          {theme === Theme.LIGHT ? <Moon size={20} /> : <Sun size={20} />}
+          {theme === Theme.LIGHT ? (
+            <Moon size={22} strokeWidth={1.5} />
+          ) : (
+            <Sun size={22} strokeWidth={1.5} />
+          )}
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
