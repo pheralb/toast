@@ -27,6 +27,8 @@ out/
 build
 dist
 
+# Remix
+/.cache
 
 # Debug
 npm-debug.log*
