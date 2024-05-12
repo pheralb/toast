@@ -38,7 +38,7 @@ export const SparkleCard = ({
           })}
       </section>
       {useBottomDivider && (
-        <div className="h-4 border-b dark:border-neutral-800" />
+        <div className="mb-7 h-4 border-b-2 border-dotted dark:border-neutral-800" />
       )}
     </>
   );
