@@ -45,7 +45,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className={buttonVariants({ variant: 'ghost', size: 'icon' })}
             >
-              <link.icon height={20} width={20} />
+              <link.icon height={18} width={18} />
               <span className="sr-only">{link.label}</span>
             </a>
           ))}

@@ -16,6 +16,7 @@ import { cn } from './utils';
 // Layout:
 import Header from './components/header';
 import SidebarContent from './components/sidebar';
+import { proseClasses } from './ui/prose';
 
 // Providers:
 import { ToastProvider } from '@pheralb/toast';
@@ -66,15 +67,14 @@ function App() {
         )}
       >
         <Header />
-        <ToastProvider
-          position="bottom-right"
-          theme={data.theme == 'dark' ? 'dark' : 'light'}
-        >
+        <ToastProvider position="bottom-right" theme={theme!}>
           <div className="container mx-auto max-w-7xl">
             <SidebarContent />
-            <main className="ml-60">
+            <article
+              className={cn('ml-60 w-full max-w-4xl py-8', proseClasses)}
+            >
               <Outlet />
-            </main>
+            </article>
           </div>
         </ToastProvider>
         <ScrollRestoration />
