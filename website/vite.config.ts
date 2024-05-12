@@ -8,18 +8,17 @@ import { vercelPreset } from '@vercel/remix/vite';
 // MDX Config & Plugins:
 import mdx from '@mdx-js/rollup';
 import rehypePrettyCode, { type Options } from 'rehype-pretty-code';
+import remarkGfm from 'remark-gfm';
 
 // Rehype Pretty Options:
 const options = {
-  theme: {
-    dark: 'github-dark-dimmed',
-    light: 'github-light',
-  },
+  theme: 'vesper',
 } as Options;
 
 export default defineConfig({
   plugins: [
     mdx({
+      remarkPlugins: [remarkGfm],
       rehypePlugins: [[rehypePrettyCode, options]],
     }),
     remix({
