@@ -1,0 +1,67 @@
+export const meta = [
+  {
+    title: 'Getting Started',
+    description: 'How to use @pheralb/toast library with Next.js',
+  },
+];
+
+import Hero from '../components/hero';
+import Usage from '../components/usage';
+
+<Hero />
+
+## Getting Started
+
+<Usage />
+
+1. Install the library:
+
+```bash
+# Using npm:
+npm install @pheralb/toast
+
+# Using pnpm:
+pnpm add @pheralb/toast
+
+# Using yarn:
+yarn add @pheralb/toast
+```
+
+2. Add the toast provider:
+
+```jsx
+// 📃 main.tsx
+import { ToastProvider } from '@pheralb/toast';
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <ToastProvider position="bottom-right">
+      <App />
+    </ToastProvider>
+  </React.StrictMode>,
+);
+```
+
+3. Usage:
+
+```jsx
+// 📃 index.tsx
+export default function Index() {
+  const toast = useToast();
+  return (
+    <>
+      <button
+        onClick={() =>
+          toast.open({
+            text: 'pheralb/toast',
+            description: '✨ A beautiful toast library for React',
+            variant: 'success',
+          })
+        }
+      >
+        <span>Render a toast</span>
+      </button>
+    </>
+  );
+}
+```
