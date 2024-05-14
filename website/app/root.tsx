@@ -27,6 +27,9 @@ import {
 } from 'remix-themes';
 import { themeSessionResolver } from './sessions.server';
 
+// Store:
+import { useDocsStore } from './store';
+
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
 ];
@@ -50,6 +53,7 @@ export default function AppWithProviders() {
 function App() {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
+  const { toastPosition } = useDocsStore();
   return (
     <html lang="en" className={cn(theme)}>
       <head>
@@ -67,11 +71,15 @@ function App() {
         )}
       >
         <Header />
-        <ToastProvider position="bottom-right" theme={theme!}>
-          <div className="container mx-auto max-w-7xl">
+        <ToastProvider
+          position={toastPosition}
+          theme={theme!}
+          toastFont="font-sans"
+        >
+          <div className="container w-full max-w-7xl">
             <SidebarContent />
             <article
-              className={cn('ml-60 w-full max-w-4xl py-8', proseClasses)}
+              className={cn('ml-64 max-w-4xl py-8 duration-100', proseClasses)}
             >
               <Outlet />
             </article>
