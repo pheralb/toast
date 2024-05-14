@@ -7,7 +7,10 @@ import { Github } from './icons';
 const Hero = () => {
   const toast = useToast();
   return (
-    <SparkleCard className="rounded-md border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+    <SparkleCard
+      className="rounded-md border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
+      useBottomDivider={false}
+    >
       <div className="mb-4 flex flex-col space-y-1">
         <h1 className="text-5xl font-bold tracking-tight lg:text-4xl">Toast</h1>
         <p className="font-medium text-neutral-500 dark:text-neutral-400">
