@@ -14,6 +14,7 @@ export const ToastProvider = ({
   maxToasts = 4,
   position = 'top-left',
   theme = 'system',
+  toastFont,
 }: ToastProviderProperties) => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
@@ -56,6 +57,7 @@ export const ToastProvider = ({
           position === 'bottom-left' ? 't_bottom-left' : '',
           position === 'bottom-right' ? 't_bottom-right' : '',
           position === 'bottom-center' ? 't_bottom-center' : '',
+          toastFont ? toastFont : 't_default_font',
         )}
       >
         {toasts &&

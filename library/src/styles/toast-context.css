@@ -9,6 +9,24 @@
   transition: max-height 0.5s ease-in-out;
 }
 
+.t_default_font {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+}
+
 .t_top-left {
   top: 0;
   left: 0;

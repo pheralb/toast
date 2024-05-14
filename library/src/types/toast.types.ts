@@ -26,4 +26,5 @@ export type ToastProviderProperties = {
   theme?: Theme;
   maxToasts?: number;
   position?: Position;
+  toastFont?: string;
 };
