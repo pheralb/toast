@@ -1,7 +1,7 @@
 <div align="center">
   <a href="https://toast.pheralb.dev">
     <img
-      src="https://raw.githubusercontent.com/pheralb/toast/main/website/public/images/logo.png?token=GHSAT0AAAAAACP44U4YKJ3KLY3DYHLRJPVWZSEQDXA"
+      src="https://toast.pheralb.dev/images/logo_svg.svg"
       alt="@pheralb/toast"
       height="60"
     />
@@ -24,12 +24,13 @@
 
 <div align="center">
 
-![esbuild Badge](https://img.shields.io/badge/esbuild-FFCF00?logo=esbuild&logoColor=000&style=flat)
+![React Badge](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=000&style=flat)
+![GitHub releases](https://img.shields.io/github/release/pheralb/toast)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40pheralb%2Ftoast)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Ftoast%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/toast/goto?ref=main)
 ![GitHub stars](https://img.shields.io/github/stars/pheralb/toast)
 ![GitHub issues](https://img.shields.io/github/issues/pheralb/toast)
-![React Badge](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=flat)
+![Remix Badge](https://img.shields.io/badge/Remix-000?logo=remix&logoColor=fff&style=flat)
 
 </div>
 
@@ -44,7 +45,7 @@
 ## 🛫 Getting Started
 
 > [!IMPORTANT]
-> This library requires **React ^18** installed.
+> This library requires **React v18** or higher.
 
 1. Install the library:
 
