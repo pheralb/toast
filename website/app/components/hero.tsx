@@ -1,8 +1,9 @@
-import { Button } from '@/ui/button';
+import { Button, buttonVariants } from '@/ui/button';
 import { SparkleCard } from '@/ui/sparkle-card';
 import { useToast } from '@pheralb/toast';
 import { Sparkles } from 'lucide-react';
 import { Github } from './icons';
+import ExternalLink from '@/ui/external-link';
 
 const Hero = () => {
   const toast = useToast();
@@ -31,22 +32,15 @@ const Hero = () => {
           <Sparkles size={14} />
           <span>Render a toast</span>
         </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            toast.open({
-              text: 'Hello, world!',
-              description: 'This is a description',
-              variant: 'info',
-              action() {
-                console.log('Action clicked');
-              },
-            })
-          }
+        <ExternalLink
+          href="https://github.com/pheralb/toast"
+          className={buttonVariants({
+            variant: 'outline',
+          })}
         >
           <Github height={14} />
           <span>View on GitHub</span>
-        </Button>
+        </ExternalLink>
       </div>
     </SparkleCard>
   );
