@@ -1,6 +1,6 @@
 import { Link, useLocation } from '@remix-run/react';
 
-import { DocsRoutes } from '@/docs.routes';
+import { SidebarRoutes } from '@/docs.routes';
 import { cn } from '@/utils/index';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -15,7 +15,7 @@ const SidebarContent = () => {
       )}
     >
       <div className="flex flex-1 flex-col space-y-8 py-7">
-        {DocsRoutes.map((route) => (
+        {SidebarRoutes.map((route) => (
           <div key={route.category}>
             <p className="mb-1 flex w-full items-center justify-between space-x-2 py-1 text-start text-sm text-neutral-600 dark:text-neutral-400">
               {route.category}

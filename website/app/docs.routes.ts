@@ -1,12 +1,57 @@
+import type { SVGProps } from 'react';
+import X, { Astro, Github, Nextjs, Remix } from './components/icons';
+
 interface iDocsRoutes {
   category: string;
   routes: {
     title: string;
     path: string;
+    icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
   }[];
 }
 
-export const DocsRoutes: iDocsRoutes[] = [
+export const FrameworkGuides: iDocsRoutes[] = [
+  {
+    category: 'Framework Guides',
+    routes: [
+      {
+        title: 'Next.js',
+        path: '/nextjs',
+        icon: Nextjs,
+      },
+      {
+        title: 'Remix',
+        path: '/remix',
+        icon: Remix,
+      },
+      {
+        title: 'Astro',
+        path: '/astro',
+        icon: Astro,
+      },
+    ],
+  },
+];
+
+export const SocialLinks: iDocsRoutes[] = [
+  {
+    category: 'Social Links',
+    routes: [
+      {
+        title: 'Twitter',
+        path: 'https://twitter.com/pheralb_',
+        icon: X,
+      },
+      {
+        title: 'GitHub',
+        path: 'https://github.com/pheralb/toast',
+        icon: Github,
+      },
+    ],
+  },
+];
+
+export const SidebarRoutes: iDocsRoutes[] = [
   {
     category: 'Introduction',
     routes: [

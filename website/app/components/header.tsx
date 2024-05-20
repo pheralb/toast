@@ -1,22 +1,11 @@
 import { Link } from '@remix-run/react';
 
-import X, { Github, Logo } from '@/components/icons';
+import { Logo } from '@/components/icons';
 import { buttonVariants } from '@/ui/button';
 import { cn } from '@/utils/index';
 import { ModeToggle } from './theme-toggle';
-
-const socialLinks = [
-  {
-    label: 'Twitter',
-    href: 'https://twitter.com/pheralb_',
-    icon: X,
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/pheralb/toast',
-    icon: Github,
-  },
-];
+import { SocialLinks } from '@/docs.routes';
+import ExternalLink from '@/ui/external-link';
 
 const Header = () => {
   return (
@@ -37,18 +26,18 @@ const Header = () => {
           </span>
         </Link>
         <div className="flex items-center space-x-1">
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonVariants({ variant: 'ghost', size: 'icon' })}
-            >
-              <link.icon height={18} width={18} />
-              <span className="sr-only">{link.label}</span>
-            </a>
-          ))}
+          {SocialLinks.map((link) =>
+            link.routes.map((route) => (
+              <ExternalLink
+                key={route.path}
+                href={route.path}
+                className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+              >
+                {route.icon && <route.icon height={18} width={18} />}
+                <span className="sr-only">{route.title}</span>
+              </ExternalLink>
+            )),
+          )}
           <ModeToggle />
         </div>
       </div>
