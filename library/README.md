@@ -6,9 +6,10 @@
       height="60"
     />
   </a>
+  <br></br>
   <p>
     <b>
-      An accessible and beautiful toast library for React.
+      An accessible toast library for React.
     </b>
   </p>
 
