@@ -17,9 +17,9 @@ export function ModeToggle() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon">
           {theme === Theme.LIGHT ? (
-            <Moon size={22} strokeWidth={1.5} />
+            <Moon size={22} strokeWidth={1.4} />
           ) : (
-            <Sun size={22} strokeWidth={1.5} />
+            <Sun size={22} strokeWidth={1.4} />
           )}
           <span className="sr-only">Toggle theme</span>
         </Button>
