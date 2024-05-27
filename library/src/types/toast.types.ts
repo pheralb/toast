@@ -4,6 +4,7 @@ export type Variant = 'success' | 'error' | 'warning' | 'info';
 export type Position =
   | 'top-left'
   | 'top-right'
+  | 'top-center'
   | 'bottom-left'
   | 'bottom-right'
   | 'bottom-center';
@@ -11,7 +12,7 @@ export type Theme = 'light' | 'dark' | 'system';
 
 export type ToastProps = {
   id?: number;
-  variant: Variant;
+  variant?: Variant;
   text: string;
   description?: string;
   icon?: ReactNode;

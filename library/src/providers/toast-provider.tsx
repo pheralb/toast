@@ -26,9 +26,25 @@ export const ToastProvider = ({
     };
     setToasts((prevToasts) => {
       if (prevToasts.length >= maxToasts) {
-        return [newToast, ...prevToasts.slice(0, prevToasts.length - 1)];
+        if (
+          position === 'top-left' ||
+          position === 'top-right' ||
+          position === 'top-center'
+        ) {
+          return [newToast, ...prevToasts.slice(0, prevToasts.length - 1)];
+        } else {
+          return [...prevToasts.slice(1), newToast];
+        }
       } else {
-        return [newToast, ...prevToasts];
+        if (
+          position === 'top-left' ||
+          position === 'top-right' ||
+          position === 'top-center'
+        ) {
+          return [newToast, ...prevToasts];
+        } else {
+          return [...prevToasts, newToast];
+        }
       }
     });
   };
@@ -54,6 +70,7 @@ export const ToastProvider = ({
           't_toasts',
           position === 'top-left' ? 't_top-left' : '',
           position === 'top-right' ? 't_top-right' : '',
+          position === 'top-center' ? 't_top-center' : '',
           position === 'bottom-left' ? 't_bottom-left' : '',
           position === 'bottom-right' ? 't_bottom-right' : '',
           position === 'bottom-center' ? 't_bottom-center' : '',

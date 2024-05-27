@@ -19,7 +19,7 @@ interface ToastComponentProps extends ToastProps {
 }
 
 const Toast = (props: ToastComponentProps) => {
-  const IconComponent = icons[props.variant];
+  const IconComponent = props.variant ? icons[props.variant] : Info;
   const [isExiting, setIsExiting] = useState<boolean>(false);
 
   const delayDuration = props.delayDuration || 4000;
@@ -48,6 +48,7 @@ const Toast = (props: ToastComponentProps) => {
   const ANIMATION_ENTER_MAP: Record<Position, string> = {
     'top-left': 't_slide-top',
     'top-right': 't_slide-top',
+    'top-center': 't_slide-top',
     'bottom-left': 't_slide-bottom',
     'bottom-right': 't_slide-bottom',
     'bottom-center': 't_slide-bottom',
@@ -56,6 +57,7 @@ const Toast = (props: ToastComponentProps) => {
   const ANIMATION_EXIT_MAP: Record<Position, string> = {
     'top-left': 't_slide-left',
     'top-right': 't_slide-right',
+    'top-center': 't_slide-top-exit',
     'bottom-left': 't_slide-left',
     'bottom-right': 't_slide-right',
     'bottom-center': 't_slide-bottom-exit',
@@ -79,15 +81,16 @@ const Toast = (props: ToastComponentProps) => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="t_container">
-        {props.icon ? (
-          props.icon
-        ) : (
-          <IconComponent
-            width={props.iconSize || 18}
-            height={props.iconSize || 18}
-            fill="currentColor"
-          />
-        )}
+        {props.variant &&
+          (props.icon ? (
+            <div className="t_icon">{props.icon}</div>
+          ) : (
+            <IconComponent
+              width={props.iconSize || 18}
+              height={props.iconSize || 18}
+              className="t_icon"
+            />
+          ))}
         <div className="t_content">
           <p>{props.text}</p>
           {props.description && <p>{props.description}</p>}

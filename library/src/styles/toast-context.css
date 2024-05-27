@@ -37,6 +37,12 @@
   right: 0;
 }
 
+.t_top-center {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .t_bottom-left {
   bottom: 0;
   left: 0;
@@ -51,5 +57,4 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  padding: 10px;
 }
