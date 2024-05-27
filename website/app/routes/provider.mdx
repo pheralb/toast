@@ -5,7 +5,7 @@ export const meta = [
   },
 ];
 
-import { Positions } from '../components/provider';
+import { Positions, Theme } from '../components/examples';
 
 # Toast Provider
 
@@ -19,13 +19,9 @@ You can customize the position of the toasts by using the `position` prop of the
 
 ## Theme
 
-You can set the theme of the toasts using the `theme` prop, which accepts the values: `light`, `dark`, and `system`.
+You can set the theme of the toasts using the `theme` prop, which accepts the values: `light`, `dark`, and `system`:
 
-```jsx
-<ToastProvider theme="light">
-  <App />
-</ToastProvider>
-```
+<Theme />
 
 ## MaxToasts
 
