@@ -2,14 +2,14 @@ import { Link, useLocation } from '@remix-run/react';
 
 import { SidebarRoutes } from '@/docs.routes';
 import { cn } from '@/utils/index';
-import { ArrowUpRight } from 'lucide-react';
+import SidebarFooter from './sidebarFooter';
 
 const SidebarContent = () => {
   const location = useLocation();
   return (
     <nav
       className={cn(
-        'fixed z-50 h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden pb-10',
+        'fixed h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden pb-10',
         'bg-neutral-50 dark:bg-neutral-900',
         'flex flex-col',
       )}
@@ -42,18 +42,7 @@ const SidebarContent = () => {
           </div>
         ))}
       </div>
-      <div className="w-full border-b-2 border-dashed border-neutral-200 py-2 text-sm dark:border-neutral-800">
-        <p className="font-medium">Found a bug?</p>
-        <a
-          href="https://github.com/pheralb/toast/issues/new"
-          target="_blank"
-          rel="noreferrer"
-          className="flex items-center py-1 text-neutral-600 transition-colors duration-100 hover:text-black dark:text-neutral-400 dark:decoration-neutral-700 dark:hover:text-white"
-        >
-          <span>Create an issue</span>
-          <ArrowUpRight height={14} />
-        </a>
-      </div>
+      <SidebarFooter />
     </nav>
   );
 };

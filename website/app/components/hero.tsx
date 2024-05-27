@@ -24,7 +24,6 @@ const Hero = () => {
           onClick={() =>
             toast.open({
               text: 'pheralb/toast',
-              variant: 'success',
               description: '✨ A beautiful toast library for React',
             })
           }

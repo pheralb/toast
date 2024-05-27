@@ -53,7 +53,7 @@ export default function AppWithProviders() {
 function App() {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
-  const { toastPosition } = useDocsStore();
+  const { toastPosition, toastTheme } = useDocsStore();
   return (
     <html lang="en" className={cn(theme)}>
       <head>
@@ -73,7 +73,7 @@ function App() {
         <Header />
         <ToastProvider
           position={toastPosition}
-          theme={theme!}
+          theme={toastTheme ? toastTheme : theme!}
           toastFont="font-sans"
         >
           <div className="container w-full max-w-7xl">
