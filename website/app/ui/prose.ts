@@ -7,5 +7,4 @@ export const proseClasses = cn(
   'prose-a:underline-offset-[4px] prose-a:decoration-solid dark:prose-a:decoration-neutral-500 prose-a:decoration-neutral-400',
   'prose-figure:my-0 prose-p:mb-1 prose-p:text-pretty',
   'prose-ol:mb-0',
-  'prose-pre:border prose-pre:my-2 dark:prose-pre:border-neutral-800 prose-pre:border-neutral-200',
 );
