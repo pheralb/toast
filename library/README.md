@@ -35,15 +35,18 @@
 
 </div>
 
-## ✨ Features
+## 🪐 Features
 
 - [x] 🍂 Lightweight.
 - [x] ✅ Accessible.
 - [x] 🎨 Light/dark mode.
 - [x] ⏲️ Don't close automatically when the user hover over the toast.
 - [x] 🏗️ Customizable toast position.
+- [x] 💙 Built completely with Typescript.
 
-## 🛫 Getting Started
+and inspired by [**Medusa.js UI** Notifications](https://medusajs.com) ✨
+
+## 🚀 Getting Started
 
 > [!IMPORTANT]
 > This library requires **React v18** or higher.
