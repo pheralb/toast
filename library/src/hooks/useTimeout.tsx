@@ -1,32 +1,49 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export const useTimeout = (callbackFn: () => void, delay: number | null) => {
-  const savedCallback = useRef(callbackFn);
-  const timerId = useRef<NodeJS.Timeout | null>(null);
-
-  useEffect(() => {
-    savedCallback.current = callbackFn;
-  }, [callbackFn]);
+export const useTimeout = (callbackFn: () => void, delay: number) => {
+  const [remainingTime, setRemainingTime] = useState<number>(delay);
+  const [isPaused, setIsPaused] = useState<boolean>(false);
+  const timerIdRef = useRef<number | null>(null);
+  const startTimeRef = useRef<number | null>(null);
 
   const startTimer = () => {
-    if (delay !== null) {
-      timerId.current = setTimeout(() => {
-        savedCallback.current();
-      }, delay);
-    }
+    if (timerIdRef.current !== null) return;
+
+    startTimeRef.current = Date.now();
+    timerIdRef.current = window.setTimeout(() => {
+      callbackFn();
+      timerIdRef.current = null;
+    }, remainingTime);
   };
 
   const clearTimer = () => {
-    if (timerId.current) {
-      clearTimeout(timerId.current);
-      timerId.current = null;
+    if (timerIdRef.current !== null) {
+      window.clearTimeout(timerIdRef.current);
+      timerIdRef.current = null;
+    }
+  };
+
+  const pauseTimer = () => {
+    if (timerIdRef.current !== null && startTimeRef.current !== null) {
+      clearTimer();
+      const elapsedTime = Date.now() - startTimeRef.current;
+      setRemainingTime(remainingTime - elapsedTime);
+      setIsPaused(true);
+    }
+  };
+
+  const resumeTimer = () => {
+    if (isPaused) {
+      startTimer();
+      setIsPaused(false);
     }
   };
 
   useEffect(() => {
     startTimer();
-    return clearTimer;
-  }, [delay]);
 
-  return { startTimer, clearTimer };
+    return () => clearTimer();
+  }, []);
+
+  return { pauseTimer, resumeTimer, clearTimer };
 };
