@@ -24,7 +24,7 @@ const Toast = (props: ToastComponentProps) => {
 
   const delayDuration = props.delayDuration || 4000;
 
-  const { startTimer, clearTimer } = useTimeout(() => {
+  const { pauseTimer, resumeTimer } = useTimeout(() => {
     handleCloseToast();
   }, delayDuration);
 
@@ -38,11 +38,11 @@ const Toast = (props: ToastComponentProps) => {
   };
 
   const handleMouseLeave = () => {
-    startTimer();
+    resumeTimer();
   };
 
   const handleMouseEnter = () => {
-    clearTimer();
+    pauseTimer();
   };
 
   const ANIMATION_ENTER_MAP: Record<Position, string> = {
