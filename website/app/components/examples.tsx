@@ -11,7 +11,7 @@ interface CodeBlockProps {
   value: string;
 }
 
-const activeBtn = cn('border-emerald-600 dark:border-emerald-800');
+const activeBtn = cn('border-neutral-600 dark:border-neutral-800');
 
 const ProviderCodeBlock = (props: CodeBlockProps) => {
   return (
