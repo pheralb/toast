@@ -12,13 +12,13 @@ const Hero = () => {
       className="rounded-md border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
       useBottomDivider={false}
     >
-      <div className="mb-4 flex flex-col space-y-1">
+      <div className="animate-in fade-in-30 slide-in-from-bottom-2 mb-4 flex flex-col space-y-1 duration-500">
         <h1 className="text-5xl font-bold tracking-tight lg:text-4xl">Toast</h1>
         <p className="font-medium text-neutral-500 dark:text-neutral-400">
           An accessible and beautiful toast library for React.
         </p>
       </div>
-      <div className="flex items-center space-x-2">
+      <div className="animate-in fade-in-40 flex items-center space-x-2 duration-700">
         <Button
           variant="default"
           onClick={() =>

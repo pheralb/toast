@@ -33,7 +33,11 @@ export const SparkleCard = ({
         {sparklePositions.length > 0 &&
           sparklePositions.map((sparklePosition, index) => {
             return (
-              <SparkleSvg key={`sparkle_${index}`} position={sparklePosition} />
+              <SparkleSvg
+                key={`sparkle_${index}`}
+                position={sparklePosition}
+                className="hover:animate-rotate"
+              />
             );
           })}
       </section>
