@@ -1,8 +1,10 @@
 import type { Config } from 'tailwindcss';
 
+// Plugins:
+import plugin from 'tailwindcss/plugin';
 import twAnimate from 'tailwindcss-animate';
 import typography from '@tailwindcss/typography';
-import { fontFamily } from 'tailwindcss/defaultTheme';
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 const config = {
   darkMode: ['class'],
@@ -23,8 +25,20 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ['Geist', ...fontFamily.sans],
-        mono: ['GeistMono', ...fontFamily.mono],
+        sans: ['Geist', ...defaultTheme.fontFamily.sans],
+        mono: ['GeistMono', ...defaultTheme.fontFamily.mono],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+          },
+        },
       },
       keyframes: {
         'accordion-down': {
@@ -54,7 +68,16 @@ const config = {
       },
     },
   },
-  plugins: [twAnimate, typography],
+  plugins: [
+    twAnimate,
+    typography,
+    plugin(function ({ addVariant }) {
+      addVariant(
+        'prose-inline-code',
+        '&.prose :where(:not(pre)>code):not(:where([class~="not-prose"] *))',
+      );
+    }),
+  ],
 } satisfies Config;
 
 export default config;
