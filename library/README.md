@@ -25,13 +25,13 @@
 
 <div align="center">
 
-![React Badge](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=000&style=flat)
+![React Badge](https://img.shields.io/badge/Library-61DAFB?logo=react&logoColor=000&style=flat)
+![Remix Badge](https://img.shields.io/badge/Docs-000?logo=remix&logoColor=fff&style=flat)
 ![GitHub releases](https://img.shields.io/github/release/pheralb/toast)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40pheralb%2Ftoast)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Ftoast%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/toast/goto?ref=main)
 ![GitHub stars](https://img.shields.io/github/stars/pheralb/toast)
 ![GitHub issues](https://img.shields.io/github/issues/pheralb/toast)
-![Remix Badge](https://img.shields.io/badge/Remix-000?logo=remix&logoColor=fff&style=flat)
 
 </div>
 
@@ -44,7 +44,10 @@
 - [x] 🏗️ Customizable toast position.
 - [x] 💙 Built completely with Typescript.
 
-and inspired by [**Medusa.js UI** Notifications](https://medusajs.com) ✨
+## 🙂 Inspiration
+
+- [x] ✨ Design by [**Medusa.js UI** Notifications](https://medusajs.com).
+- [x] 🛠️ Typescript API by [**Sonner**](https://sonner.emilkowal.ski).
 
 ## 🚀 Getting Started
 
@@ -89,10 +92,9 @@ export default function Index() {
     <>
       <button
         onClick={() =>
-          toast.open({
+          toast.success({
             text: 'pheralb/toast',
             description: '✨ A beautiful toast library for React',
-            variant: 'success',
           })
         }
       >
