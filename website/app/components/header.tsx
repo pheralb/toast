@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <nav
       className={cn(
-        'sticky top-0 z-50 bg-white/90 backdrop-blur-sm dark:bg-neutral-900/90',
-        'flex w-full border-b border-neutral-200 py-3 shadow-sm dark:border-neutral-800',
+        'sticky top-0 z-50 bg-neutral-50/90 backdrop-blur-sm dark:bg-neutral-900/90',
+        'flex w-full py-3 dark:border-neutral-800',
       )}
     >
       <div className="container flex max-w-7xl items-center justify-between">

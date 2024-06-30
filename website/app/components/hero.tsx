@@ -22,7 +22,7 @@ const Hero = () => {
         <Button
           variant="default"
           onClick={() =>
-            toast.open({
+            toast.default({
               text: 'pheralb/toast',
               description: '✨ A beautiful toast library for React',
             })

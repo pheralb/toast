@@ -53,9 +53,8 @@ const Positions = () => {
   const iconSize = 14;
 
   const handleChangePosition = (position: Position) => {
-    t.open({
+    t.success({
       text: `Position changed`,
-      variant: 'info',
       description: `Position changed to ${position}`,
     });
     setToastPosition(position);
@@ -124,14 +123,12 @@ const Theme = () => {
 
   const handleChangeTheme = (theme: Theme | undefined) => {
     if (theme === undefined) {
-      t.open({
+      t.success({
         text: 'Theme reset to default',
-        variant: 'success',
       });
     } else {
-      t.open({
+      t.success({
         text: `Theme changed to ${theme}`,
-        variant: 'success',
       });
     }
     setToastTheme(theme);
@@ -139,34 +136,36 @@ const Theme = () => {
 
   return (
     <div className="flex flex-col space-y-2">
-      <div className="flex items-center space-x-2 py-2">
-        <Button variant="outline" onClick={() => handleChangeTheme(undefined)}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-2 py-2">
+          <Button
+            variant="outline"
+            className={toastTheme === 'light' ? activeBtn : ''}
+            onClick={() => handleChangeTheme('light')}
+          >
+            {toastTheme === 'light' ? (
+              <CheckIcon size={iconSize} />
+            ) : (
+              <SunIcon size={iconSize} />
+            )}
+            <span>light</span>
+          </Button>
+          <Button
+            variant="outline"
+            className={toastTheme === 'dark' ? activeBtn : ''}
+            onClick={() => handleChangeTheme('dark')}
+          >
+            {toastTheme === 'dark' ? (
+              <CheckIcon size={iconSize} />
+            ) : (
+              <MoonIcon size={iconSize} />
+            )}
+            <span>dark</span>
+          </Button>
+        </div>
+        <Button variant="ghost" onClick={() => handleChangeTheme(undefined)}>
           <RefreshCcwIcon size={iconSize} />
           <span>reset</span>
-        </Button>
-        <Button
-          variant="outline"
-          className={toastTheme === 'light' ? activeBtn : ''}
-          onClick={() => handleChangeTheme('light')}
-        >
-          {toastTheme === 'light' ? (
-            <CheckIcon size={iconSize} />
-          ) : (
-            <SunIcon size={iconSize} />
-          )}
-          <span>light</span>
-        </Button>
-        <Button
-          variant="outline"
-          className={toastTheme === 'dark' ? activeBtn : ''}
-          onClick={() => handleChangeTheme('dark')}
-        >
-          {toastTheme === 'dark' ? (
-            <CheckIcon size={iconSize} />
-          ) : (
-            <MoonIcon size={iconSize} />
-          )}
-          <span>dark</span>
         </Button>
       </div>
       <ProviderCodeBlock label="theme" value={toastTheme || 'system'} />

@@ -70,12 +70,12 @@ function App() {
           'text-neutral-900 dark:text-neutral-50',
         )}
       >
-        <Header />
         <ToastProvider
           position={toastPosition}
           theme={toastTheme ? toastTheme : theme!}
           toastFont="font-sans"
         >
+          <Header />
           <div className="container w-full max-w-7xl">
             <SidebarContent />
             <article
