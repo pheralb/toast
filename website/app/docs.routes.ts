@@ -66,14 +66,14 @@ export const SidebarRoutes: iDocsRoutes[] = [
     ],
   },
   {
-    category: 'Settings',
+    category: 'Components',
     routes: [
       {
-        title: 'Toast Provider',
+        title: 'ToastProvider',
         path: '/provider',
       },
       {
-        title: 'Toast Props',
+        title: 'useToast',
         path: '/props',
       },
     ],
@@ -82,16 +82,8 @@ export const SidebarRoutes: iDocsRoutes[] = [
     category: 'Customization',
     routes: [
       {
-        title: 'Variants',
-        path: '/variants',
-      },
-      {
         title: 'Dark Mode',
         path: '/docs/dark-mode',
-      },
-      {
-        title: 'Tailwind CSS',
-        path: '/docs/tailwind-css',
       },
     ],
   },
