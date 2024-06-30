@@ -12,7 +12,6 @@ export type Theme = 'light' | 'dark' | 'system';
 
 export type ToastProps = {
   id?: number;
-  variant?: Variant;
   text: string;
   description?: string;
   icon?: ReactNode;
@@ -29,3 +28,7 @@ export type ToastProviderProperties = {
   position?: Position;
   toastFont?: string;
 };
+
+export interface ToastPropsWithVariant extends ToastProps {
+  variant?: Variant;
+}

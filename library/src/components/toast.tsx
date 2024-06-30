@@ -1,5 +1,9 @@
 import { useState, type FC } from 'react';
-import type { Position, ToastProps, Variant } from '../types/toast.types';
+import type {
+  Position,
+  ToastPropsWithVariant,
+  Variant,
+} from '../types/toast.types';
 import '../styles/toast-component.css';
 
 import { Error, Info, Success, Warning } from '../icons';
@@ -13,7 +17,7 @@ const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
   info: Info,
 };
 
-interface ToastComponentProps extends ToastProps {
+interface ToastComponentProps extends ToastPropsWithVariant {
   toastPosition: Position;
   onClose: () => void;
 }

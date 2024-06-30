@@ -2,11 +2,19 @@ import type { ToastProps } from '../types/toast.types';
 import { createContext } from 'react';
 
 type ToastContextValue = {
-  open: (data: ToastProps) => void;
+  default: (data: ToastProps) => ToastProps;
+  success: (data: ToastProps) => ToastProps;
+  error: (data: ToastProps) => ToastProps;
+  warning: (data: ToastProps) => ToastProps;
+  info: (data: ToastProps) => ToastProps;
   close: (id: number) => void;
 };
 
 export const ToastContext = createContext<ToastContextValue>({
-  open: (data: ToastProps) => data,
+  default: (data: ToastProps) => data,
+  success: (data: ToastProps) => data,
+  error: (data: ToastProps) => data,
+  warning: (data: ToastProps) => data,
+  info: (data: ToastProps) => data,
   close: (id: number) => id,
 });
