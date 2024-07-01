@@ -9,6 +9,7 @@ import { vercelPreset } from '@vercel/remix/vite';
 import mdx from '@mdx-js/rollup';
 import rehypePrettyCode, { type Options } from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
+import { postProcess, preProcess } from './rehype-plugins';
 
 // Rehype Pretty Options:
 const options = {
@@ -18,8 +19,9 @@ const options = {
 export default defineConfig({
   plugins: [
     mdx({
+      providerImportSource: '@mdx-js/react',
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [[rehypePrettyCode, options]],
+      rehypePlugins: [[rehypePrettyCode, options], preProcess, postProcess],
     }),
     remix({
       presets: [vercelPreset()],
