@@ -27,6 +27,7 @@
 
 ![React Badge](https://img.shields.io/badge/Library-61DAFB?logo=react&logoColor=000&style=flat)
 ![Remix Badge](https://img.shields.io/badge/Docs-000?logo=remix&logoColor=fff&style=flat)
+![Vitest Badge](https://img.shields.io/badge/Testing-6E9F18?logo=vitest&logoColor=fff&style=flat)
 ![GitHub releases](https://img.shields.io/github/release/pheralb/toast)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40pheralb%2Ftoast)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpheralb%2Ftoast%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/pheralb/toast/goto?ref=main)
