@@ -74,7 +74,7 @@ export const SidebarRoutes: iDocsRoutes[] = [
       },
       {
         title: 'useToast',
-        path: '/props',
+        path: '/useToast',
       },
     ],
   },

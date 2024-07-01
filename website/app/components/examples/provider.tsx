@@ -1,15 +1,11 @@
 import type { Position, Theme } from '@pheralb/toast';
-import { useToast } from '@pheralb/toast';
+import type { CodeBlockProps } from './examples.types';
 
+import { useToast } from '@pheralb/toast';
 import { useDocsStore } from '@/store';
 import { Button } from '@/ui/button';
 import { CheckIcon, MoonIcon, RefreshCcwIcon, SunIcon } from 'lucide-react';
 import { cn } from '@/utils';
-
-interface CodeBlockProps {
-  label: string;
-  value: string;
-}
 
 const activeBtn = cn('border-neutral-600 dark:border-neutral-800');
 
@@ -61,7 +57,7 @@ const Positions = () => {
   };
   return (
     <div className="flex flex-col space-y-2">
-      <div className="flex items-center space-x-2 py-2">
+      <div className="flex items-center space-x-2 overflow-y-auto py-2">
         <Button
           variant="outline"
           className={toastPosition === 'top-left' ? activeBtn : ''}

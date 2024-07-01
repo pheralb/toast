@@ -27,6 +27,10 @@ import {
 } from 'remix-themes';
 import { themeSessionResolver } from './sessions.server';
 
+// MDX Components:
+import { MDXProvider } from '@mdx-js/react';
+import { mdxComponents } from './components/mdx';
+
 // Store:
 import { useDocsStore } from './store';
 
@@ -76,14 +80,21 @@ function App() {
           toastFont="font-sans"
         >
           <Header />
-          <div className="container w-full max-w-7xl">
-            <SidebarContent />
-            <article
-              className={cn('ml-64 max-w-4xl py-8 duration-100', proseClasses)}
-            >
-              <Outlet />
-            </article>
-          </div>
+          <main className="container w-full max-w-7xl">
+            <aside className="hidden md:block">
+              <SidebarContent />
+            </aside>
+            <MDXProvider disableParentContext components={mdxComponents}>
+              <article
+                className={cn(
+                  'ml-0 max-w-4xl py-8 duration-100 md:ml-64',
+                  proseClasses,
+                )}
+              >
+                <Outlet />
+              </article>
+            </MDXProvider>
+          </main>
         </ToastProvider>
         <ScrollRestoration />
         <Scripts />

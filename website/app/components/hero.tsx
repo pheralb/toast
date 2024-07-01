@@ -13,14 +13,15 @@ const Hero = () => {
       useBottomDivider={false}
     >
       <div className="animate-in fade-in-30 slide-in-from-bottom-2 mb-4 flex flex-col space-y-1 duration-500">
-        <h1 className="text-5xl font-bold tracking-tight lg:text-4xl">Toast</h1>
+        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Toast</h1>
         <p className="font-medium text-neutral-500 dark:text-neutral-400">
           An accessible and beautiful toast library for React.
         </p>
       </div>
-      <div className="animate-in fade-in-40 flex items-center space-x-2 duration-700">
+      <div className="animate-in fade-in-40 flex flex-col items-center space-y-2 duration-700 md:flex-row md:space-x-2 md:space-y-0">
         <Button
           variant="default"
+          className="w-full md:w-40"
           onClick={() =>
             toast.default({
               text: 'pheralb/toast',
@@ -35,6 +36,7 @@ const Hero = () => {
           href="https://github.com/pheralb/toast"
           className={buttonVariants({
             variant: 'outline',
+            className: 'w-full md:w-40',
           })}
         >
           <Github height={14} />
