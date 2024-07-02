@@ -4,6 +4,8 @@ import type { CodeBlockProps } from './examples.types';
 import { useState } from 'react';
 import { Button } from '@/ui/button';
 import { useToast } from '@pheralb/toast';
+import JSConfetti from 'js-confetti';
+import { PartyPopperIcon } from 'lucide-react';
 
 const UseToastCodeBlock = (props: CodeBlockProps) => {
   return (
@@ -43,8 +45,8 @@ const UseToastCodeBlock = (props: CodeBlockProps) => {
   );
 };
 
-const UseToastExamples = () => {
-  const [toastVariant, setToastVariant] = useState<Variant>('success');
+const UseToastVariantExamples = () => {
+  const [toastVariant, setToastVariant] = useState<string>('success');
   const variants: Variant[] = ['success', 'error', 'warning', 'info'];
   const t = useToast();
 
@@ -56,21 +58,71 @@ const UseToastExamples = () => {
     });
   };
 
+  const handleDefault = () => {
+    setToastVariant('default');
+    t.default({
+      text: 'A default toast 🚀',
+      description: '✨ A beautiful toast library for React',
+    });
+  };
+
   return (
-    <div>
-      {variants.map((variant) => (
-        <Button
-          key={variant}
-          variant="outline"
-          className="w-full md:w-40"
-          onClick={() => handleChangeVariant(variant)}
-        >
-          {variant}
+    <div className="flex flex-col space-y-2">
+      <div className="flex items-center space-x-2 overflow-y-auto pb-2">
+        <Button variant="outline" onClick={() => handleDefault()}>
+          default
         </Button>
-      ))}
+        {variants.map((variant) => (
+          <Button
+            key={variant}
+            variant="outline"
+            onClick={() => handleChangeVariant(variant)}
+          >
+            {variant}
+          </Button>
+        ))}
+      </div>
       <UseToastCodeBlock label={toastVariant} value={toastVariant} />
     </div>
   );
 };
 
-export default UseToastExamples;
+const UseToastActionsExamples = () => {
+  const t = useToast();
+
+  const handleChangeVariant = () => {
+    t.default({
+      text: `A toast with 👀 action button`,
+      description: 'Click the action button to see the confetti 🥹',
+      action: () => {
+        if (typeof window !== 'undefined') {
+          const confetti = new JSConfetti();
+          confetti.addConfetti({
+            confettiRadius: 3,
+            confettiNumber: 100,
+            confettiColors: [
+              '#14532d',
+              '#ff477e',
+              '#f7f7f7',
+              '#ffcc00',
+              '#ffcc00',
+            ],
+          });
+        }
+      },
+    });
+  };
+
+  return (
+    <Button
+      className="mb-2"
+      variant="outline"
+      onClick={() => handleChangeVariant()}
+    >
+      <PartyPopperIcon size={16} />
+      <span>Show a Toast with Confetti</span>
+    </Button>
+  );
+};
+
+export { UseToastVariantExamples, UseToastActionsExamples };

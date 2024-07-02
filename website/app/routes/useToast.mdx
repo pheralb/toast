@@ -6,10 +6,56 @@ export const meta = [
   },
 ];
 
-import UseToastExamples from '../components/examples/useToast';
+import {
+  UseToastVariantExamples,
+  UseToastActionsExamples,
+} from '../components/examples/useToast';
 
 # useToast
 
 Call `useToast` to create a toast from anywhere in your React application. Make sure you add the [`<ToastProvider />`](/provider) provider to your app first.
 
-<UseToastExamples />
+1. Import the `useToast` hook:
+
+```tsx
+import { useToast } from '@pheralb/toast';
+
+export default function Index() {
+  const toast = useToast();
+  //...
+}
+```
+
+2. Render a toast:
+
+- `toast.variant`: Show a toast with a specific variant:
+
+<UseToastVariantExamples />
+
+- `toast.variant` with `action`: Show a _Action_ button and execute a custom function when clicked:
+
+<UseToastActionsExamples />
+
+```tsx
+t.default({
+  text: `A toast with 👀 action button`,
+  action: () => {
+    // Do something
+    }
+  },
+});
+```
+
+## API Reference
+
+The `toast.variant` function accepts the following options:
+
+| Property        | Description                                   | Type                                  | Required |
+| --------------- | --------------------------------------------- | ------------------------------------- | -------- |
+| `text`          | Notification title                            | `string`                              | ✅       |
+| `description`   | Toast's description                           | `string`                              | -        |
+| `icon`          | Icon to display in the toast                  | `ReactNode`                           | -        |
+| `iconSize`      | Size of the icon                              | `number`                              | -        |
+| `delayDuration` | Duration before the toast disappears          | `number`                              | -        |
+| `theme`         | Theme of the toast                            | `Theme` (`light` / `dark` / `system`) | -        |
+| `action`        | Show a _Action_ button and execute a function | `() => void \| () => Promise<void>`   | -        |
