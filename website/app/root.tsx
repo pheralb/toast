@@ -8,6 +8,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from '@remix-run/react';
+import { getLatestVersion } from 'fast-npm-meta';
 
 // Styles:
 import stylesheet from '@/styles/globals.css?url';
@@ -15,7 +16,7 @@ import { cn } from './utils';
 
 // Layout:
 import Header from './components/header';
-import SidebarContent from './components/sidebar';
+import SidebarContent from './components/sidebar/sidebar';
 import { proseClasses } from './ui/prose';
 
 // Providers:
@@ -40,8 +41,10 @@ export const links: LinksFunction = () => [
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { getTheme } = await themeSessionResolver(request);
+  const metadata = await getLatestVersion('@pheralb/toast');
   return {
     theme: getTheme(),
+    npmVersion: metadata.version,
   };
 }
 
@@ -82,7 +85,7 @@ function App() {
           <Header />
           <main className="container w-full max-w-7xl">
             <aside className="hidden md:block">
-              <SidebarContent />
+              <SidebarContent npmVersion={data.npmVersion!} />
             </aside>
             <MDXProvider disableParentContext components={mdxComponents}>
               <article
