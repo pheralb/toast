@@ -3,8 +3,9 @@ import { Link, useLocation } from '@remix-run/react';
 import { SidebarRoutes } from '@/docs.routes';
 import { cn } from '@/utils/index';
 import SidebarFooter from './sidebarFooter';
+import { iSidebar } from './sidebar.types';
 
-const SidebarContent = () => {
+const SidebarContent = ({ npmVersion }: iSidebar) => {
   const location = useLocation();
   return (
     <nav
@@ -42,7 +43,7 @@ const SidebarContent = () => {
           </div>
         ))}
       </div>
-      <SidebarFooter />
+      <SidebarFooter npmVersion={npmVersion} />
     </nav>
   );
 };
