@@ -94,7 +94,6 @@ const UseToastActionsExamples = () => {
     t.default({
       text: `A toast with confetti 🎉`,
       description: 'Click the button to see the confetti',
-      delayDuration: 400000,
       icon: <PartyPopperIcon size={24} />,
       action: {
         onClick: () => {
