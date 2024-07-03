@@ -92,23 +92,27 @@ const UseToastActionsExamples = () => {
 
   const handleChangeVariant = () => {
     t.default({
-      text: `A toast with 👀 action button`,
-      description: 'Click the action button to see the confetti 🥹',
-      action: () => {
-        if (typeof window !== 'undefined') {
-          const confetti = new JSConfetti();
-          confetti.addConfetti({
-            confettiRadius: 3,
-            confettiNumber: 100,
-            confettiColors: [
-              '#14532d',
-              '#ff477e',
-              '#f7f7f7',
-              '#ffcc00',
-              '#ffcc00',
-            ],
-          });
-        }
+      text: `A toast with confetti 🎉`,
+      description: 'Click the button to see the confetti',
+      delayDuration: 400000,
+      icon: <PartyPopperIcon size={24} />,
+      action: {
+        onClick: () => {
+          if (typeof window !== 'undefined') {
+            const confetti = new JSConfetti();
+            confetti.addConfetti({
+              confettiRadius: 3,
+              confettiNumber: 100,
+              confettiColors: [
+                '#14532d',
+                '#ff477e',
+                '#f7f7f7',
+                '#ffcc00',
+                '#ffcc00',
+              ],
+            });
+          }
+        },
       },
     });
   };

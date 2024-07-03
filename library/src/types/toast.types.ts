@@ -10,6 +10,11 @@ export type Position =
   | 'bottom-center';
 export type Theme = 'light' | 'dark' | 'system';
 
+export interface Action {
+  text?: string;
+  onClick: () => void | (() => Promise<void>);
+}
+
 export type ToastProps = {
   id?: number;
   text: string;
@@ -18,7 +23,7 @@ export type ToastProps = {
   iconSize?: number;
   delayDuration?: number;
   theme?: Theme;
-  action?: () => void | (() => Promise<void>);
+  action?: Action;
 };
 
 export type ToastProviderProperties = {

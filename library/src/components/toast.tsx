@@ -102,8 +102,8 @@ const Toast = (props: ToastComponentProps) => {
       </div>
       <div className="t_actions">
         {props.action && (
-          <button onClick={props.action} title="Action button">
-            Action
+          <button onClick={props.action.onClick} title="Action button">
+            {props.action.text ?? 'Action'}
           </button>
         )}
         <button onClick={props.onClose} title="Close toast">

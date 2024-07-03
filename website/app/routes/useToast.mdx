@@ -39,9 +39,11 @@ export default function Index() {
 ```tsx
 t.default({
   text: `A toast with 👀 action button`,
-  action: () => {
-    // Do something
-    }
+  action: {
+    label: 'Action', // Button label
+    onClick: () => {
+      // Do something
+    },
   },
 });
 ```
@@ -56,6 +58,6 @@ The `toast.variant` function accepts the following options:
 | `description`   | Toast's description                           | `string`                              | -        |
 | `icon`          | Icon to display in the toast                  | `ReactNode`                           | -        |
 | `iconSize`      | Size of the icon                              | `number`                              | -        |
-| `delayDuration` | Duration before the toast disappears          | `number`                              | -        |
+| `delayDuration` | Duration before the toast disappears          | `number` (default: `4000`)            | -        |
 | `theme`         | Theme of the toast                            | `Theme` (`light` / `dark` / `system`) | -        |
 | `action`        | Show a _Action_ button and execute a function | `() => void \| () => Promise<void>`   | -        |
