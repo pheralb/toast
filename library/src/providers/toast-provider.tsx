@@ -79,7 +79,6 @@ export const ToastProvider = ({
         openToast({ variant: 'info', ...data });
         return data;
       },
-      close: closeToast,
     }),
     [],
   );

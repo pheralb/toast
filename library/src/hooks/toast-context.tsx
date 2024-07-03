@@ -7,7 +7,6 @@ type ToastContextValue = {
   error: (data: ToastProps) => ToastProps;
   warning: (data: ToastProps) => ToastProps;
   info: (data: ToastProps) => ToastProps;
-  close: (id: number) => void;
 };
 
 export const ToastContext = createContext<ToastContextValue>({
@@ -16,5 +15,4 @@ export const ToastContext = createContext<ToastContextValue>({
   error: (data: ToastProps) => data,
   warning: (data: ToastProps) => data,
   info: (data: ToastProps) => data,
-  close: (id: number) => id,
 });
