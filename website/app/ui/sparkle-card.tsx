@@ -2,6 +2,11 @@ import { SparkleSvg, type Position } from '@/components/icons';
 import { cn } from '@/utils';
 import type { ReactNode } from 'react';
 
+/**
+ * ✨ Sparkle Card created by suyalcinkaya
+ * 📦 https://github.com/suyalcinkaya/gauge
+ */
+
 export interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   children: ReactNode;
   sparklePositions?: Position[];
