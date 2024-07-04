@@ -1,4 +1,8 @@
-import type { LinksFunction, LoaderFunctionArgs } from '@vercel/remix';
+import type {
+  LinksFunction,
+  LoaderFunctionArgs,
+  MetaFunction,
+} from '@vercel/remix';
 
 import {
   Links,
@@ -9,6 +13,7 @@ import {
   useLoaderData,
 } from '@remix-run/react';
 import { getLatestVersion } from 'fast-npm-meta';
+import { eslogan, siteTitle } from './globals';
 
 // Styles:
 import stylesheet from '@/styles/globals.css?url';
@@ -32,12 +37,40 @@ import { themeSessionResolver } from './sessions.server';
 import { MDXProvider } from '@mdx-js/react';
 import { mdxComponents } from './components/mdx';
 
-// Store:
+// Stores:
 import { useDocsStore } from './store';
 
+// Links:
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
+  {
+    rel: 'apple-touch-icon',
+    sizes: '180x180',
+    href: '/images/logo.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '32x32',
+    href: '/images/logo.png',
+  },
+  {
+    rel: 'icon',
+    type: 'image/png',
+    sizes: '16x16',
+    href: '/images/logo.png',
+  },
+  { rel: 'manifest', href: '/manifest.webmanifest' },
+  { rel: 'icon', href: '/images/logo_ico.ico' },
 ];
+
+// Metadata:
+export const meta: MetaFunction = ({ matches }) => {
+  const parentMeta = matches
+    .flatMap((match) => match.meta ?? [])
+    .filter((meta) => !('title' in meta));
+  return [...parentMeta, { title: `${eslogan} | ${siteTitle}` }];
+};
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const { getTheme } = await themeSessionResolver(request);
@@ -79,7 +112,7 @@ function App() {
       >
         <ToastProvider
           position={toastPosition}
-          theme={toastTheme ? toastTheme : theme!}
+          theme={toastTheme ?? theme!}
           toastFont="font-sans"
         >
           <Header />
