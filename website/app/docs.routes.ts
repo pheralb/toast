@@ -59,9 +59,22 @@ export const SidebarRoutes: iDocsRoutes[] = [
         title: 'Getting Started',
         path: '/',
       },
+    ],
+  },
+  {
+    category: 'Framework Guides',
+    routes: [
       {
-        title: 'Usage with Next.js',
+        title: 'Next.js',
         path: '/nextjs',
+      },
+      {
+        title: 'Remix',
+        path: '/remix',
+      },
+      {
+        title: 'Astro',
+        path: '/astro',
       },
     ],
   },

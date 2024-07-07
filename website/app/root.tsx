@@ -61,7 +61,7 @@ export const links: LinksFunction = () => [
     href: '/images/logo.png',
   },
   { rel: 'manifest', href: '/manifest.webmanifest' },
-  { rel: 'icon', href: '/images/logo_ico.ico' },
+  { rel: 'icon', href: '/images/favicon.ico' },
 ];
 
 // Metadata:
@@ -69,7 +69,7 @@ export const meta: MetaFunction = ({ matches }) => {
   const parentMeta = matches
     .flatMap((match) => match.meta ?? [])
     .filter((meta) => !('title' in meta));
-  return [...parentMeta, { title: `${eslogan} | ${siteTitle}` }];
+  return [...parentMeta, { title: siteTitle, description: eslogan }];
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
