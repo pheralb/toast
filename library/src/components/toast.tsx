@@ -8,7 +8,7 @@ import '../styles/toast-component.css';
 
 import { Error, Info, Success, Warning } from '../icons';
 import { useTimeout } from '../hooks/useTimeout';
-import { classNames } from '../utils';
+import { classNames, prefersReducedMotion } from '../utils';
 
 const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
   success: Success,
@@ -77,7 +77,7 @@ const Toast = (props: ToastComponentProps) => {
       aria-label="notification"
       className={classNames(
         't_global',
-        animationClass,
+        prefersReducedMotion() ? '' : animationClass,
         props.theme === 'dark' ? 't_dark-theme' : '',
         props.theme === 'light' ? 't_light-theme' : '',
       )}
