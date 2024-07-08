@@ -20,6 +20,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/main.tsx"],
+  "include": ["src/**/*.ts", "src/main.tsx", "src/test/toast.test.tsx"],
   "exclude": ["node_modules", "dist"]
 }
