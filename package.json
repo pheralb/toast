@@ -8,6 +8,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
     "clean": "npx rimraf library/node_modules library/dist && npx rimraf website/node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
