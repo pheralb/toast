@@ -37,6 +37,12 @@ const config = {
             'code::after': {
               content: '""',
             },
+            'h1 a': {
+              'text-decoration': 'none',
+            },
+            'h2 a': {
+              'text-decoration': 'none',
+            },
           },
         },
       },
