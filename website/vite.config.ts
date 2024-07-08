@@ -7,9 +7,11 @@ import { vercelPreset } from '@vercel/remix/vite';
 
 // MDX Config & Plugins:
 import mdx from '@mdx-js/rollup';
+import rehypeSlug from 'rehype-slug';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypePrettyCode, { type Options } from 'rehype-pretty-code';
 import remarkGfm from 'remark-gfm';
-import { postProcess, preProcess } from './rehype-plugins';
+import { HEADING_LINK_ANCHOR } from './app/ui/headings';
 
 // Rehype Pretty Options:
 const options = {
@@ -21,7 +23,14 @@ export default defineConfig({
     mdx({
       providerImportSource: '@mdx-js/react',
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [[rehypePrettyCode, options], preProcess, postProcess],
+      rehypePlugins: [
+        [rehypeSlug],
+        [
+          rehypeAutolinkHeadings,
+          { behavior: 'wrap', properties: { className: HEADING_LINK_ANCHOR } },
+        ],
+        [rehypePrettyCode, options],
+      ],
     }),
     remix({
       presets: [vercelPreset()],
