@@ -106,7 +106,7 @@ const Toast = (props: ToastComponentProps) => {
             {props.action.text ?? 'Action'}
           </button>
         )}
-        <button onClick={props.onClose} title="Close toast">
+        <button onClick={handleCloseToast} title="Close toast">
           Close
         </button>
       </div>
