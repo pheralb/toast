@@ -7,7 +7,7 @@ import type {
 
 import '../styles/toast-context.css';
 
-import { ToastContext } from '../hooks/toast-context';
+import ToastContext from '../hooks/toast-context';
 import ToastComponent from '../components/toast';
 import { classNames, generateRandomId } from '../utils';
 
