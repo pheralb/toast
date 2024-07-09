@@ -10,4 +10,5 @@ export const proseClasses = cn(
   'prose-th:text-start',
   'prose-pre:my-0',
   'prose-inline-code:rounded prose-inline-code:font-mono prose-inline-code:p-[2px] prose-inline-code:border prose-inline-code:border-neutral-300 prose-inline-code:bg-neutral-200/50 prose-inline-code:dark:border-neutral-800 prose-inline-code:dark:bg-neutral-800/50',
+  'prose-quoteless prose-blockquote:not-italic prose-blockquote:text-neutral-700 dark:prose-blockquote:text-neutral-300 prose-blockquote:text-sm',
 );
