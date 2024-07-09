@@ -14,7 +14,7 @@ import { classNames, generateRandomId } from '../utils';
 export const ToastProvider = ({
   children,
   maxToasts = 4,
-  position = 'top-left',
+  position = 'bottom-right',
   theme = 'system',
   toastFont,
 }: ToastProviderProperties) => {
