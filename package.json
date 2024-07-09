@@ -13,7 +13,7 @@
     "clean": "npx rimraf library/node_modules library/dist && npx rimraf website/node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=website^... && changeset publish"
+    "release": "turbo run build --filter=@pheralb/toast && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.6",
