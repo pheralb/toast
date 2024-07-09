@@ -7,19 +7,80 @@ export const meta = [
   },
 ];
 
-## Hello
+# Usage with Next.js
 
-```jsx
-import { useState } from 'react';
+How to use the library with [Next.js **/app** router](https://nextjs.org/docs) (also is compatible with **/pages** router).
 
-export default function Counter() {
-  const [count, setCount] = useState(0);
+1. Create a new Next.js project:
 
+```bash
+npx create-next-app@latest
+```
+
+2. Select the default options:
+
+```bash
+√ What is your project named? ... nextjs-project
+√ Would you like to use TypeScript? ... Yes
+√ Would you like to use ESLint? ... Yes
+√ Would you like to use Tailwind CSS? ... Yes (👈 optional)
+√ Would you like to use `src/` directory? ... Yes (👈 optional)
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to customize the default import alias (@/*)? ... No
+```
+
+3. Install the library:
+
+```bash
+npm install @pheralb/toast
+```
+
+4. Add the [`ToastProvider`](/provider) to the `layout.tsx` file:
+
+> 💡 By default, `ToastProvider` includes `use client` directive.
+
+```tsx
+// 📃 layout.tsx
+import { ToastProvider } from '@pheralb/toast';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-    </div>
+    <html lang="en">
+      <body className={inter.className}>
+        <ToastProvider>{children}</ToastProvider>
+      </body>
+    </html>
   );
 }
 ```
+
+5. Use the [`useToast`](/useToast) hook in your **client** components:
+
+> 💡 To use the hook, import the `use client` directive.
+
+```tsx
+'use client';
+
+import { useToast } from '@pheralb/toast';
+
+export default function MyComponent() {
+  const toast = useToast();
+  return (
+    <button
+      onClick={() =>
+        toast.success({
+          text: 'Ready 🚀✨',
+        })
+      }
+    >
+      Click me!
+    </button>
+  );
+}
+```
+
+✨ Ready.
