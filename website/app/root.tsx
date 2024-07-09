@@ -5,12 +5,15 @@ import type {
 } from '@vercel/remix';
 
 import {
+  isRouteErrorResponse,
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useRouteError,
 } from '@remix-run/react';
 import { getLatestVersion } from 'fast-npm-meta';
 import { eslogan, siteTitle } from './globals';
@@ -39,6 +42,10 @@ import { mdxComponents } from './components/mdx';
 
 // Stores:
 import { useDocsStore } from './store';
+
+// Other:
+import { Logo } from './components/icons';
+import { buttonVariants } from './ui/button';
 
 // Links:
 export const links: LinksFunction = () => [
@@ -133,6 +140,39 @@ function App() {
           </main>
         </ToastProvider>
         <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  return (
+    <html lang="en" className="dark">
+      <head>
+        <title>Oops! - @pheralb/toast</title>
+        <Meta />
+        <Links />
+      </head>
+      <body className="flex h-screen flex-col items-center justify-center space-y-4 bg-neutral-900 font-sans text-white">
+        <Logo className="h-12 w-12" />
+        <h1 className="text-2xl font-medium tracking-tight">
+          {isRouteErrorResponse(error)
+            ? `${error.status} ${error.statusText}`
+            : error instanceof Error
+              ? error.message
+              : 'Unknown Error'}
+        </h1>
+        <Link
+          to="/"
+          className={buttonVariants({
+            variant: 'outline',
+          })}
+        >
+          Go back home
+        </Link>
+        <p className="font-mono text-sm">@pheralb/toast</p>
         <Scripts />
       </body>
     </html>
