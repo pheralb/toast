@@ -1,7 +1,15 @@
 {
   "name": "@pheralb/toast",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "@pheralb_",
+  "keywords": [
+    "react",
+    "react-component",
+    "toast",
+    "notification",
+    "no-dependencies",
+    "lightweight"
+  ],
   "private": false,
   "license": "MIT",
   "type": "module",
