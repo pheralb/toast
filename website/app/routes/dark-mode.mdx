@@ -1,0 +1,79 @@
+import { siteTitle } from '../globals.ts';
+
+export const meta = [
+  {
+    title: `Dark Mode - Customization | ${siteTitle}`,
+    description: 'How to use @pheralb/toast library with next-themes (Next.js) or remix-themes (Remix)'
+  },
+];
+
+# Dark Mode
+
+By default, ``@pheralb/toast`` use the ``system`` theme (check [``ToastProvider``](/provider#theme)). This page shows examples of how to use [``next-themes`` (Next.js)](https://github.com/pacocoursey/next-themes) or [``remix-themes`` (Remix)](https://github.com/abereghici/remix-themes) libraries.
+
+## Next.js with next-themes
+
+> [**Click here**](https://github.com/pacocoursey/next-themes?tab=readme-ov-file#install) to read the documentation.
+
+Add ``ThemeProvider`` with [``ToastProvider``](/provider):
+
+```tsx
+// 📄 app/layout.tsx
+
+import { ThemeProvider } from "next-themes";
+import { ToastProvider } from "@pheralb/toast";
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
+  return (
+    <html lang="en">
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ToastProvider>{children}</ToastProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Remix with remix-themes
+
+> [**Click here**](https://github.com/abereghici/remix-themes?tab=readme-ov-file#getting-started) to read the documentation.
+
+Import the ``useTheme`` hook from ``remix-themes`` and change the theme value:
+
+```tsx
+// 📄 app/root.tsx
+
+import {
+  useTheme,
+} from 'remix-themes';
+
+function App() {
+  const [theme] = useTheme();
+  return (
+    <html lang="en" className={cn(theme)}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <ToastProvider theme={theme!}>
+          <Outlet />
+        </ToastProvider>
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```

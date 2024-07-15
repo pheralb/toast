@@ -96,7 +96,7 @@ export const SidebarRoutes: iDocsRoutes[] = [
     routes: [
       {
         title: 'Dark Mode',
-        path: '/docs/dark-mode',
+        path: '/dark-mode',
       },
     ],
   },
