@@ -45,9 +45,9 @@
 - [x] 🏗️ Customizable toast position.
 - [x] 💙 Built completely with Typescript.
 
-## 🙂 Inspiration
+## ✨ Inspiration
 
-- [x] ✨ Design by [**Medusa.js UI** Notifications](https://medusajs.com).
+- [x] 🎨 Notification Design by [**Medusa.js UI** Framework](https://medusajs.com/framework/).
 - [x] 🛠️ Typescript API by [**Sonner**](https://sonner.emilkowal.ski).
 
 ## 🚀 Getting Started
@@ -76,7 +76,7 @@ import { ToastProvider } from '@pheralb/toast';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ToastProvider position="bottom-right">
+    <ToastProvider>
       <App />
     </ToastProvider>
   </React.StrictMode>,
