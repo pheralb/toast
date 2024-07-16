@@ -94,8 +94,8 @@ const Toast = (props: ToastComponentProps) => {
       <div className="t_container">
         {props.variant && !props.icon ? (
           <IconComponent
-            width={props.iconSize || 18}
-            height={props.iconSize || 18}
+            width={18}
+            height={18}
             style={{ fill: iconsColors[props.variant] }}
             className="t_icon"
           />

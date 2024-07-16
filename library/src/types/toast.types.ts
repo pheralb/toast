@@ -20,7 +20,6 @@ export type ToastProps = {
   text: string;
   description?: string;
   icon?: ReactNode;
-  iconSize?: number;
   delayDuration?: number;
   theme?: Theme;
   action?: Action;
