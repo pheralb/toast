@@ -72,10 +72,6 @@ export const SidebarRoutes: iDocsRoutes[] = [
         title: 'Remix',
         path: '/remix',
       },
-      {
-        title: 'Astro',
-        path: '/astro',
-      },
     ],
   },
   {
