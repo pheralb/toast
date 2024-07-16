@@ -11,6 +11,7 @@ node_modules
 .env.development.local
 .env.test.local
 .env.production.local
+next-env.d.ts
 
 # Testing
 coverage
