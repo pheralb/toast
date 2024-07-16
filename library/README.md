@@ -6,7 +6,7 @@
       height="60"
     />
   </a>
-  <br></br>
+  <p />
   <p>
     <b>
       An accessible toast library for React.
