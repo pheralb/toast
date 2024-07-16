@@ -53,12 +53,11 @@ t.default({
 
 The `toast.variant` function accepts the following options:
 
-| Property        | Description                                   | Type                                  | Required |
-| --------------- | --------------------------------------------- | ------------------------------------- | -------- |
-| `text`          | Notification title                            | `string`                              | ✅       |
-| `description`   | Toast's description                           | `string`                              | -        |
-| `icon`          | Icon to display in the toast                  | `ReactNode`                           | -        |
-| `iconSize`      | Size of the icon                              | `number`                              | -        |
-| `delayDuration` | Duration before the toast disappears          | `number` (default: `4000`)            | -        |
-| `theme`         | Theme of the toast                            | `Theme` (`light` / `dark` / `system`) | -        |
-| `action`        | Show a _Action_ button and execute a function | `() => void \| () => Promise<void>`   | -        |
+| Property        | Description                                   | Type                                                                          | Required |
+| --------------- | --------------------------------------------- | ----------------------------------------------------------------------------- | -------- |
+| `text`          | Notification title                            | `string`                                                                      | ✅       |
+| `description`   | Toast's description                           | `string`                                                                      | -        |
+| `icon`          | Icon to display in the toast                  | `ReactNode`                                                                   | -        |
+| `delayDuration` | Duration before the toast disappears          | `number` (default: `4000`)                                                    | -        |
+| `theme`         | Theme of the toast                            | `Theme` (default: `system`): `light`, `dark` or `system`.                     | -        |
+| `action`        | Show a _Action_ button and execute a function | `label` (default text: `action`) & `onClick`: `() => void` or `Promise<void>` | -        |

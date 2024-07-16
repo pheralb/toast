@@ -3,31 +3,56 @@ import { siteTitle } from '../globals.ts';
 export const meta = [
   {
     title: `Dark Mode - Customization | ${siteTitle}`,
-    description: 'How to use @pheralb/toast library with next-themes (Next.js) or remix-themes (Remix)'
+    description:
+      'How to use @pheralb/toast library with next-themes (Next.js) or remix-themes (Remix)',
   },
 ];
 
 # Dark Mode
 
-By default, ``@pheralb/toast`` use the ``system`` theme (check [``ToastProvider``](/provider#theme)). This page shows examples of how to use [``next-themes`` (Next.js)](https://github.com/pacocoursey/next-themes) or [``remix-themes`` (Remix)](https://github.com/abereghici/remix-themes) libraries.
+This page shows examples of how to use [`next-themes` (Next.js)](https://github.com/pacocoursey/next-themes) or [`remix-themes` (Remix)](https://github.com/abereghici/remix-themes) libraries.
 
 ## Next.js with next-themes
 
 > [**Click here**](https://github.com/pacocoursey/next-themes?tab=readme-ov-file#install) to read the documentation.
 
-Add ``ThemeProvider`` with [``ToastProvider``](/provider):
+1. Create a `toastProvider.tsx` file with the following content:
+
+- Import `useTheme` hook from `next-themes`.
+- Change the `theme` value based on the current theme.
 
 ```tsx
-// 📄 app/layout.tsx
+// 📄 components/toastProvider.tsx
 
-import { ThemeProvider } from "next-themes";
-import { ToastProvider } from "@pheralb/toast";
+'use client';
+
+import { ToastProvider, type ToastProviderProperties } from '@pheralb/toast';
+import { useTheme } from 'next-themes';
+
+const ToastClientProvider = (props: ToastProviderProperties) => {
+  const { theme } = useTheme();
+  return (
+    <ToastProvider theme={theme === 'dark' ? 'dark' : 'light'} {...props}>
+      {props.children}
+    </ToastProvider>
+  );
+};
+
+export default ToastClientProvider;
+```
+
+2. Import the `ToastClientProvider` component in the `layout/app.tsx` file:
+
+```tsx
+// 📄 layout/app.tsx
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: ReactNode }>) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <body>
         <ThemeProvider
           attribute="class"
@@ -35,7 +60,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ToastProvider>{children}</ToastProvider>
+          <ToastClientProvider>{children}</ToastClientProvider>
         </ThemeProvider>
       </body>
     </html>
@@ -47,14 +72,12 @@ export default function RootLayout({
 
 > [**Click here**](https://github.com/abereghici/remix-themes?tab=readme-ov-file#getting-started) to read the documentation.
 
-Import the ``useTheme`` hook from ``remix-themes`` and change the theme value:
+Import the `useTheme` hook from `remix-themes` and change the theme value:
 
 ```tsx
 // 📄 app/root.tsx
 
-import {
-  useTheme,
-} from 'remix-themes';
+import { useTheme } from 'remix-themes';
 
 function App() {
   const [theme] = useTheme();
