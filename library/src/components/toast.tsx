@@ -17,6 +17,13 @@ const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
   info: Info,
 };
 
+const iconsColors: Record<Variant, string> = {
+  success: '#22c55e',
+  error: '#ef4444',
+  warning: '#eab308',
+  info: '#3b82f6',
+};
+
 interface ToastComponentProps extends ToastPropsWithVariant {
   toastPosition: Position;
   onClose: () => void;
@@ -85,16 +92,16 @@ const Toast = (props: ToastComponentProps) => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="t_container">
-        {props.variant &&
-          (props.icon ? (
-            <div className="t_icon">{props.icon}</div>
-          ) : (
-            <IconComponent
-              width={props.iconSize || 18}
-              height={props.iconSize || 18}
-              className="t_icon"
-            />
-          ))}
+        {props.variant && !props.icon ? (
+          <IconComponent
+            width={props.iconSize || 18}
+            height={props.iconSize || 18}
+            style={{ fill: iconsColors[props.variant] }}
+            className="t_icon"
+          />
+        ) : (
+          props.icon && <div className="t_icon">{props.icon}</div>
+        )}
         <div className="t_content">
           <p>{props.text}</p>
           {props.description && <p>{props.description}</p>}
