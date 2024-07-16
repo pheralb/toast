@@ -23,7 +23,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./app/*"]
+      "@/*": ["./app/*"],
+      "@pheralb-toast/extra-types": ["../library/src/types/toast.types.ts"]
     },
     "noEmit": true
   }

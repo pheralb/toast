@@ -1,8 +1,12 @@
 import { useRef } from 'react';
 
-import { copyToClipboard } from '@/utils';
+import { cn, copyToClipboard } from '@/utils';
 import { useToast } from '@pheralb/toast';
 import { CopyIcon } from 'lucide-react';
+
+export const CopyCodeBtnStyles = cn(
+  'absolute right-0 top-0 m-3 text-white opacity-50 transition-opacity hover:opacity-100',
+);
 
 export default function CodeBlock({
   children,
@@ -24,10 +28,7 @@ export default function CodeBlock({
       <pre ref={preRef} {...props}>
         {children}
       </pre>
-      <button
-        onClick={handleCopy}
-        className="absolute right-0 top-0 m-3 text-white opacity-50 transition-opacity hover:opacity-100"
-      >
+      <button onClick={handleCopy} className={CopyCodeBtnStyles}>
         <span className="sr-only">Copy</span>
         <CopyIcon size={16} />
       </button>

@@ -1,47 +1,70 @@
-import type { Variant } from '@pheralb/toast';
+import type { Variant } from '@pheralb-toast/extra-types';
 import type { CodeBlockProps } from './examples.types';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '@/ui/button';
 import { useToast } from '@pheralb/toast';
 import JSConfetti from 'js-confetti';
-import { PartyPopperIcon } from 'lucide-react';
+import { CopyIcon, PartyPopperIcon } from 'lucide-react';
+import { copyToClipboard } from '@/utils';
+import { CopyCodeBtnStyles } from '../mdx/codeBlock';
 
 const UseToastCodeBlock = (props: CodeBlockProps) => {
+  const preRef = useRef<HTMLPreElement>(null);
+  const t = useToast();
+
+  const copyPreContent = async () => {
+    const content = preRef.current?.textContent ?? '';
+    await copyToClipboard(content);
+    t.success({
+      text: 'Copied to clipboard',
+    });
+  };
+
   return (
-    <pre
-      style={{
-        backgroundColor: '#101010',
-        color: '#FFFFFF',
-        margin: '0',
-      }}
-      data-language="ts"
-      data-theme="vesper"
-    >
-      <code data-language="ts" data-theme="vesper" style={{ display: 'block' }}>
-        <span data-line="">
-          <span style={{ color: 'rgb(255, 255, 255)' }}>toast.</span>
-          <span style={{ color: 'rgb(255, 199, 153)' }}>{props.value}</span>
-          <span style={{ color: 'rgb(255, 255, 255)' }}>({`{`}</span>
-        </span>
-        <span data-line="">
-          <span style={{ color: 'rgb(255, 255, 255)' }}> text: </span>
-          <span style={{ color: 'rgb(153, 255, 228)' }}>
-            &apos;A {props.label} toast 🚀&apos;
+    <div className="relative">
+      <pre
+        style={{
+          backgroundColor: '#101010',
+          color: '#FFFFFF',
+          margin: '0',
+        }}
+        data-language="ts"
+        data-theme="vesper"
+      >
+        <code
+          data-language="ts"
+          data-theme="vesper"
+          style={{ display: 'block' }}
+        >
+          <span data-line="">
+            <span style={{ color: 'rgb(255, 255, 255)' }}>toast.</span>
+            <span style={{ color: 'rgb(255, 199, 153)' }}>{props.value}</span>
+            <span style={{ color: 'rgb(255, 255, 255)' }}>({`{`}</span>
           </span>
-          <span style={{ color: 'rgb(255, 255, 255)' }}>,</span>
-        </span>
-        <span data-line="">
-          <span style={{ color: 'rgb(255, 255, 255)' }}> description: </span>
-          <span style={{ color: 'rgb(153, 255, 228)' }}>
-            &apos;✨ A beautiful toast library for React&apos;
+          <span data-line="">
+            <span style={{ color: 'rgb(255, 255, 255)' }}> text: </span>
+            <span style={{ color: 'rgb(153, 255, 228)' }}>
+              &apos;A {props.label} toast 🚀&apos;
+            </span>
+            <span style={{ color: 'rgb(255, 255, 255)' }}>,</span>
           </span>
-        </span>
-        <span data-line="">
-          <span style={{ color: 'rgb(255, 255, 255)' }}>{`});`}</span>
-        </span>
-      </code>
-    </pre>
+          <span data-line="">
+            <span style={{ color: 'rgb(255, 255, 255)' }}> description: </span>
+            <span style={{ color: 'rgb(153, 255, 228)' }}>
+              &apos;✨ A beautiful toast library for React&apos;
+            </span>
+          </span>
+          <span data-line="">
+            <span style={{ color: 'rgb(255, 255, 255)' }}>{`});`}</span>
+          </span>
+        </code>
+      </pre>
+      <button className={CopyCodeBtnStyles} onClick={copyPreContent}>
+        <span className="sr-only">Copy</span>
+        <CopyIcon size={16} />
+      </button>
+    </div>
   );
 };
 
@@ -94,7 +117,7 @@ const UseToastActionsExamples = () => {
     t.default({
       text: `A toast with confetti 🎉`,
       description: 'Click the button to see the confetti',
-      icon: <PartyPopperIcon size={24} />,
+      icon: <PartyPopperIcon size={14} />,
       action: {
         onClick: () => {
           if (typeof window !== 'undefined') {

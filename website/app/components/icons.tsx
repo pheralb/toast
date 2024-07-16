@@ -79,7 +79,6 @@ const X = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export default X;
 
 const Nextjs = (props: SVGProps<SVGSVGElement>) => (
   <svg
@@ -186,4 +185,4 @@ const NPM = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export { Logo, Github, Nextjs, Remix, Astro, NPM };
+export { X, Logo, Github, Nextjs, Remix, Astro, NPM };

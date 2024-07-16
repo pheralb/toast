@@ -1,45 +1,75 @@
-import type { Position, Theme } from '@pheralb/toast';
+import type { Position, Theme } from '@pheralb-toast/extra-types';
 import type { CodeBlockProps } from './examples.types';
 
 import { useToast } from '@pheralb/toast';
 import { useDocsStore } from '@/store';
 import { Button } from '@/ui/button';
-import { CheckIcon, MoonIcon, RefreshCcwIcon, SunIcon } from 'lucide-react';
-import { cn } from '@/utils';
+import {
+  CheckIcon,
+  CopyIcon,
+  MoonIcon,
+  RefreshCcwIcon,
+  SunIcon,
+} from 'lucide-react';
+import { cn, copyToClipboard } from '@/utils';
+import { useRef } from 'react';
+import { CopyCodeBtnStyles } from '../mdx/codeBlock';
 
 const activeBtn = cn('border-neutral-600 dark:border-neutral-800');
 
 const ProviderCodeBlock = (props: CodeBlockProps) => {
+  const preRef = useRef<HTMLPreElement>(null);
+  const t = useToast();
+
+  const copyPreContent = async () => {
+    const content = preRef.current?.textContent ?? '';
+    await copyToClipboard(content);
+    t.success({
+      text: 'Copied to clipboard',
+    });
+  };
+
   return (
-    <pre
-      style={{
-        backgroundColor: '#101010',
-        color: '#FFFFFF',
-        margin: '0',
-      }}
-      data-language="jsx"
-      data-theme="vesper"
-    >
-      <code data-language="jsx" data-theme="vesper" style={{ display: 'grid' }}>
-        <span data-line="">
-          <span style={{ color: '#A0A0A0' }}>&lt;</span>
-          <span style={{ color: '#FFC799' }}>ToastProvider</span>
-          <span style={{ color: '#A0A0A0' }}> {props.label}=</span>
-          <span style={{ color: '#99FFE4' }}>&quot;{props.value}&quot;</span>
-          <span style={{ color: '#A0A0A0' }}>&gt;</span>
-        </span>
-        <span data-line="">
-          <span style={{ color: '#A0A0A0' }}>&nbsp;&nbsp;&lt;</span>
-          <span style={{ color: '#FFC799' }}>App</span>
-          <span style={{ color: '#A0A0A0' }}> /&gt;</span>
-        </span>
-        <span data-line="">
-          <span style={{ color: '#A0A0A0' }}>&lt;/</span>
-          <span style={{ color: '#FFC799' }}>ToastProvider</span>
-          <span style={{ color: '#A0A0A0' }}>&gt;</span>
-        </span>
-      </code>
-    </pre>
+    <div className="relative">
+      <pre
+        style={{
+          backgroundColor: '#101010',
+          color: '#FFFFFF',
+          margin: '0',
+        }}
+        data-language="jsx"
+        data-theme="vesper"
+        ref={preRef}
+      >
+        <code
+          data-language="jsx"
+          data-theme="vesper"
+          style={{ display: 'grid' }}
+        >
+          <span data-line="">
+            <span style={{ color: '#A0A0A0' }}>&lt;</span>
+            <span style={{ color: '#FFC799' }}>ToastProvider</span>
+            <span style={{ color: '#A0A0A0' }}> {props.label}=</span>
+            <span style={{ color: '#99FFE4' }}>&quot;{props.value}&quot;</span>
+            <span style={{ color: '#A0A0A0' }}>&gt;</span>
+          </span>
+          <span data-line="">
+            <span style={{ color: '#A0A0A0' }}>&nbsp;&nbsp;&lt;</span>
+            <span style={{ color: '#FFC799' }}>App</span>
+            <span style={{ color: '#A0A0A0' }}> /&gt;</span>
+          </span>
+          <span data-line="">
+            <span style={{ color: '#A0A0A0' }}>&lt;/</span>
+            <span style={{ color: '#FFC799' }}>ToastProvider</span>
+            <span style={{ color: '#A0A0A0' }}>&gt;</span>
+          </span>
+        </code>
+      </pre>
+      <button className={CopyCodeBtnStyles} onClick={copyPreContent}>
+        <span className="sr-only">Copy</span>
+        <CopyIcon size={16} />
+      </button>
+    </div>
   );
 };
 
