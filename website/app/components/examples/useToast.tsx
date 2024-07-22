@@ -77,7 +77,7 @@ const UseToastVariantExamples = () => {
     setToastVariant(variant);
     t[variant]({
       text: `A ${variant} toast 🚀`,
-      description: '✨ A beautiful toast library for React',
+      description: '✨ @pheralb/toast',
     });
   };
 
@@ -85,7 +85,7 @@ const UseToastVariantExamples = () => {
     setToastVariant('default');
     t.default({
       text: 'A default toast 🚀',
-      description: '✨ A beautiful toast library for React',
+      description: '✨ @pheralb/toast',
     });
   };
 
