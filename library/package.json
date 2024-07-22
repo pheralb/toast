@@ -13,9 +13,13 @@
   "private": false,
   "license": "MIT",
   "type": "module",
-  "main": "dist/main.js",
+  "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
-  "exports": "./dist/main.js",
+  "exports": {
+    "types": "./dist/main.d.ts",
+    "import": "./dist/main.js",
+    "require": "./dist/main.cjs"
+  },
   "files": [
     "dist"
   ],
