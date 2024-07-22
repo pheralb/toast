@@ -7,6 +7,7 @@
   z-index: 9999;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
+  width: 100%;
 }
 
 .t_default_font {
@@ -57,4 +58,11 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media (min-width: 768px) {
+  .t_toasts {
+    max-width: 350px;
+    margin: 0 auto;
+  }
 }

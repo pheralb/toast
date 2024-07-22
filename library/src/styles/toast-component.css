@@ -80,6 +80,7 @@
 .t_icon {
   fill: var(--text-color);
   margin-top: 0.1rem;
+  flex-shrink: 0;
 }
 
 .t_content {
