@@ -16,7 +16,7 @@ import {
   useRouteError,
 } from '@remix-run/react';
 import { getLatestVersion } from 'fast-npm-meta';
-import { eslogan, siteTitle } from './globals';
+import { eslogan, siteTitle, siteUrl, siteUrlImages } from './globals';
 
 // Styles:
 import stylesheet from '@/styles/globals.css?url';
@@ -51,6 +51,20 @@ import { buttonVariants } from './ui/button';
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
   {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/GeistVF.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous',
+  },
+  {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/GeistMonoVF.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous',
+  },
+  {
     rel: 'apple-touch-icon',
     sizes: '180x180',
     href: '/images/logo.png',
@@ -76,7 +90,11 @@ export const meta: MetaFunction = ({ matches }) => {
   const parentMeta = matches
     .flatMap((match) => match.meta ?? [])
     .filter((meta) => !('title' in meta));
-  return [...parentMeta, { title: siteTitle, description: eslogan }];
+  return [
+    ...parentMeta,
+    { title: siteTitle },
+    { name: 'description', content: eslogan },
+  ];
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -102,10 +120,34 @@ function App() {
   const [theme] = useTheme();
   const { toastPosition, toastTheme } = useDocsStore();
   return (
-    <html lang="en" className={cn(theme)}>
+    <html lang="en" className={cn(theme, 'scroll-smooth focus:scroll-auto')}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Og Meta Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:description" content={eslogan} />
+        <meta
+          name="image"
+          property="og:image"
+          content={`${siteUrlImages}/og_image_2_white.jpg`}
+        />
+        <meta property="og:image:width" content="1827" />
+        <meta property="og:image:height" content="1213" />
+        <meta property="og:url" content={siteUrl} />
+        <meta property="og:site_name" content={siteTitle} />
+        <meta name="author" content="@pheralb_" />
+        {/* Twitter Og Meta Tags */}
+        <meta
+          name="twitter:image"
+          content={`${siteUrlImages}/og_image_2_white.jpg`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@pheralb_" />
+        <meta name="twitter:site" content="@pheralb_" />
+        <meta name="twitter:title" content={siteTitle} />
+        {/* App Meta Function */}
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
