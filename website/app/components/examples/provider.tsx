@@ -86,7 +86,7 @@ const Positions = () => {
     setToastPosition(position);
   };
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-0">
       <div className="flex items-center space-x-2 overflow-y-auto py-2">
         <Button
           variant="outline"
@@ -161,7 +161,7 @@ const Theme = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-0">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2 py-2">
           <Button

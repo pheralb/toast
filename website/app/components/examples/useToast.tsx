@@ -90,7 +90,7 @@ const UseToastVariantExamples = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-0">
       <div className="flex items-center space-x-2 overflow-y-auto pb-2">
         <Button variant="outline" onClick={() => handleDefault()}>
           default
