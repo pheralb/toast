@@ -21,7 +21,7 @@ const Hero = () => {
       <div className="animate-in fade-in-40 flex flex-col items-center space-y-2 duration-700 md:flex-row md:space-x-2 md:space-y-0">
         <Button
           variant="default"
-          className="w-full md:w-40"
+          className="group w-full md:w-40"
           onClick={() =>
             toast.default({
               text: 'pheralb/toast',
@@ -29,7 +29,10 @@ const Hero = () => {
             })
           }
         >
-          <Sparkles size={14} />
+          <Sparkles
+            size={14}
+            className="duration-500 group-hover:animate-pulse group-hover:text-yellow-400"
+          />
           <span>Render a toast</span>
         </Button>
         <ExternalLink
