@@ -41,11 +41,16 @@ const Toast = (props: ToastComponentProps) => {
 
   const handleCloseToast = () => {
     setIsExiting(true);
-    setTimeout(() => {
-      if (props.onClose) {
-        props.onClose();
-      }
-    }, 300);
+    const animationDisabled = prefersReducedMotion();
+    if (!animationDisabled) {
+      setTimeout(() => {
+        if (props.onClose) {
+          props.onClose();
+        }
+      }, 300);
+    } else if (props.onClose) {
+      props.onClose();
+    }
   };
 
   const handleMouseLeave = () => {
