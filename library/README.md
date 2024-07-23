@@ -43,6 +43,7 @@
 - [x] 🎨 Light/dark mode.
 - [x] ⏲️ Don't close automatically when the user hover over the toast.
 - [x] 🏗️ Customizable toast position.
+- [x] 🍃 Disable transitions if the user has disabled them in the system.
 - [x] 💙 Built completely with Typescript.
 
 ## ✨ Inspiration
