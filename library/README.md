@@ -49,6 +49,7 @@
 
 - [x] 🎨 Notification Design by [**Medusa.js UI** Framework](https://medusajs.com/framework/).
 - [x] 🛠️ Typescript API by [**Sonner**](https://sonner.emilkowal.ski).
+- [x] 🪄 [**Phosphor Icons**](https://phosphoricons.com/) for success, error, warning and info icons.
 
 ## 🚀 Getting Started
 
