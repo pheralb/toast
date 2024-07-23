@@ -9,9 +9,15 @@ export const generateRandomId = () => Math.floor(Math.random() * 1000000);
 export const prefersReducedMotion = (() => {
   let shouldReduceMotion: boolean | undefined = undefined;
   return () => {
-    if (shouldReduceMotion === undefined && typeof window !== 'undefined') {
-      const mediaQuery = matchMedia('(prefers-reduced-motion: reduce)');
-      shouldReduceMotion = !mediaQuery || mediaQuery.matches;
+    if (shouldReduceMotion === undefined) {
+      if (typeof window !== 'undefined' && window.matchMedia !== undefined) {
+        const mediaQuery = window.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        );
+        shouldReduceMotion = mediaQuery.matches;
+      } else {
+        shouldReduceMotion = false;
+      }
     }
     return shouldReduceMotion;
   };
