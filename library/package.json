@@ -16,9 +16,11 @@
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "exports": {
-    "types": "./dist/main.d.ts",
-    "import": "./dist/main.js",
-    "require": "./dist/main.cjs"
+    ".": {
+      "require": "./dist/main.cjs",
+      "import": "./dist/main.js",
+      "types": "./dist/main.d.ts"
+    }
   },
   "files": [
     "dist"
