@@ -14,7 +14,7 @@ const SidebarFooter = ({ npmVersion }: iSidebar) => {
     <div className="w-full border-b-2 border-dashed border-neutral-200 py-2 text-sm dark:border-neutral-800">
       <div className="font-medium">
         <a
-          href={`https://github.com/pheralb/toast/releases/tag/v${npmVersion}`}
+          href={`https://github.com/pheralb/toast/releases/tag/${npmVersion}`}
           target="_blank"
           rel="noreferrer"
           className="group flex items-center py-1 text-neutral-600 transition-colors duration-100 hover:text-black dark:text-neutral-400 dark:decoration-neutral-700 dark:hover:text-white"
