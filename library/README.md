@@ -117,7 +117,7 @@ export default function Index() {
 
 - [**Library**](https://github.com/pheralb/toast/tree/main/library): React 18 with tsup + Vitest for testing.
 - [**Website**](https://github.com/pheralb/toast/tree/main/website): Remix, shadcn/ui + Tailwind CSS + Radix & MDX.
-- [**Examples**](https://github.com/pheralb/toast/tree/main/example): Frameworks to test the library.
+- [**Examples**](https://github.com/pheralb/toast/tree/main/examples): Frameworks to test the library.
 
 1. [Click here to fork](https://github.com/pheralb/toast/fork) the repository.
 
