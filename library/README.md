@@ -19,6 +19,8 @@
 <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
 <a href="#-contributing">Contribute</a>
 <span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+<a href="#-roadmap">Roadmap</a>
+<span>&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
 <a href="#-license">License</a>
 
 </div>
@@ -110,6 +112,12 @@ export default function Index() {
 
 > [!TIP]
 > 📚 Visit the [**Documentation**](https://toast.pheralb.dev/) for more information.
+
+## 🔭 Roadmap
+
+- [] 🚗 Add `.loading` status.
+- [] 📚 Add support for Astro + React.
+- [] 🎨 Add rich colors support.
 
 ## 🤝 Contributing
 
