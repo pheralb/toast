@@ -67,7 +67,7 @@ npm install @pheralb/toast
 pnpm add @pheralb/toast
 
 # Using yarn:
-yarn add @pheralb/toast
+yarn install @pheralb/toast
 ```
 
 2. Add the toast provider:
@@ -109,7 +109,7 @@ export default function Index() {
 ```
 
 > [!TIP]
-> 📚 Visit the [**Getting Started**](https://toast.pheralb.dev/) guide to view the full documentation and set up with other frameworks like Next.js, Remix or Astro.
+> 📚 Visit the [**Documentation**](https://toast.pheralb.dev/) for more information.
 
 ## 🤝 Contributing
 
@@ -117,7 +117,7 @@ export default function Index() {
 
 - [**Library**](https://github.com/pheralb/toast/tree/main/library): React 18 with tsup + Vitest for testing.
 - [**Website**](https://github.com/pheralb/toast/tree/main/website): Remix, shadcn/ui + Tailwind CSS + Radix & MDX.
-- [**Example**](https://github.com/pheralb/toast/tree/main/example): Next.js 14 /app project with Tailwind CSS to test the library.
+- [**Examples**](https://github.com/pheralb/toast/tree/main/example): Frameworks to test the library.
 
 1. [Click here to fork](https://github.com/pheralb/toast/fork) the repository.
 
@@ -144,8 +144,8 @@ pnpm build
 pnpm test
 ```
 
-- Open [`http://localhost:5173`](http://localhost:5173) to view the documentation website.
-- Open [`http://localhost:3000`](http://localhost:3000) to view the playground. Test the functionality of the library.
+- Open [`http://localhost:5173`](http://localhost:5173) to view the **Remix** documentation website.
+- Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground. Only for test the functionality of the library.
 
 and create a pull request with your features or fixes 🚀✨.
 
