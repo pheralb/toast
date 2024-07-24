@@ -115,9 +115,9 @@ export default function Index() {
 
 ## 🔭 Roadmap
 
-- [] 🚗 Add `.loading` status.
-- [] 📚 Add support for Astro + React.
-- [] 🎨 Add rich colors support.
+- [ ] 🚗 Add `.loading` variant.
+- [ ] 📚 Add support for Astro + React.
+- [ ] 🎨 Add rich colors support.
 
 ## 🤝 Contributing
 
