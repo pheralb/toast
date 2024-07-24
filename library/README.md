@@ -115,10 +115,12 @@ export default function Index() {
 
 [`pheralb/toast`](https://github.com/pheralb/toast) is a monorepo built with [Turbo](https://turbo.build/repo) and it uses:
 
-- [**Library**](https://github.com/pheralb/toast/tree/main/library): React 18 with tsup.
+- [**Library**](https://github.com/pheralb/toast/tree/main/library): React 18 with tsup + Vitest for testing.
 - [**Website**](https://github.com/pheralb/toast/tree/main/website): Remix, shadcn/ui + Tailwind CSS + Radix & MDX.
+- [**Example**](https://github.com/pheralb/toast/tree/main/example): Next.js 14 /app project with Tailwind CSS to test the library.
 
 1. [Click here to fork](https://github.com/pheralb/toast/fork) the repository.
+
 2. Install dependencies:
 
 ```bash
@@ -129,14 +131,28 @@ npm install -g pnpm
 pnpm install
 ```
 
-3. Run monorepo:
+3. Commands:
 
-```
+```bash
+# Run the development server:
 pnpm dev
+
+# Build the docs & library:
+pnpm build
+
+# Test the library:
+pnpm test
 ```
+
+- Open [`http://localhost:5173`](http://localhost:5173) to view the documentation website.
+- Open [`http://localhost:3000`](http://localhost:3000) to view the playground. Test the functionality of the library.
 
 and create a pull request with your features or fixes 🚀✨.
 
+<a href="https://github.com/pheralb/toast/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=pheralb/toast" />
+</a>
+
 ## 📃 License
 
-- [MIT License](https://github.com/pheralb/toast/blob/main/LICENSE).
+[MIT License](https://github.com/pheralb/toast/blob/main/LICENSE) - [**pheralb**](https://pheralb.dev) 2024.
