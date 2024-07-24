@@ -29,13 +29,18 @@ This page shows examples of how to use [`next-themes` (Next.js)](https://github.
 
 'use client';
 
-import { ToastProvider, type ToastProviderProperties } from '@pheralb/toast';
+import {
+  ToastProvider,
+  type ToastTheme,
+  type ToastProviderProperties,
+} from '@pheralb/toast';
+
 import { useTheme } from 'next-themes';
 
 const ToastClientProvider = (props: ToastProviderProperties) => {
   const { theme } = useTheme();
   return (
-    <ToastProvider theme={theme === 'dark' ? 'dark' : 'light'} {...props}>
+    <ToastProvider toastFont="font-sans" theme={theme as ToastTheme} {...props}>
       {props.children}
     </ToastProvider>
   );
@@ -80,12 +85,14 @@ Import the `useTheme` hook from `remix-themes` and change the theme value:
 ```tsx
 // 📄 app/root.tsx
 
+import clsx from 'clsx';
+import { ToastProvider } from '@pheralb/toast';
 import { useTheme } from 'remix-themes';
 
 function App() {
   const [theme] = useTheme();
   return (
-    <html lang="en" className={cn(theme)}>
+    <html lang="en" className={clsx(theme)}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
