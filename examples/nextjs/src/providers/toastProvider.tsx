@@ -11,9 +11,7 @@ const ToastClientProvider = (props: ToastProviderProperties) => {
       maxToasts={10}
       theme={theme === 'dark' ? 'dark' : 'light'}
       {...props}
-    >
-      {props.children}
-    </ToastProvider>
+    />
   );
 };
 
