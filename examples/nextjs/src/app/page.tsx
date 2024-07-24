@@ -56,6 +56,9 @@ export default function Home() {
         value={duration}
         onChange={(e) => setDuration(Number(e.target.value))}
       />
+      <button className={buttonStyles} onClick={() => setTheme('system')}>
+        Set System Theme
+      </button>
       <button className={buttonStyles} onClick={() => setTheme('dark')}>
         Set Dark Theme
       </button>

@@ -1,6 +1,10 @@
 'use client';
 
-import { ToastProvider, type ToastProviderProperties } from '@pheralb/toast';
+import {
+  ToastProvider,
+  ToastTheme,
+  type ToastProviderProperties,
+} from '@pheralb/toast';
 import { useTheme } from 'next-themes';
 
 const ToastClientProvider = (props: ToastProviderProperties) => {
@@ -9,7 +13,7 @@ const ToastClientProvider = (props: ToastProviderProperties) => {
     <ToastProvider
       toastFont="font-sans"
       maxToasts={10}
-      theme={theme === 'dark' ? 'dark' : 'light'}
+      theme={theme as ToastTheme}
       {...props}
     />
   );
