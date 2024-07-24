@@ -15,11 +15,19 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" className="group">
           {theme === Theme.LIGHT ? (
-            <Moon size={22} strokeWidth={1.4} />
+            <Moon
+              size={22}
+              strokeWidth={1.4}
+              className="transition-transform duration-700 group-hover:-rotate-[30deg]"
+            />
           ) : (
-            <Sun size={22} strokeWidth={1.4} />
+            <Sun
+              size={22}
+              strokeWidth={1.4}
+              className="transition-transform duration-700 group-hover:rotate-[30deg]"
+            />
           )}
           <span className="sr-only">Toggle theme</span>
         </Button>

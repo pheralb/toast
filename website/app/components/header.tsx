@@ -31,9 +31,9 @@ const Header = () => {
           </MobileMenu>
           <Link
             to="/"
-            className="flex items-center space-x-3 font-medium tracking-tight transition-opacity duration-75 hover:opacity-80"
+            className="group flex items-center space-x-3 font-medium tracking-tight transition-opacity duration-75 hover:opacity-80"
           >
-            <Logo width={22} />
+            <Logo width={22} className="group-hover:animate-pulse" />
             <span className="text-neutral-700 dark:text-neutral-300">
               pheralb/toast
             </span>
@@ -45,9 +45,19 @@ const Header = () => {
               <ExternalLink
                 key={route.path}
                 href={route.path}
-                className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+                className={buttonVariants({
+                  variant: 'ghost',
+                  size: 'icon',
+                  className: 'group',
+                })}
               >
-                {route.icon && <route.icon height={18} width={18} />}
+                {route.icon && (
+                  <route.icon
+                    height={18}
+                    width={18}
+                    className="transition-transform duration-300 group-hover:-translate-y-[1.2px]"
+                  />
+                )}
                 <span className="sr-only">{route.title}</span>
               </ExternalLink>
             )),
