@@ -20,13 +20,13 @@ export function ModeToggle() {
             <Moon
               size={22}
               strokeWidth={1.4}
-              className="transition-transform duration-700 group-hover:-rotate-[30deg]"
+              className="transition-transform duration-300 group-hover:-translate-y-[1.2px]"
             />
           ) : (
             <Sun
               size={22}
               strokeWidth={1.4}
-              className="transition-transform duration-700 group-hover:rotate-[30deg]"
+              className="transition-transform duration-300 group-hover:-translate-y-[1.2px]"
             />
           )}
           <span className="sr-only">Toggle theme</span>
