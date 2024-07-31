@@ -154,8 +154,12 @@ pnpm build
 pnpm test
 ```
 
-- Open [`http://localhost:5173`](http://localhost:5173) to view the **Remix** documentation website.
-- Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground. Only for test the functionality of the library.
+🧑‍🚀 Open [`http://localhost:5173`](http://localhost:5173) to view the **Remix** documentation website.
+
+🔎 Only for test the functionality of the library:
+
+- Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground.
+- Open [`http://localhost:4321`](http://localhost:3001) to view the **Astro** playground.
 
 and create a pull request with your features or fixes 🚀✨.
 
