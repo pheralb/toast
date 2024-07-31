@@ -1,7 +1,7 @@
-export { ToastProvider } from './providers/toast-provider';
-export { useToast } from './hooks/toast-context';
+export { toast } from './components/toast-functions';
+export { Toaster } from './components/toaster';
 export type {
   ToastProps as ToastProperties,
-  ToastProviderProperties,
+  ToasterProperties,
   Theme as ToastTheme,
 } from './types/toast.types';
