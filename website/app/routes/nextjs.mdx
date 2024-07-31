@@ -38,13 +38,13 @@ npx create-next-app@latest
 npm install @pheralb/toast
 ```
 
-4. Add the [`ToastProvider`](/provider) to the `layout.tsx` file:
+4. Add the [`Toaster`](/toaster) to the `layout.tsx` file:
 
-> 💡 By default, `ToastProvider` includes `use client` directive.
+> 💡 By default, `Toaster` includes `use client` directive.
 
 ```tsx
 // 📃 layout.tsx
-import { ToastProvider } from '@pheralb/toast';
+import { Toaster } from '@pheralb/toast';
 
 export default function RootLayout({
   children,
@@ -54,24 +54,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToastProvider>{children}</ToastProvider>
+        {children}
+        <Toaster />
       </body>
     </html>
   );
 }
 ```
 
-5. Use the [`useToast`](/useToast) hook in your **client** components:
-
-> 💡 To use the hook, import the `use client` directive.
+5. Use the [`toast`](/toast) function in your **client** components:
 
 ```tsx
 'use client';
 
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 
 export default function MyComponent() {
-  const toast = useToast();
   return (
     <button
       onClick={() =>

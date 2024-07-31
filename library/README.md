@@ -76,13 +76,13 @@ yarn install @pheralb/toast
 
 ```tsx
 // 📃 root.tsx
-import { ToastProvider } from '@pheralb/toast';
+
+import { Toaster } from '@pheralb/toast';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ToastProvider>
-      <App />
-    </ToastProvider>
+    <App />
+    <Toaster />
   </React.StrictMode>,
 );
 ```
@@ -91,8 +91,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ```jsx
 // 📃 index.tsx
+
+import { toast } from '@pheralb/toast';
+
 export default function Index() {
-  const toast = useToast();
   return (
     <>
       <button
@@ -116,7 +118,7 @@ export default function Index() {
 ## 🔭 Roadmap
 
 - [ ] 🚗 Add `.loading` variant.
-- [ ] 📚 Add support for Astro + React.
+- [x] 📚 Add support for Astro + React.
 - [ ] 🎨 Add rich colors support.
 
 ## 🤝 Contributing

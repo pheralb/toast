@@ -1,23 +1,23 @@
-import { Positions, Theme } from '../components/examples/provider';
+import { Positions, Theme } from '../components/examples/toaster';
 import { siteTitle } from '../globals.ts';
 
 export const meta = [
   {
-    title: `Toast Provider | ${siteTitle}`,
+    title: `Toaster | ${siteTitle}`,
   },
   {
     name: 'description',
-    content: 'How to use the ToastProvider component in your application',
+    content: 'How to use the Toaster component in your application',
   },
 ];
 
-# Toast Provider
+# Toaster
 
-The `<ToastProvider />` component is used to wrap your application and provide the context for the toasts. It accepts the following props:
+The `<Toaster />` component is used to show toasts in your application.
 
 ## Position
 
-By default, the default position is `bottom-right`. You can customize the position of the toasts by using the `position` prop of the `ToastProvider` component:
+By default, the default position is `bottom-right`. You can customize the position of the toasts by using the `position` prop of the `Toaster` component:
 
 <Positions />
 
@@ -32,9 +32,7 @@ You can set the theme of the toasts using the `theme` prop, which accepts the va
 By default, the maximum number of toasts is set to `4`. You can change this value using the `maxToasts` prop:
 
 ```jsx
-<ToastProvider maxToasts={8}>
-  <App />
-</ToastProvider>
+<Toaster maxToasts={8} />
 ```
 
 ## ToastFont
@@ -50,7 +48,5 @@ Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 You can change this value using the `toastFont` prop. In this case, we are using the utility class [`font-sans` from Tailwind CSS](https://tailwindcss.com/docs/font-family#setting-the-font-family) to set the font:
 
 ```jsx
-<ToastProvider toastFont="font-sans">
-  <App />
-</ToastProvider>
+<Toaster toastFont="font-sans" />
 ```

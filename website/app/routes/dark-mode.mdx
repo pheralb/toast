@@ -19,37 +19,35 @@ This page shows examples of how to use [`next-themes` (Next.js)](https://github.
 
 > [**Click here**](https://github.com/pacocoursey/next-themes?tab=readme-ov-file#install) to read the documentation.
 
-1. Create a `toastProvider.tsx` file with the following content:
+1. Create a `ToasterNextTheme.tsx` file with the following content:
 
 - Import `useTheme` hook from `next-themes`.
 - Change the `theme` value based on the current theme.
 
 ```tsx
-// 📄 components/toastProvider.tsx
+// 📄 components/ToasterNextTheme.tsx
 
 'use client';
 
 import {
-  ToastProvider,
+  Toaster,
   type ToastTheme,
-  type ToastProviderProperties,
+  type ToasterProperties,
 } from '@pheralb/toast';
 
 import { useTheme } from 'next-themes';
 
-const ToastClientProvider = (props: ToastProviderProperties) => {
+const ToasterNextTheme = (props: ToasterProperties) => {
   const { theme } = useTheme();
   return (
-    <ToastProvider toastFont="font-sans" theme={theme as ToastTheme} {...props}>
-      {props.children}
-    </ToastProvider>
+    <Toaster toastFont="font-sans" theme={theme as ToastTheme} {...props} />
   );
 };
 
-export default ToastClientProvider;
+export default ToasterNextTheme;
 ```
 
-2. Import the `ToastClientProvider` component in the `layout/app.tsx` file:
+2. Import the `ToasterNextTheme` component in the `layout/app.tsx` file:
 
 ```tsx
 // 📄 layout/app.tsx
@@ -68,7 +66,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ToastClientProvider>{children}</ToastClientProvider>
+          {children}
+          <ToasterNextTheme />
         </ThemeProvider>
       </body>
     </html>
@@ -86,7 +85,7 @@ Import the `useTheme` hook from `remix-themes` and change the theme value:
 // 📄 app/root.tsx
 
 import clsx from 'clsx';
-import { ToastProvider } from '@pheralb/toast';
+import { Toaster } from '@pheralb/toast';
 import { useTheme } from 'remix-themes';
 
 function App() {
@@ -100,9 +99,8 @@ function App() {
         <Links />
       </head>
       <body>
-        <ToastProvider theme={theme!}>
-          <Outlet />
-        </ToastProvider>
+        <Outlet />
+        <Toaster theme={theme!} />>
         <ScrollRestoration />
         <Scripts />
       </body>
