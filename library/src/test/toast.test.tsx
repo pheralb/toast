@@ -2,15 +2,16 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, test, expect } from 'vitest';
 
-import { ToastProvider } from '../main';
+import { Toaster } from '../main';
 import ToastTestComponent from './toast-test-component';
 
 describe('Toast notifications', () => {
   test('should display a success toast', async () => {
     render(
-      <ToastProvider position="bottom-right">
+      <>
+        <Toaster position="bottom-right" />
         <ToastTestComponent />
-      </ToastProvider>,
+      </>,
     );
 
     // Click the button to show the toast:
