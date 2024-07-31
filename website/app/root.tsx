@@ -167,7 +167,7 @@ function App() {
           <MDXProvider disableParentContext components={mdxComponents}>
             <article
               className={cn(
-                'ml-0 max-w-4xl py-8 duration-100 md:ml-[273px]',
+                'ml-0 max-w-4xl py-7 duration-100 md:ml-[273px]',
                 proseClasses,
               )}
             >

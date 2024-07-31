@@ -47,20 +47,10 @@ const ProviderCodeBlock = (props: CodeBlockProps) => {
         >
           <span data-line="">
             <span style={{ color: '#A0A0A0' }}>&lt;</span>
-            <span style={{ color: '#FFC799' }}>ToastProvider</span>
+            <span style={{ color: '#FFC799' }}>Toaster</span>
             <span style={{ color: '#A0A0A0' }}> {props.label}=</span>
             <span style={{ color: '#99FFE4' }}>&quot;{props.value}&quot;</span>
-            <span style={{ color: '#A0A0A0' }}>&gt;</span>
-          </span>
-          <span data-line="">
-            <span style={{ color: '#A0A0A0' }}>&nbsp;&nbsp;&lt;</span>
-            <span style={{ color: '#FFC799' }}>App</span>
-            <span style={{ color: '#A0A0A0' }}> /&gt;</span>
-          </span>
-          <span data-line="">
-            <span style={{ color: '#A0A0A0' }}>&lt;/</span>
-            <span style={{ color: '#FFC799' }}>ToastProvider</span>
-            <span style={{ color: '#A0A0A0' }}>&gt;</span>
+            <span style={{ color: '#A0A0A0' }}>&nbsp;/&gt;</span>
           </span>
         </code>
       </pre>

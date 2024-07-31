@@ -37,7 +37,7 @@ const ToastCodeBlock = (props: CodeBlockProps) => {
           style={{ display: 'block' }}
         >
           <span data-line="">
-            <span style={{ color: 'rgb(255, 255, 255)' }}>toastoast.</span>
+            <span style={{ color: 'rgb(255, 255, 255)' }}>toast.</span>
             <span style={{ color: 'rgb(255, 199, 153)' }}>{props.value}</span>
             <span style={{ color: 'rgb(255, 255, 255)' }}>({`{`}</span>
           </span>

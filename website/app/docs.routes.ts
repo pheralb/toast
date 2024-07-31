@@ -1,5 +1,5 @@
 import type { SVGProps } from 'react';
-import { X, Github, Nextjs, Remix } from './components/icons';
+import { X, Github, Nextjs, Remix, Astro } from './components/icons';
 
 interface iDocsRoutes {
   category: string;
@@ -14,6 +14,11 @@ export const FrameworkGuides: iDocsRoutes[] = [
   {
     category: 'Framework Guides',
     routes: [
+      {
+        title: 'Astro',
+        path: '/astro',
+        icon: Astro,
+      },
       {
         title: 'Next.js',
         path: '/nextjs',
@@ -60,6 +65,10 @@ export const SidebarRoutes: iDocsRoutes[] = [
     category: 'Framework Guides',
     routes: [
       {
+        title: 'Astro',
+        path: '/astro',
+      },
+      {
         title: 'Next.js',
         path: '/nextjs',
       },
@@ -70,15 +79,15 @@ export const SidebarRoutes: iDocsRoutes[] = [
     ],
   },
   {
-    category: 'Components',
+    category: 'API',
     routes: [
       {
-        title: 'ToastProvider',
-        path: '/provider',
+        title: 'Toaster',
+        path: '/toaster',
       },
       {
-        title: 'useToast',
-        path: '/useToast',
+        title: 'toast',
+        path: '/toast',
       },
     ],
   },
