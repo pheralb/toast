@@ -1,6 +1,6 @@
 'use client';
 
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 import { PartyPopperIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useState } from 'react';
@@ -8,12 +8,11 @@ import { useState } from 'react';
 export default function Home() {
   const { setTheme } = useTheme();
   const [duration, setDuration] = useState<number>(8000);
-  const t = useToast();
   const buttonStyles =
     'p-2 m-2 bg-neutral-100 border border-neutral-300 dark:border-neutral-700 dark:bg-neutral-800 text-sm dark:text-white rounded-md';
 
   const renderToast = () => {
-    t.default({
+    toast.default({
       text: 'Rendered toast!',
       description: 'This is a success toast!',
       delayDuration: duration,
@@ -21,27 +20,27 @@ export default function Home() {
   };
 
   const renderToastWithIcon = () => {
-    t.default({
+    toast.default({
       text: 'Rendered toast without icon',
       description: 'This is a default toast!',
       delayDuration: duration,
     });
-    t.success({
+    toast.success({
       text: 'Rendered toast with library icon',
       description: 'This is a success toast',
       delayDuration: duration,
     });
-    t.error({
+    toast.error({
       text: 'Rendered toast without library icon',
       description: 'This is a error toast',
       delayDuration: duration,
     });
-    t.warning({
+    toast.warning({
       text: 'Rendered toast with library icon',
       description: 'This is a warning toast',
       delayDuration: duration,
     });
-    t.default({
+    toast.default({
       text: 'Rendered toast with custom icon',
       description: 'This is a default toast',
       delayDuration: duration,
