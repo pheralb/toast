@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import { cn, copyToClipboard } from '@/utils';
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 import { CopyIcon } from 'lucide-react';
 
 export const CopyCodeBtnStyles = cn(
@@ -13,12 +13,11 @@ export default function CodeBlock({
   ...props
 }: React.HTMLProps<HTMLPreElement>) {
   const preRef = useRef<HTMLPreElement>(null);
-  const t = useToast();
 
   const handleCopy = async () => {
     const content = preRef.current?.textContent ?? '';
     await copyToClipboard(content);
-    t.success({
+    toast.success({
       text: 'Copied to clipboard',
     });
   };

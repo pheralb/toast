@@ -1,7 +1,7 @@
 import type { Position, Theme } from '@pheralb-toast/extra-types';
 import type { CodeBlockProps } from './examples.types';
 
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 import { useDocsStore } from '@/store';
 import { Button } from '@/ui/button';
 import {
@@ -19,12 +19,11 @@ const activeBtn = cn('border-neutral-600 dark:border-neutral-800');
 
 const ProviderCodeBlock = (props: CodeBlockProps) => {
   const preRef = useRef<HTMLPreElement>(null);
-  const t = useToast();
 
   const copyPreContent = async () => {
     const content = preRef.current?.textContent ?? '';
     await copyToClipboard(content);
-    t.success({
+    toast.success({
       text: 'Copied to clipboard',
     });
   };
@@ -75,11 +74,10 @@ const ProviderCodeBlock = (props: CodeBlockProps) => {
 
 const Positions = () => {
   const { toastPosition, setToastPosition } = useDocsStore();
-  const t = useToast();
   const iconSize = 14;
 
   const handleChangePosition = (position: Position) => {
-    t.success({
+    toast.success({
       text: `Position changed`,
       description: `Position changed to ${position}`,
     });
@@ -144,16 +142,15 @@ const Positions = () => {
 
 const Theme = () => {
   const { toastTheme, setToastTheme } = useDocsStore();
-  const t = useToast();
   const iconSize = 14;
 
   const handleChangeTheme = (theme: Theme | undefined) => {
     if (theme === undefined) {
-      t.success({
+      toast.success({
         text: 'Theme reset to default',
       });
     } else {
-      t.success({
+      toast.success({
         text: `Theme changed to ${theme}`,
       });
     }
