@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type Variant = 'success' | 'error' | 'warning' | 'info';
+export type Variant = 'success' | 'error' | 'warning' | 'info' | 'loading';
 export type Position =
   | 'top-left'
   | 'top-right'
@@ -25,8 +25,7 @@ export type ToastProps = {
   action?: Action;
 };
 
-export type ToastProviderProperties = {
-  children: ReactNode;
+export type ToasterProperties = {
   theme?: Theme;
   maxToasts?: number;
   position?: Position;
