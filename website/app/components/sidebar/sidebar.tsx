@@ -26,7 +26,6 @@ const SidebarContent = ({ npmVersion }: iSidebar) => {
                 <Link
                   key={r.path}
                   to={r.path}
-                  unstable_viewTransition
                   className={cn(
                     'px-4 py-2 text-sm',
                     'border-l border-neutral-200 dark:border-neutral-800',
