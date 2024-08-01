@@ -187,7 +187,7 @@ function AppWithProviders({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider
       specifiedTheme={data?.theme as Theme}
-      themeAction="/resources/update-theme"
+      themeAction="/theme/action"
     >
       <Layout>{children}</Layout>
     </ThemeProvider>
