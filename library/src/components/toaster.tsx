@@ -86,4 +86,6 @@ export const Toaster = ({
   );
 };
 
-export const openToast = (data: ToastPropsWithVariant) => openToastGlobal(data);
+export const openToast = (data: ToastPropsWithVariant): void => {
+  openToastGlobal(data);
+};
