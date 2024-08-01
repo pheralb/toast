@@ -1,0 +1,97 @@
+# Dark Mode
+
+This page shows examples of how to use [`next-themes` (Next.js)](https://github.com/pacocoursey/next-themes) or [`remix-themes` (Remix)](https://github.com/abereghici/remix-themes) libraries.
+
+## Next.js with next-themes
+
+> [**Click here**](https://github.com/pacocoursey/next-themes?tab=readme-ov-file#install) to read the documentation.
+
+1. Create a `ToasterNextTheme.tsx` file with the following content:
+
+- Import `useTheme` hook from `next-themes`.
+- Change the `theme` value based on the current theme.
+
+```tsx
+// 📄 components/ToasterNextTheme.tsx
+
+'use client';
+
+import {
+  Toaster,
+  type ToastTheme,
+  type ToasterProperties,
+} from '@pheralb/toast';
+
+import { useTheme } from 'next-themes';
+
+const ToasterNextTheme = (props: ToasterProperties) => {
+  const { theme } = useTheme();
+  return (
+    <Toaster toastFont="font-sans" theme={theme as ToastTheme} {...props} />
+  );
+};
+
+export default ToasterNextTheme;
+```
+
+2. Import the `ToasterNextTheme` component in the `layout/app.tsx` file:
+
+```tsx
+// 📄 layout/app.tsx
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={inter.className}>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <ToasterNextTheme />
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+## Remix with remix-themes
+
+> [**Click here**](https://github.com/abereghici/remix-themes?tab=readme-ov-file#getting-started) to read the documentation.
+
+Import the `useTheme` hook from `remix-themes` and change the theme value:
+
+```tsx
+// 📄 app/root.tsx
+
+import clsx from 'clsx';
+import { Toaster } from '@pheralb/toast';
+import { useTheme } from 'remix-themes';
+
+function App() {
+  const [theme] = useTheme();
+  return (
+    <html lang="en" className={clsx(theme)}>
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <Toaster theme={theme!} />>
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
