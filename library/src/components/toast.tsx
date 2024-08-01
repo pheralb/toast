@@ -6,7 +6,7 @@ import type {
 } from '../types/toast.types';
 import '../styles/toast-component.css';
 
-import { Error, Info, Success, Warning } from '../icons';
+import { Error, Info, Loading, Success, Warning } from '../icons';
 import { useTimeout } from '../hooks/useTimeout';
 import { classNames, prefersReducedMotion } from '../utils';
 
@@ -15,6 +15,7 @@ const icons: Record<Variant, FC<React.SVGProps<SVGSVGElement>>> = {
   error: Error,
   warning: Warning,
   info: Info,
+  loading: Loading,
 };
 
 const iconsColors: Record<Variant, string> = {
@@ -22,6 +23,7 @@ const iconsColors: Record<Variant, string> = {
   error: '#ef4444',
   warning: '#eab308',
   info: '#3b82f6',
+  loading: '#6b7280',
 };
 
 interface ToastComponentProps extends ToastPropsWithVariant {
@@ -86,7 +88,7 @@ const Toast = (props: ToastComponentProps) => {
   return (
     <div
       title={props.text}
-      aria-label="notification"
+      aria-label="Notification"
       className={classNames(
         't_global',
         prefersReducedMotion() ? '' : animationClass,

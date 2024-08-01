@@ -26,7 +26,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <ToastClientProvider>{children}</ToastClientProvider>
+          <ToastClientProvider />
+          {children}
         </ThemeProvider>
       </body>
     </html>

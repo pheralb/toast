@@ -1,13 +1,13 @@
-import type { Position, Theme, Variant } from '@pheralb/toast';
+import type { ToastPosition, ToastTheme, ToastVariant } from '@pheralb/toast';
 import { create } from 'zustand';
 
 interface DocsStore {
-  toastPosition: Position;
-  toastVariant: Variant;
-  toastTheme: Theme | undefined;
-  setToastPosition: (position: Position) => void;
-  setToastVariant: (variant: Variant) => void;
-  setToastTheme: (theme: Theme | undefined) => void;
+  toastPosition: ToastPosition;
+  toastVariant: ToastVariant;
+  toastTheme: ToastTheme | undefined;
+  setToastPosition: (position: ToastPosition) => void;
+  setToastVariant: (variant: ToastVariant) => void;
+  setToastTheme: (theme: ToastTheme | undefined) => void;
 }
 
 export const useDocsStore = create<DocsStore>((set) => ({

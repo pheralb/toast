@@ -1,0 +1,143 @@
+import { siteTitle } from '../globals.ts';
+
+export const meta = [
+  {
+    title: `Usage with Astro | ${siteTitle}`,
+  },
+  {
+    name: 'description',
+    content: 'How to use @pheralb/toast library with Astro',
+  },
+];
+
+# Usage with Astro
+
+How to use the library with [Astro](https://astro.build).
+
+1. Create a new Astro project:
+
+```bash
+npm create astro@latest
+```
+
+2. Select the default options:
+
+```bash
+ astro   Launch sequence initiated.
+
+   dir   Where should we create your new project?
+         ./astro-project
+
+  tmpl   How would you like to start your new project?
+         Include sample files
+
+    ts   Do you plan to write TypeScript?
+         Yes
+
+   use   How strict should TypeScript be?
+         Strict
+
+  deps   Install dependencies?
+         Yes
+
+   git   Initialize a new git repository?
+         Yes
+
+      ✔  Project initialized!
+         ■ Template copied
+         ■ TypeScript customized
+         ■ Dependencies installed
+         ■ Git initialized
+```
+
+3. Add [**@astrojs/react**](https://docs.astro.build/es/guides/integrations-guide/react/) integration:
+
+```bash
+npx astro add react
+```
+
+4. Install the library:
+
+```bash
+npm install @pheralb/toast
+```
+
+5. Add the [`Toaster`](/toaster) to the `layout.astro` file:
+
+> 💡 Add [`client:load`](https://docs.astro.build/es/reference/directives-reference/#clientload) directive to the `Toaster` component.
+
+```js
+// 📄 layouts/Layout.astro
+
+---
+interface Props {
+  title: string;
+}
+
+import { Toaster } from '@pheralb/toast';
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content="{Astro.generator}" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+    <Toaster client:load />
+  </body>
+</html>
+```
+
+6. Create a example component with a button to trigger a toast message:
+
+```tsx
+// 📄 components/showToast.tsx
+
+import { toast } from '@pheralb/toast';
+
+const ShowToast = () => {
+  const handleClick = () => {
+    toast.default({
+      text: '✨ @pheralb/toast',
+    });
+  };
+
+  return (
+    <button type="button" onClick={handleClick}>
+      Show Toast
+    </button>
+  );
+};
+
+export default ShowToast;
+```
+
+7. Import the `ShowToast` component in the `index.astro` file:
+
+> 💡 Add [`client:load`](https://docs.astro.build/es/reference/directives-reference/#clientload) directive to the `ShowToast` component.
+
+```js
+// 📄 pages/index.astro
+
+---
+import Layout from '../layouts/Layout.astro';
+import ShowToast from '../components/showToast';
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
+    <ShowToast client:load />
+  </main>
+</Layout>
+```
+
+✨ Ready.

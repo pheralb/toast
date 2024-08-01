@@ -28,7 +28,7 @@ import SidebarContent from './components/sidebar/sidebar';
 import { proseClasses } from './ui/prose';
 
 // Providers:
-import { ToastProvider } from '@pheralb/toast';
+import { Toaster } from '@pheralb/toast';
 import {
   PreventFlashOnWrongTheme,
   ThemeProvider,
@@ -159,28 +159,27 @@ function App() {
           'text-neutral-900 dark:text-neutral-50',
         )}
       >
-        <ToastProvider
+        <Header />
+        <main className="container w-full max-w-7xl">
+          <aside className="hidden md:block">
+            <SidebarContent npmVersion={data.npmVersion!} />
+          </aside>
+          <MDXProvider disableParentContext components={mdxComponents}>
+            <article
+              className={cn(
+                'ml-0 max-w-4xl py-7 duration-100 md:ml-[273px]',
+                proseClasses,
+              )}
+            >
+              <Outlet />
+            </article>
+          </MDXProvider>
+        </main>
+        <Toaster
           position={toastPosition}
           theme={toastTheme ?? theme!}
           toastFont="font-sans"
-        >
-          <Header />
-          <main className="container w-full max-w-7xl">
-            <aside className="hidden md:block">
-              <SidebarContent npmVersion={data.npmVersion!} />
-            </aside>
-            <MDXProvider disableParentContext components={mdxComponents}>
-              <article
-                className={cn(
-                  'ml-0 max-w-4xl py-8 duration-100 md:ml-[273px]',
-                  proseClasses,
-                )}
-              >
-                <Outlet />
-              </article>
-            </MDXProvider>
-          </main>
-        </ToastProvider>
+        />
         <ScrollRestoration />
         <Scripts />
       </body>

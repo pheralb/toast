@@ -8,6 +8,7 @@ const Usage = () => {
         return guide.routes.map((route) => {
           return (
             <Link
+              unstable_viewTransition
               key={route.path}
               to={route.path}
               className="text-md flex w-full flex-col items-center space-y-3 rounded-md border border-neutral-200 p-[20px] text-sm no-underline shadow-sm transition-colors duration-100 hover:bg-neutral-100 md:w-40 dark:border-neutral-800 dark:hover:bg-neutral-800/50"

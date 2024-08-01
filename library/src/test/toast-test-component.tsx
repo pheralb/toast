@@ -1,11 +1,10 @@
-import { useToast } from '../main';
+import { toast } from '../main';
 
 const ToastTestComponent = () => {
-  const t = useToast();
   return (
     <button
       onClick={() =>
-        t.success({
+        toast.success({
           text: 'Hello Toast!',
           description: 'This is a success toast',
         })

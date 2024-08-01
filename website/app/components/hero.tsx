@@ -1,12 +1,11 @@
 import { Button, buttonVariants } from '@/ui/button';
 import { SparkleCard } from '@/ui/sparkle-card';
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 import { Sparkles } from 'lucide-react';
 import { Github } from './icons';
 import ExternalLink from '@/ui/external-link';
 
 const Hero = () => {
-  const toast = useToast();
   return (
     <SparkleCard
       className="rounded-md border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"

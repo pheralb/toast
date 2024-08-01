@@ -3,20 +3,19 @@ import type { CodeBlockProps } from './examples.types';
 
 import { useRef, useState } from 'react';
 import { Button } from '@/ui/button';
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 import JSConfetti from 'js-confetti';
 import { CopyIcon, PartyPopperIcon } from 'lucide-react';
 import { copyToClipboard } from '@/utils';
 import { CopyCodeBtnStyles } from '../mdx/codeBlock';
 
-const UseToastCodeBlock = (props: CodeBlockProps) => {
+const ToastCodeBlock = (props: CodeBlockProps) => {
   const preRef = useRef<HTMLPreElement>(null);
-  const t = useToast();
 
   const copyPreContent = async () => {
     const content = preRef.current?.textContent ?? '';
     await copyToClipboard(content);
-    t.success({
+    toast.success({
       text: 'Copied to clipboard',
     });
   };
@@ -31,6 +30,7 @@ const UseToastCodeBlock = (props: CodeBlockProps) => {
         }}
         data-language="ts"
         data-theme="vesper"
+        ref={preRef}
       >
         <code
           data-language="ts"
@@ -68,14 +68,13 @@ const UseToastCodeBlock = (props: CodeBlockProps) => {
   );
 };
 
-const UseToastVariantExamples = () => {
+const ToastVariantExamples = () => {
   const [toastVariant, setToastVariant] = useState<string>('success');
   const variants: Variant[] = ['success', 'error', 'warning', 'info'];
-  const t = useToast();
 
   const handleChangeVariant = (variant: Variant) => {
     setToastVariant(variant);
-    t[variant]({
+    toast[variant as keyof typeof toast]({
       text: `A ${variant} toast 🚀`,
       description: '✨ @pheralb/toast',
     });
@@ -83,7 +82,7 @@ const UseToastVariantExamples = () => {
 
   const handleDefault = () => {
     setToastVariant('default');
-    t.default({
+    toast.default({
       text: 'A default toast 🚀',
       description: '✨ @pheralb/toast',
     });
@@ -105,16 +104,14 @@ const UseToastVariantExamples = () => {
           </Button>
         ))}
       </div>
-      <UseToastCodeBlock label={toastVariant} value={toastVariant} />
+      <ToastCodeBlock label={toastVariant} value={toastVariant} />
     </div>
   );
 };
 
-const UseToastActionsExamples = () => {
-  const t = useToast();
-
+const ToastActionsExamples = () => {
   const handleChangeVariant = () => {
-    t.default({
+    toast.default({
       text: `A toast with confetti 🎉`,
       description: 'Click the button to see the confetti',
       icon: <PartyPopperIcon size={14} />,
@@ -151,4 +148,4 @@ const UseToastActionsExamples = () => {
   );
 };
 
-export { UseToastVariantExamples, UseToastActionsExamples };
+export { ToastVariantExamples, ToastActionsExamples };

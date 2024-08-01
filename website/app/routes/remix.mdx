@@ -43,11 +43,11 @@ npx create-remix@latest
 npm install @pheralb/toast
 ```
 
-4. Add the [`ToastProvider`](/provider) to the `root.tsx` file:
+4. Add the [`Toaster`](/toaster) to the `root.tsx` file:
 
 ```tsx
 // 📃 root.tsx
-import { ToastProvider } from '@pheralb/toast';
+import { Toaster } from '@pheralb/toast';
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -59,7 +59,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <ToastProvider>{children}</ToastProvider>
+        {children}
+        <Toaster />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -72,14 +73,13 @@ export default function App() {
 }
 ```
 
-5. Use the [`useToast`](/useToast) hook in your components or pages:
+5. Use the [`toast`](/toast) function in your components or pages:
 
 ```tsx
 // 📃 index.tsx
-import { useToast } from '@pheralb/toast';
+import { toast } from '@pheralb/toast';
 
 export default function Index() {
-  const toast = useToast();
   return (
     <>
       <h1>✨ Show a toast:</h1>
