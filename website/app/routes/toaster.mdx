@@ -50,3 +50,14 @@ You can change this value using the `toastFont` prop. In this case, we are using
 ```jsx
 <Toaster toastFont="font-sans" />
 ```
+
+## API Reference
+
+The `<Toaster />` component accepts the following options:
+
+| Property    | Description                           | Type                                                                                                                                      | Required |
+| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `theme`     | Theme of the all toasts               | `Theme` (default: `system`): `'light'`, `'dark'`, or `'system'`                                                                           | -        |
+| `maxToasts` | Maximum number of toasts to display   | `number`                                                                                                                                  | -        |
+| `position`  | Position of the toaster on the screen | `Position` (default: `bottom-right`): `'top-left'`, `'top-right'`, `'top-center'`, `'bottom-left'`, `'bottom-right'` or `'bottom-center'` | -        |
+| `toastFont` | Font style for the all toasts         | `string`                                                                                                                                  | -        |
