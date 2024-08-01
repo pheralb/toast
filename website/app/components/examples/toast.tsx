@@ -30,6 +30,7 @@ const ToastCodeBlock = (props: CodeBlockProps) => {
         }}
         data-language="ts"
         data-theme="vesper"
+        ref={preRef}
       >
         <code
           data-language="ts"
