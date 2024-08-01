@@ -5,6 +5,7 @@ interface Props {
 
 // Styles:
 import '@/styles/globals.css';
+import { cn } from '@/utils';
 
 const { title } = Astro.props;
 ---
@@ -19,7 +20,13 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body
+    class={cn(
+      'font-sans antialiased',
+      'bg-neutral-50 dark:bg-neutral-900',
+      'text-neutral-900 dark:text-neutral-50',
+    )}
+  >
     <slot />
   </body>
 </html>
