@@ -1,19 +1,17 @@
-import type {
-  LinksFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
+import {
+  type LinksFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
 } from '@vercel/remix';
+import type { ReactNode } from 'react';
 
 import {
-  isRouteErrorResponse,
-  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  useRouteError,
 } from '@remix-run/react';
 import { getLatestVersion } from 'fast-npm-meta';
 import { eslogan, siteTitle, siteUrl, siteUrlImages } from './globals';
@@ -31,10 +29,10 @@ import { proseClasses } from './ui/prose';
 import { Toaster } from '@pheralb/toast';
 import {
   PreventFlashOnWrongTheme,
+  Theme,
   ThemeProvider,
   useTheme,
 } from 'remix-themes';
-import { themeSessionResolver } from './sessions.server';
 
 // MDX Components:
 import { MDXProvider } from '@mdx-js/react';
@@ -42,10 +40,7 @@ import { mdxComponents } from './components/mdx';
 
 // Stores:
 import { useDocsStore } from './store';
-
-// Other:
-import { Logo } from './components/icons';
-import { buttonVariants } from './ui/button';
+import { themeSessionResolver } from './sessions.server';
 
 // Links:
 export const links: LinksFunction = () => [
@@ -97,6 +92,7 @@ export const meta: MetaFunction = ({ matches }) => {
   ];
 };
 
+// Get theme from loader:
 export async function loader({ request }: LoaderFunctionArgs) {
   const { getTheme } = await themeSessionResolver(request);
   const metadata = await getLatestVersion('@pheralb/toast');
@@ -106,21 +102,18 @@ export async function loader({ request }: LoaderFunctionArgs) {
   };
 }
 
-export default function AppWithProviders() {
-  const data = useLoaderData<typeof loader>();
-  return (
-    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-      <App />
-    </ThemeProvider>
-  );
-}
-
-function App() {
+// App global layout:
+function Layout({ children }: { children: ReactNode }) {
   const data = useLoaderData<typeof loader>();
   const [theme] = useTheme();
   const { toastPosition, toastTheme } = useDocsStore();
   return (
-    <html lang="en" className={cn(theme, 'scroll-smooth focus:scroll-auto')}>
+    <html
+      lang="en"
+      data-theme={theme}
+      className={cn(theme ?? '', 'scroll-smooth focus:scroll-auto')}
+      style={{ colorScheme: theme ?? '' }}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -149,10 +142,11 @@ function App() {
         <meta name="twitter:title" content={siteTitle} />
         {/* App Meta Function */}
         <Meta />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data?.theme)} />
         <Links />
       </head>
       <body
+        suppressHydrationWarning
         className={cn(
           'font-sans antialiased',
           'bg-neutral-50 dark:bg-neutral-900',
@@ -171,7 +165,7 @@ function App() {
                 proseClasses,
               )}
             >
-              <Outlet />
+              {children}
             </article>
           </MDXProvider>
         </main>
@@ -187,35 +181,39 @@ function App() {
   );
 }
 
-export function ErrorBoundary() {
-  const error = useRouteError();
+// App with providers:
+function AppWithProviders({ children }: { children: ReactNode }) {
+  const data = useLoaderData<typeof loader>();
   return (
-    <html lang="en" className="dark">
-      <head>
-        <title>Oops! - @pheralb/toast</title>
-        <Meta />
-        <Links />
-      </head>
-      <body className="flex h-screen flex-col items-center justify-center space-y-4 bg-neutral-900 font-sans text-white">
-        <Logo className="h-12 w-12" />
-        <h1 className="text-2xl font-medium tracking-tight">
-          {isRouteErrorResponse(error)
-            ? `${error.status} ${error.statusText}`
-            : error instanceof Error
-              ? error.message
-              : 'Unknown Error'}
-        </h1>
-        <Link
-          to="/"
-          className={buttonVariants({
-            variant: 'outline',
-          })}
-        >
-          Go back home
-        </Link>
-        <p className="font-mono text-sm">@pheralb/toast</p>
-        <Scripts />
-      </body>
-    </html>
+    <ThemeProvider
+      specifiedTheme={data?.theme as Theme}
+      themeAction="/action/set-theme"
+    >
+      <Layout>{children}</Layout>
+    </ThemeProvider>
+  );
+}
+
+export default function App() {
+  return (
+    <AppWithProviders>
+      <Outlet />
+    </AppWithProviders>
+  );
+}
+
+export function ErrorBoundary() {
+  return (
+    <AppWithProviders>
+      <h2>Error</h2>
+    </AppWithProviders>
+  );
+}
+
+export function HydrateFallback() {
+  return (
+    <AppWithProviders>
+      <h1>Loading...</h1>
+    </AppWithProviders>
   );
 }
