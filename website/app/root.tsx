@@ -1,7 +1,7 @@
-import type {
-  LinksFunction,
-  LoaderFunctionArgs,
-  MetaFunction,
+import {
+  type LinksFunction,
+  type LoaderFunctionArgs,
+  type MetaFunction,
 } from '@vercel/remix';
 import type { ReactNode } from 'react';
 
@@ -33,7 +33,6 @@ import {
   ThemeProvider,
   useTheme,
 } from 'remix-themes';
-import { themeSessionResolver } from './sessions.server';
 
 // MDX Components:
 import { MDXProvider } from '@mdx-js/react';
@@ -41,6 +40,7 @@ import { mdxComponents } from './components/mdx';
 
 // Stores:
 import { useDocsStore } from './store';
+import { themeSessionResolver } from './sessions.server';
 
 // Links:
 export const links: LinksFunction = () => [
@@ -187,7 +187,7 @@ function AppWithProviders({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider
       specifiedTheme={data?.theme as Theme}
-      themeAction="/theme/action"
+      themeAction="/action/set-theme"
     >
       <Layout>{children}</Layout>
     </ThemeProvider>
