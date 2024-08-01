@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type {
   ToastPropsWithVariant,
   ToasterProperties,
@@ -9,6 +9,7 @@ import '../styles/toast-context.css';
 import ToastComponent from './toast';
 import { classNames, generateRandomId } from '../utils';
 
+// Ensure openToastGlobal is initialized correctly
 let openToastGlobal: (data: ToastPropsWithVariant) => void;
 
 export const Toaster = ({
@@ -18,8 +19,13 @@ export const Toaster = ({
   toastFont,
 }: ToasterProperties) => {
   const [toasts, setToasts] = useState<ToastPropsWithVariant[]>([]);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
-  // Open a new toast:
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Define the openToast function
   const openToast = (data: ToastPropsWithVariant) => {
     const newToast = {
       ...data,
@@ -50,14 +56,17 @@ export const Toaster = ({
     });
   };
 
-  // Close a toast:
+  // Define the closeToast function
   const closeToast = (id: number) => {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   };
 
+  // Assign openToast to the global variable
   openToastGlobal = openToast;
 
+  // Render the component
   return (
+    isMounted &&
     toasts.length > 0 && (
       <section
         aria-label="Toast Notifications"
@@ -86,6 +95,13 @@ export const Toaster = ({
   );
 };
 
+// Export the openToast function:
 export const openToast = (data: ToastPropsWithVariant): void => {
-  openToastGlobal(data);
+  if (openToastGlobal) {
+    openToastGlobal(data);
+  } else {
+    console.error(
+      '🔔 <Toaster /> component is not mounted. Check toast.pheralb.dev/toaster for more information.',
+    );
+  }
 };
