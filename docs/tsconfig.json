@@ -5,7 +5,8 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@pheralb/toast": ["../library/src/main.tsx"]
     }
   }
 }

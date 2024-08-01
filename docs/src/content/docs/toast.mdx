@@ -7,7 +7,7 @@ category: 'API'
 import {
   ToastVariantExamples,
   ToastActionsExamples,
-} from '../components/examples/toast';
+} from '../../components/examples/toast';
 
 # Toast
 
@@ -23,11 +23,11 @@ import { toast } from '@pheralb/toast';
 
 - `toast.variant`: Show a toast with a specific variant:
 
-<ToastVariantExamples />
+<ToastVariantExamples client:load />
 
 - `toast.variant` with `action`: Show a _Action_ button and execute a custom function when clicked:
 
-<ToastActionsExamples />
+<ToastActionsExamples client:load />
 
 ```tsx
 toast.default({

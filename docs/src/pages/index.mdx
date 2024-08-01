@@ -1,13 +1,14 @@
 ---
+layout: '../layouts/markdown.layout.astro'
 title: 'Getting Started'
 description: 'A beautiful toast library for React'
 category: 'Introduction'
 ---
 
 import Hero from '../components/hero';
-import Usage from '../components/usage';
+import Usage from '../components/usage.astro';
 
-<Hero />
+<Hero client:load />
 
 ## Framework guides
 

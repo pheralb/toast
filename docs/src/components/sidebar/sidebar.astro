@@ -1,0 +1,45 @@
+---
+import { SidebarRoutes } from '@/docs.config';
+import { cn } from '@/utils';
+import SidebarFooter from './sidebarFooter.astro';
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class={cn(
+    'fixed h-[calc(100vh-4rem)] overflow-y-auto overflow-x-hidden pb-10',
+    'bg-neutral-50 dark:bg-neutral-900',
+    'flex flex-col',
+  )}
+>
+  <div class="flex flex-1 flex-col space-y-8 py-7">
+    {
+      SidebarRoutes.map((route) => (
+        <div>
+          <p class="mb-1 flex w-full items-center justify-between space-x-2 py-1 text-start text-sm text-neutral-600 dark:text-neutral-400">
+            {route.category}
+          </p>
+          <div class="flex max-w-full flex-col">
+            {route.routes.map((r) => (
+              <a
+                href={r.path}
+                class={cn(
+                  'px-4 py-2 text-sm',
+                  'border-l border-neutral-200 dark:border-neutral-800',
+                  'text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white',
+                  'transition-colors',
+                  currentPath === r.path
+                    ? 'border-black font-medium text-black dark:border-white dark:text-white'
+                    : 'bg-transparent',
+                )}
+              >
+                {r.title}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+  <SidebarFooter />
+</nav>
