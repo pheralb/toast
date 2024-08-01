@@ -4,6 +4,7 @@ import { vitePlugin as remix } from '@remix-run/dev';
 import { defineConfig } from 'vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { vercelPreset } from '@vercel/remix/vite';
+import { flatRoutes } from 'remix-flat-routes';
 
 // MDX Config & Plugins:
 import mdx from '@mdx-js/rollup';
@@ -34,6 +35,11 @@ export default defineConfig({
     }),
     remix({
       presets: [vercelPreset()],
+      routes: async (defineRoutes) => {
+        return flatRoutes('routes', defineRoutes, {
+          ignoredRouteFiles: ['**/*.test.{js,jsx,ts,tsx}', '**/__*.*'],
+        });
+      },
     }),
     tsconfigPaths(),
   ],
