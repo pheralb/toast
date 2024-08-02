@@ -110,7 +110,6 @@ function Layout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      data-theme={theme}
       className={cn(theme ?? '', 'scroll-smooth focus:scroll-auto')}
       style={{ colorScheme: theme ?? '' }}
     >
