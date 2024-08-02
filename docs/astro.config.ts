@@ -12,6 +12,7 @@ import { HEADING_LINK_ANCHOR } from './src/ui/headings';
 
 // Astro config:
 export default defineConfig({
+  site: 'https://toast.pheralb.dev',
   integrations: [
     react(),
     tailwind({
