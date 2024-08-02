@@ -1,6 +1,7 @@
 ---
 interface Props {
   title: string;
+  description: string;
 }
 
 // View Transitions:
@@ -11,47 +12,88 @@ import '@/styles/globals.css';
 import { cn } from '@/utils';
 
 // Providers:
-import { Toaster } from '@pheralb/toast';
+import ToasterPlayground from '@/components/toasterPlayground';
 
 // Layout components:
 import Header from '@/components/header.astro';
 import Sidebar from '@/components/sidebar/sidebar.astro';
 
-const { title } = Astro.props;
+// Globals:
+import { ogImage } from '@/globals';
+
+const { title, description } = Astro.props;
 ---
 
+<!-- Light & Dark Theme -->
 <script is:inline>
-  const getThemePreference = () => {
+  const setTheme = () => {
+    const theme = (() => {
+      if (
+        typeof localStorage !== 'undefined' &&
+        localStorage.getItem('theme')
+      ) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    })();
+
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+
+    window.localStorage.setItem('theme', theme || 'light');
+  };
+
+  websiteTheme = (() => {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme');
     }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
-  };
-  const isDark = getThemePreference() === 'dark';
-  document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
 
-  if (typeof localStorage !== 'undefined') {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-  }
+  setTheme();
+
+  document.addEventListener('astro:after-swap', setTheme);
 </script>
 
 <html lang="en">
   <head>
+    <!-- Global Metatags -->
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/logo_svg.svg" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+
+    <!-- Title -->
     <title>{title}</title>
+
+    <!-- View Transitions -->
     <ViewTransitions />
   </head>
   <body
@@ -68,6 +110,6 @@ const { title } = Astro.props;
       </aside>
       <slot />
     </main>
-    <Toaster toastFont="font-sans" client:only="react" />
+    <ToasterPlayground toastFont="font-sans" client:only="react" />
   </body>
 </html>
