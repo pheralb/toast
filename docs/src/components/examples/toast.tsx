@@ -4,7 +4,7 @@ import type { ToastVariant as Variant } from '@pheralb/toast';
 import { toast } from '@pheralb/toast';
 import { useRef, useState } from 'react';
 import JSConfetti from 'js-confetti';
-import { CopyIcon, PartyPopperIcon } from 'lucide-react';
+import { CheckCheckIcon, CopyIcon, PartyPopperIcon } from 'lucide-react';
 
 import { Button } from '@/ui/button';
 import { CopyCodeBtnStyles } from '@/ui/copyCodeBtn';
@@ -12,13 +12,13 @@ import { copyToClipboard } from '@/utils';
 
 const ToastCodeBlock = (props: CodeBlockProps) => {
   const preRef = useRef<HTMLPreElement>(null);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const copyPreContent = async () => {
     const content = preRef.current?.textContent ?? '';
     await copyToClipboard(content);
-    toast.success({
-      text: 'Copied to clipboard',
-    });
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 700);
   };
 
   return (
@@ -63,7 +63,7 @@ const ToastCodeBlock = (props: CodeBlockProps) => {
       </pre>
       <button className={CopyCodeBtnStyles} onClick={copyPreContent}>
         <span className="sr-only">Copy</span>
-        <CopyIcon size={16} />
+        {isCopied ? <CheckCheckIcon size={16} /> : <CopyIcon size={16} />}
       </button>
     </div>
   );

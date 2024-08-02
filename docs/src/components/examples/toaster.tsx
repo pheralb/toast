@@ -5,12 +5,13 @@ import type {
   ToastTheme as Theme,
 } from '@pheralb/toast';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDocsStore } from '@/store';
 
 import { toast } from '@pheralb/toast';
 import { Button } from '@/ui/button';
 import {
+  CheckCheckIcon,
   CheckIcon,
   CopyIcon,
   MoonIcon,
@@ -20,17 +21,17 @@ import {
 import { cn, copyToClipboard } from '@/utils';
 import { CopyCodeBtnStyles } from '@/ui/copyCodeBtn';
 
-const activeBtn = cn('border-neutral-600 dark:border-neutral-800');
+const activeBtn = cn('border-neutral-600 dark:border-neutral-700');
 
 const ProviderCodeBlock = (props: CodeBlockProps) => {
   const preRef = useRef<HTMLPreElement>(null);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
 
   const copyPreContent = async () => {
     const content = preRef.current?.textContent ?? '';
     await copyToClipboard(content);
-    toast.success({
-      text: 'Copied to clipboard',
-    });
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 700);
   };
 
   return (
@@ -61,7 +62,7 @@ const ProviderCodeBlock = (props: CodeBlockProps) => {
       </pre>
       <button className={CopyCodeBtnStyles} onClick={copyPreContent}>
         <span className="sr-only">Copy</span>
-        <CopyIcon size={16} />
+        {isCopied ? <CheckCheckIcon size={16} /> : <CopyIcon size={16} />}
       </button>
     </div>
   );
