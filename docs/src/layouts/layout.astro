@@ -68,8 +68,10 @@ const { title, description } = Astro.props;
   <head>
     <!-- Global Metatags -->
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="author" content="@pheralb_" />
     <meta name="generator" content={Astro.generator} />
     <meta name="color-scheme" content="dark light" />
 
@@ -81,14 +83,15 @@ const { title, description } = Astro.props;
     <meta property="og:url" content={Astro.url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:image" content={ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
+    <meta property="twitter:image" content={ogImage} />
 
     <!-- Title -->
     <title>{title}</title>
