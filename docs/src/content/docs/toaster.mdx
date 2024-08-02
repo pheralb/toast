@@ -6,21 +6,17 @@ category: 'API'
 
 import { Positions, ThemeExamples } from '../../components/examples/toaster';
 
-# Toaster
-
-The `<Toaster />` component is used to show toasts in your application.
-
 ## Position
 
 By default, the default position is `bottom-right`. You can customize the position of the toasts by using the `position` prop of the `Toaster` component:
 
-<Positions client:load />
+<Positions client:only="react" />
 
 ## Theme
 
 You can set the theme of the toasts using the `theme` prop, which accepts the values: `light`, `dark`, and `system`:
 
-<ThemeExamples client:load />
+<ThemeExamples client:only="react" />
 
 ## MaxToasts
 

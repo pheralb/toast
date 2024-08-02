@@ -1,6 +1,6 @@
 ---
 title: 'Toast'
-description: 'Use toast to create a toast from anywhere in your React application. Make sure you add the <Toaster /> provider to your app first.'
+description: 'Use toast to create a toast from anywhere in your React application.'
 category: 'API'
 ---
 
@@ -9,9 +9,7 @@ import {
   ToastActionsExamples,
 } from '../../components/examples/toast';
 
-# Toast
-
-Use `toast` to create a toast from anywhere in your React application. Make sure you add the [`<Toaster />`](/toaster) provider to your app first.
+> 💡 Make sure you add the [`<Toaster />`](/toaster) provider to your app first.
 
 1. Import the `toast` function:
 
@@ -23,11 +21,11 @@ import { toast } from '@pheralb/toast';
 
 - `toast.variant`: Show a toast with a specific variant:
 
-<ToastVariantExamples client:load />
+<ToastVariantExamples client:only="react" />
 
 - `toast.variant` with `action`: Show a _Action_ button and execute a custom function when clicked:
 
-<ToastActionsExamples client:load />
+<ToastActionsExamples client:only="react" />
 
 ```tsx
 toast.default({
