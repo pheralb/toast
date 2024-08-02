@@ -8,7 +8,7 @@
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": [
-    "@pheralb/toast-website",
+    "@pheralb/toast-docs",
     "@pheralb-toast/nextjs-example",
     "@pheralb-toast/astro-example"
   ]

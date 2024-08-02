@@ -125,8 +125,8 @@ export default function Index() {
 
 [`pheralb/toast`](https://github.com/pheralb/toast) is a monorepo built with [Turbo](https://turbo.build/repo) and it uses:
 
+- [**Docs**](https://github.com/pheralb/toast/tree/main/docs): Astro Content Collections, shadcn/ui + Tailwind CSS & MDX.
 - [**Library**](https://github.com/pheralb/toast/tree/main/library): React 18 with tsup + Vitest for testing.
-- [**Website**](https://github.com/pheralb/toast/tree/main/website): Astro Content Collections, shadcn/ui + Tailwind CSS & MDX.
 - [**Examples**](https://github.com/pheralb/toast/tree/main/examples): Frameworks to test the library.
 
 1. [Click here to fork](https://github.com/pheralb/toast/fork) the repository.
