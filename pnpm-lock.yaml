@@ -68,6 +68,12 @@ importers:
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
+      rehype-autolink-headings:
+        specifier: 7.1.0
+        version: 7.1.0
+      rehype-slug:
+        specifier: 6.0.0
+        version: 6.0.0
       tailwind-merge:
         specifier: 2.3.0
         version: 2.3.0
