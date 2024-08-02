@@ -8,9 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/ui/dropdown-menu';
+import { useDocsStore } from '@/store';
 
 export function ModeToggle() {
   const [theme, setThemeState] = useState<'light' | 'dark' | 'system'>('light');
+  const { setToastTheme } = useDocsStore();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
@@ -28,6 +30,7 @@ export function ModeToggle() {
   }, []);
 
   const applyTheme = (theme: 'light' | 'dark') => {
+    setToastTheme(theme);
     document.documentElement.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
   };
