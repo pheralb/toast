@@ -1,0 +1,118 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+// View Transitions:
+import { ViewTransitions } from 'astro:transitions';
+
+// Styles:
+import '@/styles/globals.css';
+import { cn } from '@/utils';
+
+// Providers:
+import ToasterPlayground from '@/components/toasterPlayground';
+
+// Layout components:
+import Header from '@/components/header.astro';
+import Sidebar from '@/components/sidebar/sidebar.astro';
+
+// Globals:
+import { ogImage, siteUrl } from '@/globals';
+
+const { title, description } = Astro.props;
+---
+
+<!-- Light & Dark Theme -->
+<script is:inline>
+  const setTheme = () => {
+    const theme = (() => {
+      if (
+        typeof localStorage !== 'undefined' &&
+        localStorage.getItem('theme')
+      ) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    })();
+
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+
+    window.localStorage.setItem('theme', theme || 'light');
+  };
+
+  websiteTheme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  setTheme();
+
+  document.addEventListener('astro:after-swap', setTheme);
+</script>
+
+<html lang="en">
+  <head>
+    <!-- Global Metatags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="@pheralb_" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/logo_svg.svg" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={title} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Title -->
+    <title>{title}</title>
+
+    <!-- View Transitions -->
+    <ViewTransitions />
+  </head>
+  <body
+    class={cn(
+      'font-sans antialiased',
+      'bg-neutral-50 dark:bg-neutral-900',
+      'text-neutral-900 dark:text-neutral-50',
+    )}
+  >
+    <Header />
+    <main class="container w-full max-w-7xl">
+      <aside class="hidden md:block">
+        <Sidebar />
+      </aside>
+      <slot />
+    </main>
+    <ToasterPlayground toastFont="font-sans" client:only="react" />
+  </body>
+</html>

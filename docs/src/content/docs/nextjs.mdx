@@ -1,0 +1,77 @@
+---
+title: 'Usage with Next.js'
+description: 'How to use the library with Next.js'
+category: 'Framework guides'
+---
+
+1. Create a new Next.js project:
+
+```bash
+npx create-next-app@latest
+```
+
+2. Select the default options:
+
+```bash
+√ What is your project named? ... nextjs-project
+√ Would you like to use TypeScript? ... Yes
+√ Would you like to use ESLint? ... Yes
+√ Would you like to use Tailwind CSS? ... Yes (👈 optional)
+√ Would you like to use `src/` directory? ... Yes (👈 optional)
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to customize the default import alias (@/*)? ... No
+```
+
+3. Install the library:
+
+```bash
+npm install @pheralb/toast
+```
+
+4. Add the [`Toaster`](/toaster) to the `layout.tsx` file:
+
+> 💡 By default, `Toaster` includes `use client` directive.
+
+```tsx
+// 📃 layout.tsx
+import { Toaster } from '@pheralb/toast';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+```
+
+5. Use the [`toast`](/toast) function in your **client** components:
+
+```tsx
+'use client';
+
+import { toast } from '@pheralb/toast';
+
+export default function MyComponent() {
+  return (
+    <button
+      onClick={() =>
+        toast.success({
+          text: 'Ready 🚀✨',
+        })
+      }
+    >
+      Click me!
+    </button>
+  );
+}
+```
+
+✨ Ready.

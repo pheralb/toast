@@ -28,7 +28,7 @@
 <div align="center">
 
 ![React Badge](https://img.shields.io/badge/Library-61DAFB?logo=react&logoColor=000&style=flat)
-![Remix Badge](https://img.shields.io/badge/Docs-000?logo=remix&logoColor=fff&style=flat)
+![Astro Badge](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=fff&style=flat)
 ![Vitest Badge](https://img.shields.io/badge/Testing-6E9F18?logo=vitest&logoColor=fff&style=flat)
 ![GitHub releases](https://img.shields.io/github/release/pheralb/toast)
 ![npm bundle size](https://img.shields.io/bundlephobia/min/%40pheralb%2Ftoast)
@@ -125,8 +125,8 @@ export default function Index() {
 
 [`pheralb/toast`](https://github.com/pheralb/toast) is a monorepo built with [Turbo](https://turbo.build/repo) and it uses:
 
+- [**Docs**](https://github.com/pheralb/toast/tree/main/docs): Astro Content Collections, shadcn/ui + Tailwind CSS & MDX.
 - [**Library**](https://github.com/pheralb/toast/tree/main/library): React 18 with tsup + Vitest for testing.
-- [**Website**](https://github.com/pheralb/toast/tree/main/website): Remix, shadcn/ui + Tailwind CSS + Radix & MDX.
 - [**Examples**](https://github.com/pheralb/toast/tree/main/examples): Frameworks to test the library.
 
 1. [Click here to fork](https://github.com/pheralb/toast/fork) the repository.
@@ -144,7 +144,10 @@ pnpm install
 3. Commands:
 
 ```bash
-# Run the development server:
+# Run only documentation website:
+pnpm dev:docs
+
+# Run all packages with examples:
 pnpm dev
 
 # Build the docs & library:
@@ -154,12 +157,12 @@ pnpm build
 pnpm test
 ```
 
-🧑‍🚀 Open [`http://localhost:5173`](http://localhost:5173) to view the **Remix** documentation website.
+🧑‍🚀 Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** documentation website.
 
 🔎 Only for test the functionality of the library:
 
 - Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground.
-- Open [`http://localhost:4321`](http://localhost:3001) to view the **Astro** playground.
+- Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** playground.
 
 and create a pull request with your features or fixes 🚀✨.
 

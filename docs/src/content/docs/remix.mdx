@@ -1,0 +1,90 @@
+---
+title: 'Usage with Remix'
+description: 'How to use the library with Remix'
+category: 'Framework guides'
+---
+
+1. Create a new Remix project:
+
+```bash
+npx create-remix@latest
+```
+
+2. Select the default options:
+
+```bash
+ remix   v2.x.x 💿 Let's build a better website...
+
+   dir   Where should we create your new project?
+         remix-project
+
+   git   Initialize a new git repository?
+         Yes
+
+  deps   Install dependencies with npm?
+         Yes
+
+  done   That's it!
+```
+
+3. Install the library:
+
+```bash
+npm install @pheralb/toast
+```
+
+4. Add the [`Toaster`](/toaster) to the `root.tsx` file:
+
+```tsx
+// 📃 root.tsx
+import { Toaster } from '@pheralb/toast';
+
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {children}
+        <Toaster />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function App() {
+  return <Outlet />;
+}
+```
+
+5. Use the [`toast`](/toast) function in your components or pages:
+
+```tsx
+// 📃 index.tsx
+import { toast } from '@pheralb/toast';
+
+export default function Index() {
+  return (
+    <>
+      <h1>✨ Show a toast:</h1>
+      <button
+        onClick={() =>
+          toast.success({
+            text: 'Ready 🚀✨',
+          })
+        }
+      >
+        Show toast
+      </button>
+    </>
+  );
+}
+```
+
+✨ Ready.

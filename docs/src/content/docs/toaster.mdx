@@ -1,0 +1,54 @@
+---
+title: 'Toaster'
+description: 'The <Toaster /> component is used to show toasts in your application'
+category: 'API'
+---
+
+import { Positions, ThemeExamples } from '../../components/examples/toaster';
+
+## Position
+
+By default, the default position is `bottom-right`. You can customize the position of the toasts by using the `position` prop of the `Toaster` component:
+
+<Positions client:only="react" />
+
+## Theme
+
+You can set the theme of the toasts using the `theme` prop, which accepts the values: `light`, `dark`, and `system`:
+
+<ThemeExamples client:only="react" />
+
+## MaxToasts
+
+By default, the maximum number of toasts is set to `4`. You can change this value using the `maxToasts` prop:
+
+```jsx
+<Toaster maxToasts={8} />
+```
+
+## ToastFont
+
+By default, the font of the toasts is:
+
+```txt
+ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe
+UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
+Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+```
+
+You can change this value using the `toastFont` prop. In this case, we are using the utility class [`font-sans` from Tailwind CSS](https://tailwindcss.com/docs/font-family#setting-the-font-family) to set the font:
+
+```jsx
+<Toaster toastFont="font-sans" />
+```
+
+## API Reference
+
+The `<Toaster />` component accepts the following options:
+
+| Property    | Description                           | Type                                                                                                                                      | Required |
+| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `theme`     | Theme of the all toasts               | `Theme` (default: `system`): `'light'`, `'dark'`, or `'system'`                                                                           | -        |
+| `maxToasts` | Maximum number of toasts to display   | `number`                                                                                                                                  | -        |
+| `position`  | Position of the toaster on the screen | `Position` (default: `bottom-right`): `'top-left'`, `'top-right'`, `'top-center'`, `'bottom-left'`, `'bottom-right'` or `'bottom-center'` | -        |
+| `toastFont` | Font style for the all toasts         | `string`                                                                                                                                  | -        |

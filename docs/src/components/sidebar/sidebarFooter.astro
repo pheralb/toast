@@ -1,0 +1,63 @@
+---
+import { cn } from '@/utils';
+import { getLatestVersion } from 'fast-npm-meta';
+import {
+  AlertTriangleIcon,
+  ArrowUpRight,
+  BoxIcon,
+  HeartIcon,
+} from 'lucide-react';
+
+const iconSize = 14;
+const strokeIcon = 1.4;
+const metadata = await getLatestVersion('@pheralb/toast');
+const sidebarFooterClasses = cn(
+  'group flex items-center py-1 text-neutral-600 transition-colors duration-100 hover:text-black dark:text-neutral-400 dark:decoration-neutral-700 dark:hover:text-white',
+);
+---
+
+<div
+  class="w-full border-b-2 border-dashed border-neutral-200 py-2 text-sm dark:border-neutral-800"
+>
+  <div class="font-medium">
+    <a
+      href={`https://github.com/pheralb/toast/releases/tag/v${metadata.version}`}
+      target="_blank"
+      rel="noreferrer"
+      class={sidebarFooterClasses}
+    >
+      <BoxIcon
+        className="mr-1 group-hover:stroke-pink-600 dark:group-hover:stroke-pink-500"
+        height={iconSize}
+      />
+      <span>v{metadata.version}</span>
+      <ArrowUpRight height={12} strokeWidth={strokeIcon} />
+    </a>
+  </div>
+  <a
+    href="https://github.com/pheralb/toast/issues/new"
+    target="_blank"
+    rel="noreferrer"
+    class={sidebarFooterClasses}
+  >
+    <AlertTriangleIcon
+      className="mr-1 group-hover:stroke-yellow-600 dark:group-hover:stroke-yellow-500"
+      height={iconSize}
+    />
+    <span>Found a bug?</span>
+    <ArrowUpRight height={12} strokeWidth={strokeIcon} />
+  </a>
+  <a
+    href="https://pheralb.dev"
+    target="_blank"
+    rel="noreferrer"
+    class={sidebarFooterClasses}
+  >
+    <HeartIcon
+      className="mr-1 group-hover:animate-pulse group-hover:stroke-red-600"
+      height={iconSize}
+    />
+    <span>Built by pheralb</span>
+    <ArrowUpRight height={12} strokeWidth={strokeIcon} />
+  </a>
+</div>

@@ -1,0 +1,26 @@
+---
+import Layout from './layout.astro';
+
+import { cn } from '@/utils';
+import { siteTitle } from '@/globals';
+import { proseClasses } from '@/ui/prose';
+
+import CopyToClipboard from '@/components/mdx/codeblock-astro.astro';
+
+const { frontmatter } = Astro.props;
+---
+
+<CopyToClipboard />
+<Layout
+  title={`${frontmatter.title} - ${siteTitle}`}
+  description={frontmatter.description}
+>
+  <article
+    class={cn(
+      'ml-0 max-w-4xl py-7 duration-100 md:ml-[273px] scroll-smooth',
+      proseClasses,
+    )}
+  >
+    <slot />
+  </article>
+</Layout>
