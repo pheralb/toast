@@ -50,7 +50,7 @@ export function ModeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" title="Toggle theme">
           {theme === 'dark' ? (
             <Sun size={20} strokeWidth={1.5} />
           ) : (

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 
 export type Variant = 'success' | 'error' | 'warning' | 'info' | 'loading';
+
 export type Position =
   | 'top-left'
   | 'top-right'
@@ -25,6 +26,19 @@ export type ToastProps = {
   action?: Action;
 };
 
+export interface LoadingType {
+  promise:
+    | (() => Promise<void>)
+    | Promise<void>
+    | (() => Promise<any>)
+    | Promise<unknown>;
+  success: string;
+  error: string;
+  autoDismiss: boolean;
+  onSuccess?: (data: any) => void;
+  onError?: (error: Error) => void;
+}
+
 export type ToasterProperties = {
   theme?: Theme;
   maxToasts?: number;
@@ -34,4 +48,8 @@ export type ToasterProperties = {
 
 export interface ToastPropsWithVariant extends ToastProps {
   variant?: Variant;
+}
+
+export interface ToastPropsWithLoading extends ToastPropsWithVariant {
+  options?: LoadingType;
 }

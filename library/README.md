@@ -52,7 +52,7 @@
 
 - [x] 🎨 Notification Design by [**Medusa.js UI** Framework](https://medusajs.com/framework/).
 - [x] 🛠️ Typescript API by [**Sonner**](https://sonner.emilkowal.ski).
-- [x] 🪄 [**Phosphor Icons**](https://phosphoricons.com/) for success, error, warning and info icons.
+- [x] 🪄 [**Phosphor Icons**](https://phosphoricons.com/) for success, error, warning, info & loading icons.
 
 ## 🚀 Getting Started
 
@@ -117,7 +117,7 @@ export default function Index() {
 
 ## 🔭 Roadmap
 
-- [ ] 🚗 Add `.loading` variant.
+- [x] 🚗 Add `.loading` variant.
 - [x] 📚 Add support for Astro + React.
 - [ ] 🎨 Add rich colors support.
 
@@ -157,12 +157,8 @@ pnpm build
 pnpm test
 ```
 
-🧑‍🚀 Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** documentation website.
-
-🔎 Only for test the functionality of the library:
-
-- Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground.
-- Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** playground.
+- 🧑‍🚀 Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** documentation website.
+- 🔎 Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground. Only for test the functionality of the library.
 
 and create a pull request with your features or fixes 🚀✨.
 

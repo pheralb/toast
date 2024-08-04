@@ -70,6 +70,8 @@ export const Toaster = ({
     toasts.length > 0 && (
       <section
         aria-label="Toast Notifications"
+        role="region"
+        aria-live="polite"
         className={classNames(
           't_toasts',
           position === 'top-left' ? 't_top-left' : '',

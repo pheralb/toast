@@ -7,6 +7,7 @@ category: 'API'
 import {
   ToastVariantExamples,
   ToastActionsExamples,
+  ToastLoadingExample,
 } from '../../components/examples/toast';
 
 > 💡 Make sure you add the [`<Toaster />`](/toaster) provider to your app first.
@@ -34,6 +35,65 @@ toast.default({
     label: 'Action', // Button label
     onClick: () => {
       // Do something
+    },
+  },
+});
+```
+
+- `toast.loading`: Show a toast with loading state and will update automatically after the promise resolves or fails:
+
+<ToastLoadingExample client:only="react" />
+
+```tsx
+toast.loading({
+  // Initial message:
+  text: 'Loading',
+  options: {
+    promise: yourFunction(),
+    success: 'Ready',
+    error: 'Error',
+    // Close toast automatically (the duration depends by delayDuration property):
+    autoDismiss: true,
+    // Optional:
+    onSuccess: () => {
+      console.log('Success');
+    },
+    // Optional:
+    onError: () => {
+      console.log('Error');
+    },
+  },
+});
+```
+
+> ✨ For example, you can use [Next.js Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations) to show a loading toast while fetching data from an API:
+
+```tsx
+// 📃 actions/testAction.ts
+'use server';
+
+export const testAction = async (name: string) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return {
+    name: `Hello, ${name}!`,
+  };
+};
+
+// 📃 components/Example.tsx
+
+import { testAction } from '@/actions/testAction';
+import { toast } from '@pheralb/toast';
+
+toast.loading({
+  text: 'Getting data',
+  options: {
+    promise: testAction(),
+    success: 'Ready',
+    error: 'Error',
+    autoDismiss: false,
+    onSuccess: (data) => {
+      console.log(`Success: ${data.name}`);
+      // Success: Hello, pheralb!
     },
   },
 });

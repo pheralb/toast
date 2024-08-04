@@ -1,5 +1,6 @@
 'use client';
 
+import { testAction, testErrorAction } from '@/actions/testAction';
 import { toast } from '@pheralb/toast';
 import { PartyPopperIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -48,6 +49,43 @@ export default function Home() {
     });
   };
 
+  const testLoading = () => {
+    toast.loading({
+      text: 'Loading toast',
+      description: 'This returns success toast!',
+      delayDuration: duration,
+      options: {
+        promise: testAction('pheralb'),
+        success: 'Success toast',
+        error: 'Error toast',
+        autoDismiss: true,
+        onSuccess(data) {
+          console.log(`Success: ${data.data}`);
+        },
+        onError(error) {
+          console.error(`Error: ${error}`);
+        },
+      },
+    });
+    toast.loading({
+      text: 'Loading toast',
+      description: 'This returns error toast!',
+      delayDuration: duration,
+      options: {
+        promise: testErrorAction(),
+        success: 'Success toast',
+        error: 'Error toast',
+        autoDismiss: true,
+        onSuccess(data) {
+          console.log(`Success: ${data.data}`);
+        },
+        onError(error) {
+          console.error(`Error: ${error}`);
+        },
+      },
+    });
+  };
+
   return (
     <>
       <input
@@ -69,6 +107,9 @@ export default function Home() {
       </button>
       <button className={buttonStyles} onClick={() => renderToastWithIcon()}>
         Render Toast with/without icon and custom icon
+      </button>
+      <button className={buttonStyles} onClick={() => testLoading()}>
+        Test Loading with Next.js Server Action
       </button>
     </>
   );

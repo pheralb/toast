@@ -4,7 +4,13 @@ import type { ToastVariant as Variant } from '@pheralb/toast';
 import { toast } from '@pheralb/toast';
 import { useRef, useState } from 'react';
 import JSConfetti from 'js-confetti';
-import { CheckCheckIcon, CopyIcon, PartyPopperIcon } from 'lucide-react';
+import {
+  CheckCheckIcon,
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CopyIcon,
+  PartyPopperIcon,
+} from 'lucide-react';
 
 import { Button } from '@/ui/button';
 import { CopyCodeBtnStyles } from '@/ui/copyCodeBtn';
@@ -75,10 +81,12 @@ const ToastVariantExamples = () => {
 
   const handleChangeVariant = (variant: Variant) => {
     setToastVariant(variant);
-    toast[variant as keyof typeof toast]({
-      text: `A ${variant} toast 🚀`,
-      description: '✨ @pheralb/toast',
-    });
+    if (variant !== 'loading') {
+      toast[variant]({
+        text: `A ${variant} toast 🚀`,
+        description: '✨ @pheralb/toast',
+      });
+    }
   };
 
   const handleDefault = () => {
@@ -149,4 +157,79 @@ const ToastActionsExamples = () => {
   );
 };
 
-export { ToastVariantExamples, ToastActionsExamples };
+const ToastLoadingExample = () => {
+  const runFunction = async () => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 2000);
+    });
+  };
+
+  const runErrorFunction = async () => {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error('Test error'));
+      }, 2000);
+    });
+  };
+
+  const handleToastLoading = (success: boolean) => {
+    if (success) {
+      toast.loading({
+        text: 'Loading',
+        options: {
+          promise: runFunction,
+          success: 'Ready',
+          error: 'Error',
+          autoDismiss: true,
+          onSuccess: () => {
+            console.log('Success');
+          },
+          onError: () => {
+            console.log('Error');
+          },
+        },
+      });
+    } else {
+      toast.loading({
+        text: 'Loading',
+        options: {
+          promise: runErrorFunction,
+          success: 'Ready',
+          error: 'Error',
+          autoDismiss: true,
+          onSuccess: () => {
+            console.log('Success');
+          },
+          onError: () => {
+            console.log('Error');
+          },
+        },
+      });
+    }
+  };
+
+  return (
+    <div className="flex items-center space-x-2">
+      <Button
+        className="mb-2"
+        variant="outline"
+        onClick={() => handleToastLoading(true)}
+      >
+        <CircleCheckIcon size={16} />
+        <span>Show a Loading Toast (Success)</span>
+      </Button>
+      <Button
+        className="mb-2"
+        variant="outline"
+        onClick={() => handleToastLoading(false)}
+      >
+        <CircleAlertIcon size={16} />
+        <span>Show a Loading Toast (Error)</span>
+      </Button>
+    </div>
+  );
+};
+
+export { ToastVariantExamples, ToastActionsExamples, ToastLoadingExample };

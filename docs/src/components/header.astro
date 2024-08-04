@@ -19,6 +19,7 @@ import { ModeToggle } from '@/components/theme/modeToggle';
       <MobileMenu client:load />
       <a
         href="/"
+        title="pheralb/toast"
         class="group flex items-center space-x-3 font-medium tracking-tight transition-opacity duration-75 hover:opacity-80"
       >
         <Logo width={22} className="group-hover:animate-pulse" />
@@ -32,7 +33,9 @@ import { ModeToggle } from '@/components/theme/modeToggle';
         SocialLinks.map((link) =>
           link.routes.map((route) => (
             <a
+              title={route.title}
               href={route.path}
+              target="_blank"
               class={buttonVariants({
                 variant: 'ghost',
                 size: 'icon',
