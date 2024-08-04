@@ -52,6 +52,8 @@ toast.loading({
     promise: yourFunction(),
     success: 'Ready',
     error: 'Error',
+    // Close toast automatically (the duration depends by delayDuration property):
+    autoDismiss: true,
     // Optional:
     onSuccess: () => {
       console.log('Success');
@@ -88,6 +90,7 @@ toast.loading({
     promise: testAction(),
     success: 'Ready',
     error: 'Error',
+    autoDismiss: false,
     onSuccess: (data) => {
       console.log(`Success: ${data.name}`);
       // Success: Hello, pheralb!

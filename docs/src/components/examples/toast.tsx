@@ -6,8 +6,9 @@ import { useRef, useState } from 'react';
 import JSConfetti from 'js-confetti';
 import {
   CheckCheckIcon,
+  CircleAlertIcon,
+  CircleCheckIcon,
   CopyIcon,
-  LoaderIcon,
   PartyPopperIcon,
 } from 'lucide-react';
 
@@ -165,32 +166,69 @@ const ToastLoadingExample = () => {
     });
   };
 
-  const handleToastLoading = () => {
-    toast.loading({
-      text: 'Loading',
-      options: {
-        promise: runFunction,
-        success: 'Ready',
-        error: 'Error',
-        onSuccess: () => {
-          console.log('Success');
-        },
-        onError: () => {
-          console.log('Error');
-        },
-      },
+  const runErrorFunction = async () => {
+    await new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject(new Error('Test error'));
+      }, 2000);
     });
   };
 
+  const handleToastLoading = (success: boolean) => {
+    if (success) {
+      toast.loading({
+        text: 'Loading',
+        options: {
+          promise: runFunction,
+          success: 'Ready',
+          error: 'Error',
+          autoDismiss: true,
+          onSuccess: () => {
+            console.log('Success');
+          },
+          onError: () => {
+            console.log('Error');
+          },
+        },
+      });
+    } else {
+      toast.loading({
+        text: 'Loading',
+        options: {
+          promise: runErrorFunction,
+          success: 'Ready',
+          error: 'Error',
+          autoDismiss: true,
+          onSuccess: () => {
+            console.log('Success');
+          },
+          onError: () => {
+            console.log('Error');
+          },
+        },
+      });
+    }
+  };
+
   return (
-    <Button
-      className="mb-2"
-      variant="outline"
-      onClick={() => handleToastLoading()}
-    >
-      <LoaderIcon size={16} />
-      <span>Show a Loading Toast</span>
-    </Button>
+    <div className="flex items-center space-x-2">
+      <Button
+        className="mb-2"
+        variant="outline"
+        onClick={() => handleToastLoading(true)}
+      >
+        <CircleCheckIcon size={16} />
+        <span>Show a Loading Toast (Success)</span>
+      </Button>
+      <Button
+        className="mb-2"
+        variant="outline"
+        onClick={() => handleToastLoading(false)}
+      >
+        <CircleAlertIcon size={16} />
+        <span>Show a Loading Toast (Error)</span>
+      </Button>
+    </div>
   );
 };
 
