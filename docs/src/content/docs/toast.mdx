@@ -64,6 +64,38 @@ toast.loading({
 });
 ```
 
+> ✨ For example, you can use [Next.js Server Actions](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations) to show a loading toast while fetching data from an API:
+
+```tsx
+// 📃 actions/testAction.ts
+'use server';
+
+export const testAction = async (name: string) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return {
+    name: `Hello, ${name}!`,
+  };
+};
+
+// 📃 components/Example.tsx
+
+import { testAction } from '@/actions/testAction';
+import { toast } from '@pheralb/toast';
+
+toast.loading({
+  text: 'Getting data',
+  options: {
+    promise: testAction(),
+    success: 'Ready',
+    error: 'Error',
+    onSuccess: (data) => {
+      console.log(`Success: ${data.name}`);
+      // Success: Hello, pheralb!
+    },
+  },
+});
+```
+
 ## API Reference
 
 The `toast.variant` function accepts the following options:

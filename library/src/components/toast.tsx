@@ -97,7 +97,7 @@ const Toast = (props: ToastComponentProps) => {
           : Promise.resolve(props.options.promise);
 
       executePromise
-        .then(() => {
+        .then((data) => {
           resumeTimer();
           setStatus('success');
           setTimeout(() => {
@@ -105,7 +105,7 @@ const Toast = (props: ToastComponentProps) => {
           }, delayDuration);
           setToastText(props.options!.success);
           setIconColor(iconsColors.success);
-          props.options?.onSuccess && props.options.onSuccess();
+          props.options?.onSuccess && props.options.onSuccess(data);
         })
         .catch((error) => {
           setStatus('error');

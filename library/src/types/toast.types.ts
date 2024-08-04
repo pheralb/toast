@@ -34,7 +34,7 @@ export interface LoadingType {
     | Promise<unknown>;
   success: string;
   error: string;
-  onSuccess?: () => void;
+  onSuccess?: (data: any) => void;
   onError?: (error: Error) => void;
 }
 
