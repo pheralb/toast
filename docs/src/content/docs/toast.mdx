@@ -7,6 +7,7 @@ category: 'API'
 import {
   ToastVariantExamples,
   ToastActionsExamples,
+  ToastLoadingExample,
 } from '../../components/examples/toast';
 
 > 💡 Make sure you add the [`<Toaster />`](/toaster) provider to your app first.
@@ -34,6 +35,30 @@ toast.default({
     label: 'Action', // Button label
     onClick: () => {
       // Do something
+    },
+  },
+});
+```
+
+- `toast.loading`: Show a toast with loading state and will update automatically after the promise resolves or fails:
+
+<ToastLoadingExample client:only="react" />
+
+```tsx
+toast.loading({
+  // Initial message:
+  text: 'Loading',
+  options: {
+    promise: yourFunction(),
+    success: 'Ready',
+    error: 'Error',
+    // Optional:
+    onSuccess: () => {
+      console.log('Success');
+    },
+    // Optional:
+    onError: () => {
+      console.log('Error');
     },
   },
 });

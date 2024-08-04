@@ -4,7 +4,12 @@ import type { ToastVariant as Variant } from '@pheralb/toast';
 import { toast } from '@pheralb/toast';
 import { useRef, useState } from 'react';
 import JSConfetti from 'js-confetti';
-import { CheckCheckIcon, CopyIcon, PartyPopperIcon } from 'lucide-react';
+import {
+  CheckCheckIcon,
+  CopyIcon,
+  LoaderIcon,
+  PartyPopperIcon,
+} from 'lucide-react';
 
 import { Button } from '@/ui/button';
 import { CopyCodeBtnStyles } from '@/ui/copyCodeBtn';
@@ -75,10 +80,12 @@ const ToastVariantExamples = () => {
 
   const handleChangeVariant = (variant: Variant) => {
     setToastVariant(variant);
-    toast[variant as keyof typeof toast]({
-      text: `A ${variant} toast 🚀`,
-      description: '✨ @pheralb/toast',
-    });
+    if (variant !== 'loading') {
+      toast[variant]({
+        text: `A ${variant} toast 🚀`,
+        description: '✨ @pheralb/toast',
+      });
+    }
   };
 
   const handleDefault = () => {
@@ -149,4 +156,42 @@ const ToastActionsExamples = () => {
   );
 };
 
-export { ToastVariantExamples, ToastActionsExamples };
+const ToastLoadingExample = () => {
+  const runFunction = async () => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 2000);
+    });
+  };
+
+  const handleToastLoading = () => {
+    toast.loading({
+      text: 'Loading',
+      options: {
+        promise: runFunction,
+        success: 'Ready',
+        error: 'Error',
+        onSuccess: () => {
+          console.log('Success');
+        },
+        onError: () => {
+          console.log('Error');
+        },
+      },
+    });
+  };
+
+  return (
+    <Button
+      className="mb-2"
+      variant="outline"
+      onClick={() => handleToastLoading()}
+    >
+      <LoaderIcon size={16} />
+      <span>Show a Loading Toast</span>
+    </Button>
+  );
+};
+
+export { ToastVariantExamples, ToastActionsExamples, ToastLoadingExample };

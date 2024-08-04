@@ -1,7 +1,7 @@
-import { useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import type {
   Position,
-  ToastPropsWithVariant,
+  ToastPropsWithLoading,
   Variant,
 } from '../types/toast.types';
 import '../styles/toast-component.css';
@@ -23,18 +23,20 @@ const iconsColors: Record<Variant, string> = {
   error: '#ef4444',
   warning: '#eab308',
   info: '#3b82f6',
-  loading: '#6b7280',
+  loading: 'currentColor',
 };
 
-interface ToastComponentProps extends ToastPropsWithVariant {
+interface ToastComponentProps extends ToastPropsWithLoading {
   toastPosition: Position;
   onClose: () => void;
 }
 
 const Toast = (props: ToastComponentProps) => {
-  const IconComponent = props.variant ? icons[props.variant] : Info;
+  const [status, setStatus] = useState<Variant>(props.variant || 'info');
+  const [iconColor, setIconColor] = useState<string>(iconsColors[status]);
+  const [toastText, setToastText] = useState<string>(props.text);
+  const IconComponent = icons[status];
   const [isExiting, setIsExiting] = useState<boolean>(false);
-
   const delayDuration = props.delayDuration || 4000;
 
   const { pauseTimer, resumeTimer } = useTimeout(() => {
@@ -85,6 +87,35 @@ const Toast = (props: ToastComponentProps) => {
     ? ANIMATION_EXIT_MAP[props.toastPosition]
     : ANIMATION_ENTER_MAP[props.toastPosition];
 
+  useEffect(() => {
+    if (props.variant === 'loading' && props.options) {
+      pauseTimer();
+
+      const executePromise =
+        typeof props.options.promise === 'function'
+          ? props.options.promise()
+          : Promise.resolve(props.options.promise);
+
+      executePromise
+        .then(() => {
+          resumeTimer();
+          setStatus('success');
+          setTimeout(() => {
+            handleCloseToast();
+          }, delayDuration);
+          setToastText(props.options!.success);
+          setIconColor(iconsColors.success);
+          props.options?.onSuccess && props.options.onSuccess();
+        })
+        .catch((error) => {
+          setStatus('error');
+          setToastText(props.options!.error);
+          setIconColor(iconsColors.error);
+          props.options?.onError && props.options.onError(error);
+        });
+    }
+  }, [props.options, props.variant]);
+
   return (
     <div
       role="alert"
@@ -107,14 +138,19 @@ const Toast = (props: ToastComponentProps) => {
           <IconComponent
             width={18}
             height={18}
-            style={{ fill: iconsColors[props.variant] }}
-            className="t_icon"
+            style={{ fill: iconColor }}
+            className={classNames(
+              't_icon',
+              props.variant === 'loading' && status === 'loading'
+                ? 't_loading'
+                : '',
+            )}
           />
         ) : (
           props.icon && <div className="t_icon">{props.icon}</div>
         )}
         <div className="t_content">
-          <p id={`toast-title-${props.id}`}>{props.text}</p>
+          <p id={`toast-title-${props.id}`}>{toastText}</p>
           {props.description && (
             <p id={`toast-description-${props.id}`}>{props.description}</p>
           )}
