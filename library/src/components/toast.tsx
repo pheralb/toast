@@ -100,9 +100,11 @@ const Toast = (props: ToastComponentProps) => {
         .then((data) => {
           resumeTimer();
           setStatus('success');
-          setTimeout(() => {
-            handleCloseToast();
-          }, delayDuration);
+          if (props.options!.autoDismiss) {
+            setTimeout(() => {
+              handleCloseToast();
+            }, delayDuration);
+          }
           setToastText(props.options!.success);
           setIconColor(iconsColors.success);
           props.options?.onSuccess && props.options.onSuccess(data);
@@ -111,6 +113,11 @@ const Toast = (props: ToastComponentProps) => {
           setStatus('error');
           setToastText(props.options!.error);
           setIconColor(iconsColors.error);
+          if (props.options!.autoDismiss) {
+            setTimeout(() => {
+              handleCloseToast();
+            }, delayDuration);
+          }
           props.options?.onError && props.options.onError(error);
         });
     }

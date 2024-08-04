@@ -34,6 +34,7 @@ export interface LoadingType {
     | Promise<unknown>;
   success: string;
   error: string;
+  autoDismiss: boolean;
   onSuccess?: (data: any) => void;
   onError?: (error: Error) => void;
 }
