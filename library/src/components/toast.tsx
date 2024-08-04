@@ -87,8 +87,10 @@ const Toast = (props: ToastComponentProps) => {
 
   return (
     <div
+      role="alert"
+      aria-labelledby={`toast-title-${props.id}`}
+      aria-describedby={`toast-description-${props.id}`}
       title={props.text}
-      aria-label="Notification"
       className={classNames(
         't_global',
         prefersReducedMotion() ? '' : animationClass,
@@ -97,6 +99,8 @@ const Toast = (props: ToastComponentProps) => {
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={handleMouseEnter}
+      onBlur={handleMouseLeave}
     >
       <div className="t_container">
         {props.variant && !props.icon ? (
@@ -110,13 +114,18 @@ const Toast = (props: ToastComponentProps) => {
           props.icon && <div className="t_icon">{props.icon}</div>
         )}
         <div className="t_content">
-          <p>{props.text}</p>
-          {props.description && <p>{props.description}</p>}
+          <p id={`toast-title-${props.id}`}>{props.text}</p>
+          {props.description && (
+            <p id={`toast-description-${props.id}`}>{props.description}</p>
+          )}
         </div>
       </div>
       <div className="t_actions">
         {props.action && (
-          <button onClick={props.action.onClick} title="Action button">
+          <button
+            onClick={props.action.onClick}
+            title={props.action.text ? `${props.action.text}` : 'Action Button'}
+          >
             {props.action.text ?? 'Action'}
           </button>
         )}
