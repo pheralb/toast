@@ -157,12 +157,8 @@ pnpm build
 pnpm test
 ```
 
-🧑‍🚀 Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** documentation website.
-
-🔎 Only for test the functionality of the library:
-
-- Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground.
-- Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** playground.
+- 🧑‍🚀 Open [`http://localhost:4321`](http://localhost:4321) to view the **Astro** documentation website.
+- 🔎 Open [`http://localhost:3000`](http://localhost:3000) to view the **Next.js** playground. Only for test the functionality of the library.
 
 and create a pull request with your features or fixes 🚀✨.
 
