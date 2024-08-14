@@ -130,10 +130,11 @@ const Toast = (props: ToastComponentProps) => {
       aria-describedby={`toast-description-${props.id}`}
       title={props.text}
       className={classNames(
-        't_global',
         prefersReducedMotion() ? '' : animationClass,
+        props.theme === 'system' ? 't_system-theme' : '',
         props.theme === 'dark' ? 't_dark-theme' : '',
         props.theme === 'light' ? 't_light-theme' : '',
+        't_global',
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

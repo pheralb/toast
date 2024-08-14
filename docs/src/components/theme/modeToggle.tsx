@@ -32,6 +32,7 @@ export function ModeToggle() {
   const applyTheme = (theme: 'light' | 'dark') => {
     setToastTheme(theme);
     document.documentElement.classList.toggle('dark', theme === 'dark');
+    document.documentElement.style.colorScheme = theme;
     localStorage.setItem('theme', theme);
   };
 
