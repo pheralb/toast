@@ -2,24 +2,15 @@ export const cn = (...classes: (string | undefined)[]) => {
   return classes.filter(Boolean).join(" ");
 };
 
-export const generateRandomId = () => Math.floor(Math.random() * 1000000);
+let toastIdCounter = 0;
+export const generateRandomId = () => ++toastIdCounter;
 
-export const prefersReducedMotion = (() => {
-  let shouldReduceMotion: boolean | undefined = undefined;
-  return () => {
-    if (shouldReduceMotion === undefined) {
-      if (typeof window !== "undefined" && window.matchMedia !== undefined) {
-        const mediaQuery = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        );
-        shouldReduceMotion = mediaQuery.matches;
-      } else {
-        shouldReduceMotion = false;
-      }
-    }
-    return shouldReduceMotion;
-  };
-})();
+export const prefersReducedMotion = () => {
+  if (typeof window !== "undefined" && window.matchMedia !== undefined) {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+  return false;
+};
 
 // Get system theme:
 export const getSystemTheme = () => {
